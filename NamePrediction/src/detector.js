@@ -55,12 +55,14 @@ function detect_reuse(origin, minified) {
 }
 
 function test_main() {
-	var dir_base = '/home/aliu/Research/closure-compiler/';
+	//var dir_base = '/home/aliu/Research/closure-compiler/aliu-test/';
+	//var dir_base = '/home/aliu/Research/ML4P/NamePrediction/aliu-test/test_files/uglifyjs/';
+	var dir_base = '/home/aliu/Research/ML4P/NamePrediction/aliu-test/test_files/cc/';
 	
-	var origin_file = dir_base + 'aliu-test/test2.js';
+	var origin_file = dir_base + 'test3.js';
 	var origin_code = fs.readFileSync(origin_file, 'utf-8');
 
-	var minified_file = dir_base + 'aliu-test/test2.min.js';
+	var minified_file = dir_base + 'test3.min.js';
 	var minified_code = fs.readFileSync(minified_file, 'utf-8');
 
 	var result = detect_reuse(origin_code, minified_code);

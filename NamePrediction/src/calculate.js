@@ -107,20 +107,22 @@ function extract_mapping(code, rawSourceMap) {
 }
 
 function test_main() {
-	var dir_base = '/home/aliu/Research/closure-compiler/';
-	var mapFile =  dir_base + 'aliu-test/test2.map'
+	//var dir_base = '/home/aliu/Research/closure-compiler/aliu-test/';
+	//var dir_base = '/home/aliu/Research/ML4P/NamePrediction/aliu-test/test_files/uglifyjs/';
+	var dir_base = '/home/aliu/Research/ML4P/NamePrediction/aliu-test/test_files/cc/';
+	var mapFile =  dir_base + 'test3.map'
 	var rawSourceMap = JSON.parse(fs.readFileSync(mapFile,'utf-8'));
 	rawSourceMap["sourceRoot"] = dir_base;
 
-	var minified_file = dir_base + 'aliu-test/test2.min.js';
+	var minified_file = dir_base + 'test3.min.js';
 	var minified_code = fs.readFileSync(minified_file, 'utf-8');
 	var mapTab = extract_mapping(minified_code, rawSourceMap);
 
-	var predicted_file = dir_base + 'aliu-test/test2.rename.js';
+	var predicted_file = dir_base + 'test3.rename.js';
 	var predicted_code = fs.readFileSync(predicted_file, 'utf-8');
 	var varTab = extract_variables(predicted_code);
 
-	var origin_file = dir_base + 'aliu-test/test2.js';
+	var origin_file = dir_base + 'test3.js';
 	var origin_code = fs.readFileSync(origin_file, 'utf-8');
 	var origin_varTab = extract_variables(origin_code);
 	//console.log(origin_code);
