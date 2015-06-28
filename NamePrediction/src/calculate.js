@@ -131,4 +131,56 @@ function test_main() {
 	console.log("\n## Precision: " + cal_precision(origin_varTab, mapTab, varTab));
 }
 
-test_main();
+function test_main_1() {
+	var dir_base = '/home/aliu/Research/ML4P/NamePrediction/';
+	//var dir_base = '/home/aliu/Research/ML4P/NamePrediction/aliu-test/test_files/';
+
+	var origin_file_dir = dir_base + 'jss/';
+	var minified_file_dir = dir_base + 'jsm/';
+	var map_file_dir =  dir_base + 'jssm/';
+	var predicted_file_dir = dir_base + 'jsp/';
+
+	//var origin_file_dir = dir_base + 'original_source/';
+	//var minified_file_dir = dir_base + 'minified_source/';
+	//var map_file_dir =  dir_base + 'source-maps/';
+	//var predicted_file_dir = dir_base + 'predicted_source/';
+
+	var origin_files = fs.readdirSync(origin_file_dir);
+	var minified_files = fs.readdirSync(minified_file_dir);
+	var map_files = fs.readdirSync(map_file_dir);
+	var predicted_files = fs.readdirSync(predicted_file_dir);
+
+	var rawSourceMap_files = [];
+	for(t in map_files){
+		console.log("**** Reading Source-Map File: " + map_file_dir + map_files[t]);
+		var rawSourceMap = JSON.parse(fs.readFileSync(map_file_dir + map_files[t],'utf-8'));
+		rawSourceMap["sourceRoot"] = map_file_dir;
+		rawSourceMap_files.push(rawSourceMap);
+	}
+
+	var map_varTab = [];
+	for(i in minified_files){
+		console.log("**** Reading Minified File: " + minified_file_dir + minified_files[i]);
+		var minified_code = fs.readFileSync(minified_file_dir + minified_files[i], 'utf-8');
+		map_varTab = map_varTab.concat(extract_mapping(minified_code, rawSourceMap_files[i]));
+	}
+
+	var predicted_varTab = [];
+	for(j in predicted_files){
+		console.log("**** Reading Predicted File: " + predicted_file_dir + predicted_files[j]);
+		var predicted_code = fs.readFileSync(predicted_file_dir + predicted_files[j], 'utf-8');
+		predicted_varTab = predicted_varTab.concat(extract_variables(predicted_code));
+	}
+
+	var origin_varTab = [];
+	for(k in origin_files){
+		console.log("**** Reading Origin File: " + origin_file_dir + origin_files[k]);
+		var origin_code = fs.readFileSync(origin_file_dir + origin_files[k], 'utf-8');
+		origin_varTab = origin_varTab.concat(extract_variables(origin_code));
+	}
+
+	console.log("\n## Precision: " + cal_precision(origin_varTab, map_varTab, predicted_varTab));
+}
+
+//test_main();
+test_main_1();

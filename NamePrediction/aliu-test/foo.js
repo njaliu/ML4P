@@ -6,10 +6,8 @@ var file_list = [];
 
 file_list = fs.readdirSync(dir);
 
-file_list.filter(function(file){
-	return file.substr(-3) === ".js";
-});
+for(file in file_list){
+	console.log(file_list[file]);
+}
 
-file_list.forEach(function(file){
-	console.log(file);
-});
+console.log(file_list[0]);
