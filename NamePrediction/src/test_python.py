@@ -3,12 +3,14 @@
 import os
 import sys
 
+'''
 def PrintUsage():
   print """
 Usage:
   predictJS.py --dir <directory> --target <directory>
 """
   exit(1)
+'''
 
 def getBaseFileNameWithoutExt(fbase):
   result = ''
@@ -19,6 +21,7 @@ def getBaseFileNameWithoutExt(fbase):
 
   return result
 
+
 def PredictJSFilesInDirToTarget(d, target):
   for root, _, files in os.walk(d):
     for f in files:
@@ -28,6 +31,7 @@ def PredictJSFilesInDirToTarget(d, target):
         fbase_name = getBaseFileNameWithoutExt(fbase)
         os.system("unuglifyjs '%s' > '%s'" % (fname, target + fbase_name + 'rename.js'))
 
+'''
 if __name__ == '__main__':
   if (len(sys.argv) <= 1):
     PrintUsage()
@@ -37,3 +41,8 @@ if __name__ == '__main__':
     PredictJSFilesInDirToTarget(sys.argv[2], sys.argv[4])
   else:
     PrintUsage()
+'''
+
+d = '/home/aliu/Research/ML4P/NamePrediction/jsm/'
+t = '/home/aliu/Research/ML4P/NamePrediction/jsp/'
+PredictJSFilesInDirToTarget(d, t)

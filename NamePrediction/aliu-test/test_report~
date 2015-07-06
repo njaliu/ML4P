@@ -1,0 +1,25 @@
+## 06/27/2015
+Test input
+	test3.js - 1799 LOC
+Test output
+			Correct		Total		Precision	Reuse
+	uglifyjs	116		263		0.44		0
+	cc		102		263		0.39		13
+
+
+## 06/30/2015
+Test input
+	original_source/
+Test output
+	1. detector.js [size < 10 KB (large file: RangeError)]
+		Origin file used: 12429
+		Total reuse: 1302
+		[Finished in 222.4s]
+	2. calculate_precision.js [150 most popular javascript repositories from GitHub, size < 10 KB]
+		Origin file used: 12429	
+						
+				Correct		Total		Precision	Time(s)
+		JSNice		86670		159268		0.54		212.8
+		Baseline	29460		159268		0.18		186.0
+
+
