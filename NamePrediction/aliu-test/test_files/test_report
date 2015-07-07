@@ -1,9 +1,0 @@
-## 06/27/2015
-Test input
-	test3.js - 1799 LOC
-Test output
-			Correct		Total		Precision	Reuse
-	uglifyjs	116		263		0.44		0
-	cc		102		263		0.39		13
-
-

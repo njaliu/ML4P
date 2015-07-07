@@ -1,1 +1,0 @@
-{"version":3,"file":"test1.min.js","sources":["test1.js"],"names":["serializeObject","obj","seen","JSON","stringify","key","val","toJsonReplacer","isObject","indexOf","push"],"mappings":"AAAA,QAASA,iBAAgBC,GACvB,GAAIC,KAEJ,OAAOC,MAAKC,UAAUH,EAAK,SAASI,EAAKC,GAEvC,GADAA,EAAMC,eAAeF,EAAKC,GACtBE,SAASF,GAAM,CAEjB,GAAIJ,EAAKO,QAAQH,IAAQ,EAAG,MAAO,kBAEnCJ,GAAKQ,KAAKJ,GAEZ,MAAOA"}
