@@ -1,3 +1,4 @@
+
 function bar(x) {
 	var z;
 	var y = x;
@@ -10,6 +11,8 @@ function bar(x) {
 	y = x + 1;
 }
 
+var xx;
+
 function foo(x) {
 	var z;
 	var y = x;
@@ -21,3 +24,7 @@ function foo(x) {
 		z = y;
 	y = x + 1;
 }
+
+xx = 1;
+console.log(xx);
+xx++;

@@ -8,6 +8,12 @@ function bar(x) {
 	console.log(y);
 	if(y > 2)
 		z = y;
+
+	for(var i = 0; i < 10; i++) {
+		z = 1;
+		z = 2;
+	}
+
 	y = x + 1;
 }
 
@@ -22,6 +28,12 @@ function foo(x) {
 	console.log(y);
 	if(y > 2)
 		z = y;
+	
+	for(var i = 0; i < 10; i++) {
+		z = 1;
+		z = 2;
+	}
+
 	y = x + 1;
 }
 
