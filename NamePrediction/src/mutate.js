@@ -24,6 +24,7 @@ function var_insert_init() {
 
 //var_insert_init();
 
+//collect every defined variable
 function collectVar(ast) {
 	var vars = [];
 	var var_walker = new UglifyJS.TreeWalker(function(node){
@@ -33,6 +34,21 @@ function collectVar(ast) {
 	});
 	ast.walk(var_walker);
 	return vars;
+}
+
+//collect most referenced variables
+function collectMostReferenceVar(ast) {
+	var vars = [];
+	var var_walker = new UglifyJS.TreeWalker(function(node){
+		if(node instanceof UglifyJS.AST_SymbolRef){
+			vars.push(node);
+		}
+	});
+	ast.walk(var_walker);
+	var sorted = _.sortBy(vars, function(elem){ return elem.thedef.references.length; });
+	var result = _.last(sorted, 2);
+	console.log("RRRRRRRRRRRRRR: " + result);
+	return result;
 }
 
 function before(node, descend) {
@@ -131,7 +147,7 @@ function mutate(ast) {
 		var_insert_init();
 		total_for_mutate = [];
 		//already_mutate = [];
-		total_for_mutate = collectVar(ast);
+		total_for_mutate = collectMostReferenceVar(ast);
 		cntr_set.varName = generateMutateName();
 		if( cntr_set.varName == "GENERATE_NO_NAME" )
 			return "MUTATE_END";
