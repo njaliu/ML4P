@@ -39,15 +39,28 @@ function collectVar(ast) {
 //collect most referenced variables
 function collectMostReferenceVar(ast) {
 	var vars = [];
+	var vars_symbol = [];
 	var var_walker = new UglifyJS.TreeWalker(function(node){
-		if(node instanceof UglifyJS.AST_SymbolRef){
-			vars.push(node);
+		if(node instanceof UglifyJS.AST_VarDef) {
+			vars.push({symbol: node, ref: 0});
+			vars_symbol.push(node.name);
+		}
+		if(node instanceof UglifyJS.AST_SymbolRef && !(node.thedef.orig[0] instanceof UglifyJS.AST_SymbolFunarg)) {
+			for(k in node.thedef.orig) {
+				if( _.contains( vars_symbol, node.thedef.orig[k]) ){
+					var idx = _.indexOf( vars_symbol, node.thedef.orig[k] );
+					vars[idx].ref++;
+				}
+				//else
+					//vars[node.thedef.orig[k]] = 0;
+			}
 		}
 	});
 	ast.walk(var_walker);
-	var sorted = _.sortBy(vars, function(elem){ return elem.thedef.references.length; });
-	var result = _.last(sorted, 2);
-	console.log("RRRRRRRRRRRRRR: " + result);
+	//var varDef_keys = _.pluck(vars, 'symbol');
+	var sorted = _.sortBy(vars, function(elem){ return elem.ref; });
+	var result = _.last( _.pluck(sorted, 'symbol' ), 2);
+	console.log("RRRRRRRRRRRRRR: " + result.length);
 	return result;
 }
 
@@ -106,7 +119,7 @@ function generateMutateName() {
 }
 
 function generateIterate() {
-	return 1;
+	return 4;
 }
 
 function getInsertPos(top) {
@@ -206,15 +219,15 @@ function test_main() {
 
 function test_main_1() {
 	var dir_base = '/home/aliu/Research/ML4P/NamePrediction/jss/';
-	code = fs.readFileSync(dir_base + 'insert_test1.js', 'utf-8');
+	code = fs.readFileSync(dir_base + 'jquery_test.min.js', 'utf-8');
 	var ast = UglifyJS.parse(code);
 	ast.figure_out_scope();
 	var ast_new = mutate(ast);
 	var count = 0;
 	while( ast_new != "MUTATE_END" && ast_new != null ) {
 		var output = ast_new.print_to_string({ beautify: true });
-		fs.writeFileSync(dir_base + 'insert_test1.mutate' + count + '.js', output);
-		console.log("#### Mutant " + count + " : " + dir_base + 'insert_test1.mutate' + count + '.js');
+		fs.writeFileSync(dir_base + 'jquery_test.min.mutate' + count + '.js', output);
+		console.log("#### Mutant " + count + " : " + dir_base + 'jquery_test.min.mutate' + count + '.js');
 		ast_new = mutate(ast);
 		count++;
 	}
