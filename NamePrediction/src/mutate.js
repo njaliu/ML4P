@@ -8,10 +8,12 @@ var top_node, count, varTab, iterate, pos, inserted;
 var cntr_set = {varName: '', iterate: 10000};
 var total_for_mutate;
 var already_mutate = [];
+//varTab = {};
+count = 0;
 
 function var_insert_init() {
 	top_node = null;
-	count = 0;
+	//count = 0;
 	varTab = {};
 	iterate = 0;
 	pos = -2;
@@ -57,9 +59,9 @@ function collectMostReferenceVar(ast) {
 		}
 	});
 	ast.walk(var_walker);
-	//var varDef_keys = _.pluck(vars, 'symbol');
 	var sorted = _.sortBy(vars, function(elem){ return elem.ref; });
-	var result = _.last( _.pluck(sorted, 'symbol' ), 2);
+	//var result = _.last( _.pluck(sorted, 'symbol' ), 4);
+	var result = _.last(sorted, 4);
 	console.log("RRRRRRRRRRRRRR: " + result.length);
 	return result;
 }
@@ -77,7 +79,7 @@ var var_transformer = new UglifyJS.TreeTransformer(before, function (node) {
                 var x = varTab[key];
                 return new UglifyJS.AST_VarDef({
                     name  : new UglifyJS.AST_SymbolVar({ name: x.name }),
-                    value : x.node, 
+                    //value : x.node, 
                 });
             })
         });
@@ -89,7 +91,7 @@ var var_transformer = new UglifyJS.TreeTransformer(before, function (node) {
 	}
 	if( node instanceof UglifyJS.AST_SymbolRef && _.contains(node.thedef.orig, cntr_set.varName.name) ) {
 		iterate++;
-		if(iterate > cntr_set.iterate) {
+		if( iterate > cntr_set.iterate ) {
 			var innerParent = var_transformer.find_parent(UglifyJS.AST_Scope);
 			pos = inserted ? pos : getInsertPos(innerParent);
 
@@ -104,6 +106,7 @@ var var_transformer = new UglifyJS.TreeTransformer(before, function (node) {
 	}
 });
 
+//Randomly generate mutate name, with already_mutate
 function generateMutateName() {
 	var not_mutate = total_for_mutate.filter(function(elem){ return already_mutate.indexOf(elem) < 0; });
 	console.log("############### " + not_mutate.length);
@@ -118,8 +121,36 @@ function generateMutateName() {
 		return "GENERATE_NO_NAME";
 }
 
-function generateIterate() {
-	return 4;
+//Randomly generate mutate name, without already_mutate
+function generateMutateName_1() {
+	//var not_mutate = total_for_mutate.filter(function(elem){ return already_mutate.indexOf(elem) < 0; });
+	console.log("############### " + total_for_mutate.length);
+	if( !_.isEmpty(total_for_mutate) ) {
+		var seed = _.random(0, total_for_mutate.length - 1);
+		var random_mutate = total_for_mutate[seed].symbol;
+		console.log("#### Random mutate: " + random_mutate.name.name);
+		//already_mutate.push(random_mutate);
+		//set the iterate based on the number of references of the variable
+		cntr_set.iterate = generateIterate(total_for_mutate[seed].ref);
+
+		return random_mutate;
+	}
+	else
+		return "GENERATE_NO_NAME";
+}
+
+//Generate the iterate to control the insertion
+function generateIterate(ref) {
+	//var seed = [3, 4, 5, 6, 7, 8, 9, 10];
+	//var result = _.sample(seed, 3);
+	if( ref <= 0) return ref;
+	else {
+		var semi_range = Math.floor(ref / 3);
+		var rand = _.random(ref - semi_range, ref + semi_range);
+		console.log("## Range: [" + (ref - semi_range) + ", " + (ref + semi_range) + "], rand: " + rand);
+		return rand;
+	}
+	
 }
 
 function getInsertPos(top) {
@@ -162,6 +193,28 @@ function mutate(ast) {
 		//already_mutate = [];
 		total_for_mutate = collectMostReferenceVar(ast);
 		cntr_set.varName = generateMutateName();
+		if( cntr_set.varName == "GENERATE_NO_NAME" )
+			return "MUTATE_END";
+
+		var ast_new = ast.transform(var_transformer);
+
+		return ast_new;	
+	} catch(ex) {
+		console.log("EEEE: " + ex);
+		return;
+	}
+	
+}
+
+//Mutate the program once by inserting one variable(no already_mutate)
+function mutate_1(ast) {
+	try {
+		//var ast = UglifyJS.parse(code);
+		var_insert_init();
+		total_for_mutate = [];
+		//already_mutate = [];
+		total_for_mutate = collectMostReferenceVar(ast);
+		cntr_set.varName = generateMutateName_1();
 		if( cntr_set.varName == "GENERATE_NO_NAME" )
 			return "MUTATE_END";
 
@@ -218,18 +271,21 @@ function test_main() {
 }
 
 function test_main_1() {
-	var dir_base = '/home/aliu/Research/ML4P/NamePrediction/jss/';
+	var dir_base = '/home/aliu/Research/ML4P/NamePrediction/aliu-test/mutation/';
 	code = fs.readFileSync(dir_base + 'jquery_test.min.js', 'utf-8');
 	var ast = UglifyJS.parse(code);
 	ast.figure_out_scope();
-	var ast_new = mutate(ast);
-	var count = 0;
-	while( ast_new != "MUTATE_END" && ast_new != null ) {
+	var ast_new = mutate_1(ast);
+	var round = 0;
+	while( ast_new != "MUTATE_END" && ast_new != null && round < 5) {
 		var output = ast_new.print_to_string({ beautify: true });
-		fs.writeFileSync(dir_base + 'jquery_test.min.mutate' + count + '.js', output);
-		console.log("#### Mutant " + count + " : " + dir_base + 'jquery_test.min.mutate' + count + '.js');
-		ast_new = mutate(ast);
-		count++;
+		fs.writeFileSync(dir_base + 'jquery_test.min.mutate' + round + '.js', output);
+		console.log("#### Mutant " + round + " : " + dir_base + 'jquery_test.min.mutate' + round + '.js');
+		//ast_new = mutate(ast);
+		//The following mutate statement is for multiple-variable mutation
+		ast_new.figure_out_scope();
+		ast_new = mutate_1(ast_new);
+		round++;
 	}
 }
 

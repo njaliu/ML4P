@@ -53,7 +53,7 @@ Test input
 	jquery/src/manipulation.js - function cloneCopyEvent
 
 UglifyJS: No reuse, 9/10
-CC	: 4 reuse, 3/10
+CC	: 4 reuse, 5/10
 	  insert 4 short variables, 9/10
 
 
