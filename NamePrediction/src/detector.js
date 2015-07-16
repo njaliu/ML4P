@@ -67,12 +67,13 @@ function detect_reuse(origin, minified) {
 function test_main() {
 	//var dir_base = '/home/aliu/Research/closure-compiler/aliu-test/';
 	//var dir_base = '/home/aliu/Research/ML4P/NamePrediction/aliu-test/test_files/uglifyjs/';
-	var dir_base = '/home/aliu/Research/TestDB/ML4P/NamePrediction/aliu-test/test_files/cc/';
-	
-	var origin_file = dir_base + 'test3.js';
+	//var dir_base = '/home/aliu/Research/TestDB/ML4P/NamePrediction/aliu-test/test_files/cc/';
+	var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/jquery_test/';
+
+	var origin_file = dir_base + 'original_source/Data.js';
 	var origin_code = fs.readFileSync(origin_file, 'utf-8');
 
-	var minified_file = dir_base + 'test3.min.js';
+	var minified_file = dir_base + 'cc_minified/Data.min.js';
 	var minified_code = fs.readFileSync(minified_file, 'utf-8');
 
 	var result = detect_reuse(origin_code, minified_code);
@@ -84,11 +85,12 @@ function test_main() {
 function test_main_1() {
 	//var dir_base = '/home/aliu/Research/closure-compiler/aliu-test/';
 	//var dir_base = '/home/aliu/Research/ML4P/NamePrediction/';
-	var dir_base = '/home/aliu/Research/TestDB/ML4P/NamePrediction/aliu-test/test_files/';
+	//var dir_base = '/home/aliu/Research/TestDB/ML4P/NamePrediction/aliu-test/test_files/';
+	var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/jquery_test/';
 	//var origin_file_dir = dir_base + 'jss/';
 	//var minified_file_dir = dir_base + 'cc_jsm/';
 	var origin_file_dir = dir_base + 'original_source/';
-	var minified_file_dir = dir_base + 'minified_source/cc/';
+	var minified_file_dir = dir_base + 'uglifyjs_minified/';
 
 	var origin_files = fs.readdirSync(origin_file_dir);
 	var minified_files = fs.readdirSync(minified_file_dir);
@@ -127,5 +129,5 @@ function checkMinifiedExist(file, dir) {
 		return false;
 }
 
-//test_main();
-test_main_1();
+test_main();
+//test_main_1();

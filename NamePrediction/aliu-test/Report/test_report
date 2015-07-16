@@ -56,5 +56,21 @@ UglifyJS: No reuse, 9/10
 CC	: 4 reuse, 5/10
 	  insert 4 short variables, 9/10
 
+## 07/13/2015
+Test input
+	jquery/
+
+Test output
+	1. detector.js [size < 50 KB ]
+		Origin file used: 97
+		Total reuse: 45
+		[Finished in 222.4s]
+	2. calculate_precision.js [jss/, size < 50 KB]
+		Origin file used: 90	
+						
+				Correct		Total		Precision	Reuse	
+		uglifyjs	1015		2101		0.48		0		
+		cc		859		2041		0.42		45	
+
 
 

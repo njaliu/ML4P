@@ -144,20 +144,22 @@ function extract_mapping(code, rawSourceMap) {
 function test_main() {
 	//var dir_base = '/home/aliu/Research/closure-compiler/aliu-test/';
 	//var dir_base = '/home/aliu/Research/ML4P/NamePrediction/aliu-test/test_files/uglifyjs/';
-	var dir_base = '/home/aliu/Research/TestDB/ML4P/NamePrediction/aliu-test/test_files/';
-	var mapFile =  dir_base + 'source_maps/cc/00-check-mock-dep.map';
+	//var dir_base = '/home/aliu/Research/TestDB/ML4P/NamePrediction/aliu-test/test_files/';
+	//var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/jquery_test/';
+	var dir_base = '/home/aliu/Research/More/Download/closure-compiler-master/aliu-test/';
+	var mapFile =  dir_base + 'manipulation1.map';
 	var rawSourceMap = JSON.parse(fs.readFileSync(mapFile,'utf-8'));
-	rawSourceMap["sourceRoot"] = dir_base;
+	rawSourceMap["sourceRoot"] = dir_base + 'cc_source_maps/';
 
-	var minified_file = dir_base + 'minified_source/cc/00-check-mock-dep.min.js';
+	var minified_file = dir_base + 'manipulation1.min.js';
 	var minified_code = fs.readFileSync(minified_file, 'utf-8');
 	var mapTab = extract_mapping(minified_code, rawSourceMap);
 
-	var predicted_file = dir_base + 'predicted_source/cc/00-check-mock-dep.rename.js';
+	var predicted_file = dir_base + 'manipulation1.rename.js';
 	var predicted_code = fs.readFileSync(predicted_file, 'utf-8');
 	var varTab = extract_variables(predicted_code);
 
-	var origin_file = dir_base + 'original_source/00-check-mock-dep.js';
+	var origin_file = dir_base + 'manipulation.js';
 	var origin_code = fs.readFileSync(origin_file, 'utf-8');
 	var origin_varTab = extract_variables(origin_code);
 	//console.log(origin_code);
@@ -234,20 +236,22 @@ function test_main_1() {
 //Revised test function to calculate each file first, then summarize the results
 function test_main_2() {
 	//var dir_base = '/home/aliu/Research/ML4P/NamePrediction/';
-	var dir_base = '/home/aliu/Research/TestDB/ML4P/NamePrediction/aliu-test/test_files/';
-
-	/*
-	var origin_file_dir = dir_base + 'jss/';
-	var minified_file_dir = dir_base + 'cc_jsm/';
-	var map_file_dir =  dir_base + 'cc_jssm/';
-	var predicted_file_dir = dir_base + 'cc_jsp/';
-	*/
+	//var dir_base = '/home/aliu/Research/TestDB/ML4P/NamePrediction/aliu-test/test_files/';
+	//JQuery Test
+	var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/jquery_test/';
+	
+	
+	var origin_file_dir = dir_base + 'original_source/';
+	var minified_file_dir = dir_base + 'cc_minified/';
+	var map_file_dir =  dir_base + 'cc_source_maps/';
+	var predicted_file_dir = dir_base + 'cc_predicted/';
+	
 
 	//Dir path 'cc' for Closure-Compiler, 'uglifyjs' for UglifyJS
-	var origin_file_dir = dir_base + 'original_source/';
-	var minified_file_dir = dir_base + 'minified_source/cc/';
-	var map_file_dir =  dir_base + 'source_maps/cc/';
-	var predicted_file_dir = dir_base + 'predicted_source/cc/';
+	//var origin_file_dir = dir_base + 'original_source/';
+	//var minified_file_dir = dir_base + 'minified_source/cc/';
+	//var map_file_dir =  dir_base + 'source_maps/cc/';
+	//var predicted_file_dir = dir_base + 'predicted_source/cc/';
 	
 
 	var origin_files = fs.readdirSync(origin_file_dir);
@@ -258,7 +262,7 @@ function test_main_2() {
 
 	for(k in origin_files){
 		var o_file = origin_file_dir + origin_files[k];
-		if(checkMinifiedExist(origin_files[k], minified_file_dir) && getFileSizeInKB(o_file) < 10) {
+		if(checkMinifiedExist(origin_files[k], minified_file_dir) && getFileSizeInKB(o_file) < 50) {
 			var origin_varTab = [];
 			var origin_code = fs.readFileSync(o_file, 'utf-8');
 			origin_varTab = extract_variables(origin_code);
@@ -273,9 +277,11 @@ function test_main_2() {
 			map_varTab = extract_mapping(minified_code, rawSourceMap);
 
 			var predicted_varTab = [];
-			//var p_file = predicted_file_dir + getGroupFile(origin_files[k], 'predicted');
-			//Following statement is used to calculate the "baseline" precision
-			var p_file = minified_file_dir + getGroupFile(origin_files[k], 'minified');
+			var p_file = predicted_file_dir + getGroupFile(origin_files[k], 'predicted');
+			/*
+			Following statement is used to calculate the "baseline" precision
+			*/
+			//var p_file = minified_file_dir + getGroupFile(origin_files[k], 'minified');
 			var predicted_code = fs.readFileSync(p_file, 'utf-8');
 			predicted_varTab = extract_variables(predicted_code);
 
@@ -284,7 +290,9 @@ function test_main_2() {
 				var result_stat = cal_precision_json(origin_varTab, map_varTab, predicted_varTab);
 				correct += result_stat.correct;
 				total += result_stat.total;
-				result_json.push( {"filename": p_file, "result": result_stat} );	
+				result_json.push( {"filename": p_file, "result": result_stat} );
+				//Report the file with low precision
+				reportLowPrecisionFiles(result_stat, p_file);	
 			}
 		}
 	}
@@ -346,6 +354,14 @@ function displayResult(result_json) {
 	}
 }
 
-//test_main();
+//Report files with precision less than 50%, and variables more than 10
+var low_precision_file_report = '/home/aliu/Research/TestDB/ML4P/NamePrediction/aliu-test/test_files/low_precision_jquery';
+function reportLowPrecisionFiles(result_stat, fname) {
+	var precision = (result_stat.correct / result_stat.total).toFixed(2);
+	if ( result_stat.total >= 10 && precision <= 0.5 )
+		fs.appendFileSync(low_precision_file_report, precision + ' ' + fname + '\n');
+}
+
+test_main();
 //test_main_1();
-test_main_2();
+//test_main_2();
