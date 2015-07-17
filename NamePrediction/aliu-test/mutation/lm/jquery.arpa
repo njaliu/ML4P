@@ -1,0 +1,471 @@
+\data\
+ngram 1=35
+ngram 2=100
+ngram 3=324
+
+\1-grams:
+-0.4339377	<unk>
+-inf	<s>	-1.0710036
+-2.2632413	</s>
+-0.9503122	identifier	-0.6129735
+-0.61596715	punctuator	-0.5564953
+-1.493208	string	-0.3447815
+-1.916454	function	-0.17708233
+-1.3754991	this	-0.41172826
+-1.6551911	numeric	-0.27215385
+-2.3424227	var	-0.22612755
+-1.6551911	if	-0.27215385
+-2.2632413	else	-0.24033211
+-2.3424227	true	-0.22612755
+-2.3424227	return	-0.23811632
+-2.3424227	typeof	-0.23081097
+-2.2632413	for	-0.24033211
+-1.916454	in	-0.18210423
+-2.3424227	while	-0.22612755
+-2.2632413	delete	-0.24033211
+-2.2632413	try	-0.24033211
+-2.2632413	catch	-0.24033211
+-2.3424227	false	-0.22612755
+-1.916454	new	-0.17708233
+-2.3424227	null	-0.22612755
+-2.2632413	do	-0.24033211
+-2.2632413	regularexpression	-0.24033211
+-2.2632413	throw	-0.24033211
+-2.2632413	break	-0.24033211
+-2.2632413	continue	-0.24033211
+-2.2632413	switch	-0.24033211
+-2.2632413	case	-0.24033211
+-2.2632413	default	-0.24033211
+-2.3424227	instanceof	-0.22612755
+-2.2632413	finally	-0.24033211
+-2.3424227	void	-0.22612755
+
+\2-grams:
+-2.2619412	punctuator </s>
+-0.13823095	<s> identifier	-1.623803
+-0.88134634	punctuator identifier	-3.9564304
+-0.60716754	function identifier	-2.1968572
+-0.32560226	var identifier	-2.5014591
+-0.7677164	else identifier	-0.3335592
+-0.89536643	return identifier	-2.6320202
+-0.47303182	typeof identifier	-2.032348
+-0.6086772	in identifier	-1.8297491
+-0.55756783	delete identifier	-1.4873264
+-0.60716754	new identifier	-1.9577143
+-0.7677164	throw identifier	-0.9048619
+-0.55756783	break identifier	-0.3335592
+-0.32560226	instanceof identifier	-0.7158057
+-0.92592454	<s> punctuator	-0.6626573
+-0.13198224	identifier punctuator	-3.0521085
+-0.85390365	punctuator punctuator	-2.894123
+-0.23170064	string punctuator	-2.635183
+-0.49026108	function punctuator	-2.854969
+-0.19003129	this punctuator	-1.8913996
+-0.22547683	numeric punctuator	-2.1870003
+-0.22547683	if punctuator	-2.096252
+-0.6100021	else punctuator	-1.1414524
+-0.2598499	true punctuator	-1.6238738
+-0.76289845	return punctuator	-1.2475041
+-0.24855179	for punctuator	-1.6172475
+-0.61226374	in punctuator	-0.577503
+-0.2598499	while punctuator	-1.5637147
+-0.24855179	try punctuator	-0.8505399
+-0.24855179	catch punctuator	-1.6475408
+-0.2598499	false punctuator	-1.3973628
+-0.2598499	null punctuator	-1.2184944
+-0.45380336	do punctuator	-0.22297366
+-0.24855179	regularexpression punctuator	-1.4127915
+-0.6100021	throw punctuator	-0.3335592
+-0.45380336	break punctuator	-0.76442695
+-0.24855179	continue punctuator	-0.8205411
+-0.24855179	switch punctuator	-0.27647302
+-0.24855179	default punctuator	-0.3335592
+-0.24855179	finally punctuator	-0.15153429
+-1.2909162	<s> string	-0.577503
+-1.2310174	punctuator string	-3.6080775
+-1.2902513	return string	-1.5377358
+-0.904065	throw string	-0.37338302
+-0.63644505	case string	-0.7535943
+-2.3427818	<s> function	-0.3335592
+-1.404151	punctuator function	-2.8939974
+-1.4012351	return function	-1.0454808
+-1.2446133	punctuator this	-2.6458917
+-1.2438518	return this	-1.781623
+-0.7787862	typeof this	-0.3335592
+-0.9480966	in this	-0.35857937
+-0.6257657	delete this	-0.577503
+-0.72040206	new this	-0.35857937
+-1.4810355	punctuator numeric	-3.3894968
+-1.3422076	return numeric	-1.072353
+-0.64739364	case numeric	-0.7158057
+-0.3777601	void numeric	-0.8205411
+-1.3917742	<s> var	-0.5195111
+-1.4849024	punctuator var	-2.8002195
+-2.268341	<s> if	-0.3335592
+-1.2520444	punctuator if	-2.9089303
+-0.9245637	else if	-1.7916844
+-0.64739364	do if	-0.3335592
+-2.2619412	punctuator else	-1.8360128
+-1.5504558	punctuator true	-2.6651957
+-1.4519877	return true	-1.2426147
+-2.4091153	<s> return	-0.3335592
+-1.3776228	punctuator return	-1.8211796
+-1.5504558	punctuator typeof	-1.9405183
+-1.4519877	return typeof	-0.27647302
+-1.4815671	punctuator for	-2.0943687
+-1.2701035	identifier in	-1.3330919
+-2.2744927	punctuator in	-0.35857937
+-1.1174008	string in	-1.2871969
+-1.7217048	punctuator while	-1.8591044
+-0.96311724	else while	-0.35857937
+-1.8343043	punctuator delete	-1.2367059
+-1.6230669	punctuator try	-1.6475408
+-2.2808204	punctuator catch	-1.6475408
+-1.6276937	punctuator false	-2.3777044
+-1.4519877	return false	-1.577503
+-1.782615	punctuator new	-1.764427
+-1.4012351	return new	-0.93075836
+-0.94607806	throw new	-1.0168357
+-1.6276937	punctuator null	-2.267699
+-1.4519877	return null	-0.674413
+-2.2619412	punctuator do	-0.36648694
+-1.6230669	punctuator regularexpression	-2.0600193
+-1.9974859	punctuator throw	-0.8198767
+-2.2619412	punctuator break	-1.2510935
+-2.4604197	punctuator continue	-0.8205411
+-2.2808204	punctuator switch	-0.27647302
+-2.2619412	punctuator case	-0.7351109
+-2.2808204	punctuator default	-0.35857937
+-1.5579804	identifier instanceof	-0.62865555
+-1.2042893	this instanceof	-0.35857937
+-2.2808204	punctuator finally	-0.4525643
+-2.302269	punctuator void	-0.78835636
+-1.4519877	return void	-0.3335592
+
+\3-grams:
+-4.6309805	identifier punctuator </s>
+-2.6233268	punctuator punctuator </s>
+-4.3585553	string punctuator </s>
+-1.1747864	<s> punctuator identifier
+-0.31410965	identifier punctuator identifier
+-0.37986654	punctuator punctuator identifier
+-0.96010286	string punctuator identifier
+-0.30449986	function punctuator identifier
+-0.17876257	this punctuator identifier
+-0.81057054	numeric punctuator identifier
+-0.16904458	if punctuator identifier
+-0.13860816	else punctuator identifier
+-0.81360734	true punctuator identifier
+-0.42275953	return punctuator identifier
+-0.20852007	for punctuator identifier
+-0.11338395	in punctuator identifier
+-0.1971605	while punctuator identifier
+-0.1366365	try punctuator identifier
+-0.008577015	catch punctuator identifier
+-0.7502774	false punctuator identifier
+-0.5625255	null punctuator identifier
+-0.592818	do punctuator identifier
+-0.19775267	regularexpression punctuator identifier
+-1.4619405	break punctuator identifier
+-0.26724893	switch punctuator identifier
+-0.48279333	default punctuator identifier
+-0.619818	finally punctuator identifier
+-0.18661532	<s> function identifier
+-1.004834	punctuator function identifier
+-1.3866633	return function identifier
+-0.0754536	<s> var identifier
+-0.0003630471	punctuator var identifier
+-2.40963	punctuator else identifier
+-0.2254008	<s> return identifier
+-0.23916699	punctuator return identifier
+-0.0043611405	punctuator typeof identifier
+-0.18779284	return typeof identifier
+-0.045137256	identifier in identifier
+-0.17399985	punctuator in identifier
+-0.017235417	string in identifier
+-0.056763172	punctuator delete identifier
+-0.007236899	punctuator new identifier
+-0.051916678	return new identifier
+-0.032653034	throw new identifier
+-0.4478252	punctuator throw identifier
+-1.5655916	punctuator break identifier
+-0.057516973	identifier instanceof identifier
+-0.1140841	this instanceof identifier
+-0.002714872	<s> identifier punctuator
+-0.0008359112	punctuator identifier punctuator
+-0.0007239088	function identifier punctuator
+-0.0016175943	var identifier punctuator
+-0.056296196	else identifier punctuator
+-0.0002656454	return identifier punctuator
+-0.0010577452	typeof identifier punctuator
+-0.0016876749	in identifier punctuator
+-0.0037215801	delete identifier punctuator
+-0.001256327	new identifier punctuator
+-0.014405069	throw identifier punctuator
+-0.056296196	break identifier punctuator
+-0.022468517	instanceof identifier punctuator
+-0.649342	identifier punctuator punctuator
+-0.4183742	punctuator punctuator punctuator
+-0.21866375	string punctuator punctuator
+-0.2984653	function punctuator punctuator
+-0.83176976	this punctuator punctuator
+-0.25124812	numeric punctuator punctuator
+-0.664923	if punctuator punctuator
+-1.8344531	else punctuator punctuator
+-0.40022734	true punctuator punctuator
+-0.37253225	return punctuator punctuator
+-0.52913	for punctuator punctuator
+-0.46217126	while punctuator punctuator
+-1.5942692	try punctuator punctuator
+-0.36204225	false punctuator punctuator
+-0.41872245	null punctuator punctuator
+-0.9673281	regularexpression punctuator punctuator
+-0.109550625	break punctuator punctuator
+-0.060483634	continue punctuator punctuator
+-0.05030634	<s> string punctuator
+-0.0010292021	punctuator string punctuator
+-0.005237145	return string punctuator
+-0.08354816	throw string punctuator
+-0.032882016	case string punctuator
+-0.045488	punctuator function punctuator
+-0.03608661	return function punctuator
+-0.0007171672	punctuator this punctuator
+-0.0025522308	return this punctuator
+-0.07800614	typeof this punctuator
+-0.07324851	in this punctuator
+-0.04275301	delete this punctuator
+-0.07324851	new this punctuator
+-0.00007173594	punctuator numeric punctuator
+-0.015150625	return numeric punctuator
+-0.035230648	case numeric punctuator
+-0.02743694	void numeric punctuator
+-0.09038122	<s> if punctuator
+-0.00021695271	punctuator if punctuator
+-0.0028508133	else if punctuator
+-0.09038122	do if punctuator
+-0.18892434	punctuator else punctuator
+-0.0004229237	punctuator true punctuator
+-0.0113317035	return true punctuator
+-0.81294495	punctuator return punctuator
+-0.0015255738	punctuator for punctuator
+-1.1882336	identifier in punctuator
+-0.0027133613	punctuator while punctuator
+-0.09538919	else while punctuator
+-0.0042820526	punctuator try punctuator
+-0.0042820526	punctuator catch punctuator
+-0.00082027214	punctuator false punctuator
+-0.005204187	return false punctuator
+-0.0010570186	punctuator null punctuator
+-0.04349187	return null punctuator
+-0.1993766	punctuator do punctuator
+-0.0016514249	punctuator regularexpression punctuator
+-1.3091234	punctuator throw punctuator
+-0.021371173	punctuator break punctuator
+-0.029595418	punctuator continue punctuator
+-0.11382845	punctuator switch punctuator
+-0.09197005	punctuator default punctuator
+-0.07248104	punctuator finally punctuator
+-1.2918719	<s> punctuator string
+-0.79411626	identifier punctuator string
+-1.2607257	punctuator punctuator string
+-0.7749016	string punctuator string
+-0.8535174	this punctuator string
+-0.7466362	numeric punctuator string
+-2.1285095	if punctuator string
+-0.42222023	true punctuator string
+-1.8142363	return punctuator string
+-0.4947105	false punctuator string
+-0.7826365	null punctuator string
+-0.70044273	regularexpression punctuator string
+-0.24923249	throw punctuator string
+-1.3387893	punctuator return string
+-1.0811124	punctuator throw string
+-0.32584697	punctuator case string
+-0.14596777	<s> punctuator function
+-1.582462	identifier punctuator function
+-1.9386252	punctuator punctuator function
+-1.2744961	string punctuator function
+-1.8724471	this punctuator function
+-1.4634292	numeric punctuator function
+-2.5541627	true punctuator function
+-2.5100563	false punctuator function
+-1.285284	null punctuator function
+-1.525026	regularexpression punctuator function
+-1.5356146	punctuator return function
+-1.8813375	identifier punctuator this
+-2.2037115	punctuator punctuator this
+-2.2020862	string punctuator this
+-2.3904881	this punctuator this
+-2.422081	numeric punctuator this
+-1.5131462	if punctuator this
+-1.5554044	else punctuator this
+-2.2859921	true punctuator this
+-2.1610198	return punctuator this
+-1.7586282	try punctuator this
+-2.0496745	false punctuator this
+-1.9740428	null punctuator this
+-1.0921123	punctuator return this
+-2.367431	punctuator typeof this
+-1.8109901	identifier in this
+-1.0253801	punctuator delete this
+-2.1643996	punctuator new this
+-1.3307309	return new this
+-1.2414792	identifier punctuator numeric
+-1.7431846	punctuator punctuator numeric
+-1.5233146	string punctuator numeric
+-1.7258445	this punctuator numeric
+-1.3372154	numeric punctuator numeric
+-2.3992906	if punctuator numeric
+-0.9435389	return punctuator numeric
+-2.3772097	null punctuator numeric
+-1.8171794	punctuator return numeric
+-0.36886787	punctuator case numeric
+-0.043150116	punctuator void numeric
+-0.13639437	return void numeric
+-4.1158147	identifier punctuator var
+-1.5763804	punctuator punctuator var
+-3.5209692	string punctuator var
+-3.242296	numeric punctuator var
+-2.344323	else punctuator var
+-1.1624805	for punctuator var
+-1.8532625	try punctuator var
+-2.652128	false punctuator var
+-2.4797451	null punctuator var
+-2.488534	identifier punctuator if
+-1.541452	punctuator punctuator if
+-2.787169	string punctuator if
+-2.391814	this punctuator if
+-2.3249717	numeric punctuator if
+-1.3194213	else punctuator if
+-1.8851485	true punctuator if
+-1.3079325	try punctuator if
+-1.7181282	false punctuator if
+-1.808755	null punctuator if
+-0.5878475	do punctuator if
+-1.6667386	break punctuator if
+-0.7287175	finally punctuator if
+-0.46963727	punctuator else if
+-0.7300169	punctuator do if
+-4.444728	identifier punctuator else
+-2.1143332	punctuator punctuator else
+-3.860457	numeric punctuator else
+-1.9729388	identifier punctuator true
+-2.7985518	punctuator punctuator true
+-1.8800949	string punctuator true
+-3.1378942	this punctuator true
+-3.2655334	numeric punctuator true
+-1.9077748	true punctuator true
+-2.1097808	false punctuator true
+-2.3469186	null punctuator true
+-1.6437898	punctuator return true
+-2.827858	identifier punctuator return
+-1.5498497	punctuator punctuator return
+-2.7959177	string punctuator return
+-2.6004481	this punctuator return
+-2.4334366	numeric punctuator return
+-1.124141	else punctuator return
+-1.8338195	true punctuator return
+-1.2375679	try punctuator return
+-1.8331901	null punctuator return
+-1.5711048	break punctuator return
+-0.5413823	default punctuator return
+-2.9290807	identifier punctuator typeof
+-3.5869558	punctuator punctuator typeof
+-2.644992	string punctuator typeof
+-3.1378942	this punctuator typeof
+-3.1346238	numeric punctuator typeof
+-1.3209726	if punctuator typeof
+-2.6895087	false punctuator typeof
+-2.4088805	null punctuator typeof
+-2.7617984	punctuator return typeof
+-3.0956101	identifier punctuator for
+-2.4792724	punctuator punctuator for
+-3.5201273	string punctuator for
+-2.418057	numeric punctuator for
+-1.417898	else punctuator for
+-2.2524962	true punctuator for
+-1.7795439	try punctuator for
+-2.5479028	false punctuator for
+-2.3195496	null punctuator for
+-2.7495837	punctuator identifier in
+-2.5141382	var identifier in
+-3.6035914	numeric punctuator in
+-2.6413345	punctuator string in
+-3.012618	identifier punctuator while
+-2.881996	punctuator punctuator while
+-4.021048	string punctuator while
+-3.2145638	this punctuator while
+-2.4513702	numeric punctuator while
+-2.0474129	else punctuator while
+-2.343829	punctuator else while
+-3.7545474	identifier punctuator delete
+-2.9827943	punctuator punctuator delete
+-1.8967081	else punctuator delete
+-2.8372564	true punctuator delete
+-1.8531059	try punctuator delete
+-3.663353	identifier punctuator try
+-2.886757	punctuator punctuator try
+-3.9727337	string punctuator try
+-2.203946	else punctuator try
+-2.2697783	true punctuator try
+-2.6082597	false punctuator try
+-2.5048928	regularexpression punctuator try
+-4.7162967	identifier punctuator catch
+-2.738211	punctuator punctuator catch
+-2.2940025	identifier punctuator false
+-2.7574112	punctuator punctuator false
+-2.245689	string punctuator false
+-3.1526513	numeric punctuator false
+-2.8446481	true punctuator false
+-2.5428011	false punctuator false
+-2.5593226	null punctuator false
+-1.3006312	punctuator return false
+-2.7751427	identifier punctuator new
+-3.4119008	punctuator punctuator new
+-2.9028516	string punctuator new
+-3.4923975	numeric punctuator new
+-2.2505126	return punctuator new
+-1.8781182	punctuator return new
+-0.33818704	punctuator throw new
+-2.3863034	identifier punctuator null
+-2.7047641	punctuator punctuator null
+-2.938944	string punctuator null
+-3.1745393	this punctuator null
+-3.4344096	numeric punctuator null
+-2.7304127	false punctuator null
+-1.3380768	null punctuator null
+-2.2560995	punctuator return null
+-4.711657	identifier punctuator do
+-4.7456594	punctuator punctuator do
+-3.6018286	numeric punctuator do
+-2.4968383	identifier punctuator regularexpression
+-3.596337	punctuator punctuator regularexpression
+-3.9192293	string punctuator regularexpression
+-1.91987	if punctuator regularexpression
+-1.587331	return punctuator regularexpression
+-2.5569263	null punctuator regularexpression
+-2.5048928	regularexpression punctuator regularexpression
+-4.048397	identifier punctuator throw
+-3.1634464	punctuator punctuator throw
+-2.279105	else punctuator throw
+-2.1473994	try punctuator throw
+-4.280626	identifier punctuator break
+-3.129622	punctuator punctuator break
+-2.7620432	false punctuator break
+-3.6058583	punctuator punctuator continue
+-4.605839	punctuator punctuator switch
+-4.363934	string punctuator switch
+-3.773515	punctuator punctuator case
+-3.3275454	string punctuator case
+-1.6866008	break punctuator case
+-4.7529	punctuator punctuator default
+-1.8923153	break punctuator default
+-3.910375	punctuator identifier instanceof
+-3.0042686	punctuator this instanceof
+-4.1821194	punctuator punctuator finally
+-3.8652487	numeric punctuator finally
+-3.9283504	identifier punctuator void
+-4.3473334	punctuator punctuator void
+-3.0585222	punctuator return void
+
+\end\
