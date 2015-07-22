@@ -20,13 +20,15 @@ def getBaseFileNameWithoutExt(fbase):
   return result
 
 def PredictJSFilesInDirToTarget(d, target):
+  #os.chdir('/home/aliu/Research/UnuglifyJS/bin/')
   for root, _, files in os.walk(d):
     for f in files:
       fname = os.path.join(root, f)
       if fname.endswith('.js'):
         fbase = os.path.basename(fname)
         fbase_name = getBaseFileNameWithoutExt(fbase)
-        os.system("unuglifyjs '%s' > '%s'" % (fname, target + fbase_name + 'rename.js'))
+        #os.system("unuglifyjs '%s' > '%s'" % (fname, target + fbase_name + 'rename.js'))
+        os.system("unuglifyjs --nice2predict_server localhost:5745 '%s' > '%s'" % (fname, target + fbase_name + 'rename.js'))
 
 if __name__ == '__main__':
   if (len(sys.argv) <= 1):

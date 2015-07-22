@@ -238,13 +238,14 @@ function test_main_2() {
 	//var dir_base = '/home/aliu/Research/ML4P/NamePrediction/';
 	//var dir_base = '/home/aliu/Research/TestDB/ML4P/NamePrediction/aliu-test/test_files/';
 	//JQuery Test
-	var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/jquery_test/';
+	//var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/jquery_test/';
+	var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/';
 	
 	
 	var origin_file_dir = dir_base + 'original_source/';
-	var minified_file_dir = dir_base + 'cc_minified/';
-	var map_file_dir =  dir_base + 'cc_source_maps/';
-	var predicted_file_dir = dir_base + 'cc_predicted/';
+	var minified_file_dir = dir_base + 'minified/O13_removedeadcode/';
+	var map_file_dir =  dir_base + 'source_maps/O13_removedeadcode/';
+	var predicted_file_dir = dir_base + 'predicted/O13_removedeadcode/';
 	
 
 	//Dir path 'cc' for Closure-Compiler, 'uglifyjs' for UglifyJS
@@ -355,13 +356,13 @@ function displayResult(result_json) {
 }
 
 //Report files with precision less than 50%, and variables more than 10
-var low_precision_file_report = '/home/aliu/Research/TestDB/ML4P/NamePrediction/aliu-test/test_files/low_precision_jquery';
+var low_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/low_precision_O13';
 function reportLowPrecisionFiles(result_stat, fname) {
 	var precision = (result_stat.correct / result_stat.total).toFixed(2);
 	if ( result_stat.total >= 10 && precision <= 0.5 )
 		fs.appendFileSync(low_precision_file_report, precision + ' ' + fname + '\n');
 }
 
-test_main();
+//test_main();
 //test_main_1();
-//test_main_2();
+test_main_2();
