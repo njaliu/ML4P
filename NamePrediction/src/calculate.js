@@ -1,8 +1,19 @@
 var UglifyJS = require("uglify-js");
 var fs = require("fs");
 var path = require("path");
-var sourceMap = require('source-map');
+var sourceMap = require("source-map");
+var _ = require("underscore");
+var exec = require('child_process').execSync;
+var JWL = require('./js-weighted-list.js');
 
+
+var obfuscation_options =  [[0, 10],  [1,  1],  [2,  1],
+                		    [3,  5],  [4,  3],  [5,  3],
+                		    [6,  3],  [7,  3],  [8,  3],
+                		    [9,  3],  [10,  3],  [11,  3],
+                		    [12,  3]];
+var PROB = new JWL(obfuscation_options);
+var INIT_OPTION = [0,0,0,0,0,0,0,0,0,0,0,0,1];
 /*
 	origin - JSON: variable table of the original file
 	minified - JSON: variable mapping table in the minified file
@@ -140,26 +151,108 @@ function extract_mapping(code, rawSourceMap) {
 	return mapTab;
 }
 
+//mutate compilation options - unguided version
+function mutation_unguided(origin, minified, source_map, predicted, mutator, N) {
+	var output = [];
+
+	var origin_code = fs.readFileSync(origin, 'utf-8');
+	var origin_varTab = extract_variables(origin_code);
+
+	var minified_code = fs.readFileSync(minified, 'utf-8');
+	var map_varTab = extract_mapping(minified_code, source_map);
+
+	var predicted_code = fs.readFileSync(predicted, 'utf-8');
+	var predicted_varTab = extract_variables(predicted_code);
+
+	var result_stat = cal_precision_json(origin_varTab, map_varTab, predicted_varTab);
+	var baseline_correct = result_stat.correct;
+	console.log("#### Baseline correct: " + baseline_correct);
+
+	var minified_mutant = '/home/aliu/mutant.min.js';
+	var map_mutant = '/home/aliu/mutant.map';
+	var predicted_mutant = '/home/aliu/mutant.rename.js';
+	var options = INIT_OPTION;
+	for(var i = 0; i < N; i++) {
+		var seed = compute_seed(options);
+		var cmd_minify = 'java -jar ' + mutator + ' --js ' + origin + ' --js_output_file ' 
+					+ minified_mutant + ' --create_source_map ' + map_mutant
+					+ ' --mutation_seed ' + seed;
+		var cmd_predict = 'unuglifyjs --nice2predict_server localhost:5745 ' 
+					+ minified_mutant +  ' > ' + predicted_mutant;
+		
+		exec(cmd_minify);
+		exec(cmd_predict);
+
+		var map_mutant_code = JSON.parse(fs.readFileSync(map_mutant,'utf-8'));
+		map_mutant_code["sourceRoot"] = '/home/aliu';
+
+		var minified_mutant_code = fs.readFileSync(minified_mutant, 'utf-8');
+		var map_mutant_varTab = extract_mapping(minified_mutant_code, map_mutant_code);
+
+		var predicted_mutant_code = fs.readFileSync(predicted_mutant, 'utf-8');
+		var predicted_mutant_varTab = extract_variables(predicted_mutant_code);
+
+		var result_mutant_stat = cal_precision_json(origin_varTab, map_mutant_varTab, predicted_mutant_varTab);
+		var mutant_correct = result_mutant_stat.correct;
+		console.log("#### Mutant correct: " + mutant_correct);
+
+		var report_obj = {total: result_stat.total, baseline: baseline_correct, mutant: mutant_correct, comment: "bad", config: seed};
+		if(mutant_correct < baseline_correct)
+			report_obj.comment = "good";
+		output.push(report_obj);
+
+		options = mutate4options(options);
+	}
+
+	console.log("#### DONE!");
+	return output;
+}
+
+function compute_seed(options) {
+	var result = 0;
+	var len = options.length;
+	for(var i = 0; i < len; i++) {
+		result += options[len-1-i] * Math.pow(2, i);
+	}
+	return result;
+}
+
+function mutate4options(old) {
+	var limit = PROB.length;
+	var n = _.random(1, limit);
+	var flips = PROB.peek(n);
+	var newly = old;
+	for(i in old) {
+		if( _.contains(flips, i) )
+			newly[i] = 1 - old[i];
+	}
+	return newly;
+}
+
+//---------------------------------------------------------------------------------------------------
+//Test cases
+//---------------------------------------------------------------------------------------------------
+
 //Simple test function to handle single input file
 function test_main() {
 	//var dir_base = '/home/aliu/Research/closure-compiler/aliu-test/';
 	//var dir_base = '/home/aliu/Research/ML4P/NamePrediction/aliu-test/test_files/uglifyjs/';
 	//var dir_base = '/home/aliu/Research/TestDB/ML4P/NamePrediction/aliu-test/test_files/';
 	//var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/jquery_test/';
-	var dir_base = '/home/aliu/Research/More/Download/closure-compiler-master/aliu-test/';
-	var mapFile =  dir_base + 'manipulation1.map';
+	var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/';
+	var mapFile =  dir_base + 'source_maps/baseline_default/messageFormatInterpolationParts.map';
 	var rawSourceMap = JSON.parse(fs.readFileSync(mapFile,'utf-8'));
-	rawSourceMap["sourceRoot"] = dir_base + 'cc_source_maps/';
+	rawSourceMap["sourceRoot"] = dir_base + 'source_maps/baseline_default/';
 
-	var minified_file = dir_base + 'manipulation1.min.js';
+	var minified_file = dir_base + 'minified/baseline_default/messageFormatInterpolationParts.min.js';
 	var minified_code = fs.readFileSync(minified_file, 'utf-8');
 	var mapTab = extract_mapping(minified_code, rawSourceMap);
 
-	var predicted_file = dir_base + 'manipulation1.rename.js';
+	var predicted_file = dir_base + 'predicted/baseline_default/messageFormatInterpolationParts.rename.js';
 	var predicted_code = fs.readFileSync(predicted_file, 'utf-8');
 	var varTab = extract_variables(predicted_code);
 
-	var origin_file = dir_base + 'manipulation.js';
+	var origin_file = dir_base + 'original_source/messageFormatInterpolationParts.js';
 	var origin_code = fs.readFileSync(origin_file, 'utf-8');
 	var origin_varTab = extract_variables(origin_code);
 	//console.log(origin_code);
@@ -293,7 +386,7 @@ function test_main_2() {
 				total += result_stat.total;
 				result_json.push( {"filename": p_file, "result": result_stat} );
 				//Report the file with low precision
-				reportLowPrecisionFiles(result_stat, p_file);	
+				//reportLowPrecisionFiles(result_stat, p_file);	
 			}
 		}
 	}
@@ -302,6 +395,28 @@ function test_main_2() {
 	console.log("\n## General Correct: " + correct + ", General Total: " + total);
 	console.log("\n## General Precision: " + (correct / total).toFixed(2));
 	console.log("\n## Origin file used: " + used_origin_file);
+}
+
+function test_main_mutation_unguided() {
+	var orgin = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/original_source/messageFormatInterpolationParts.js';
+	var minified = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/minified/baseline_default/messageFormatInterpolationParts.min.js';
+	var source_map = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/source_maps/baseline_default/messageFormatInterpolationParts.map';
+	var predicted = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/predicted/baseline_default/messageFormatInterpolationParts.rename.js';
+	var mutator = '/home/aliu/Research/More/Download/closure-compiler-master/build/compiler.jar';
+	var N = 10;
+
+	var rawSourceMap = JSON.parse(fs.readFileSync(source_map,'utf-8'));
+	rawSourceMap["sourceRoot"] = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/source_maps/baseline_default/';
+
+	var result = mutation_unguided(orgin, minified, rawSourceMap, predicted, mutator, N);
+	console.log("#### Result size: " + result.length);
+	var good_result = result.filter(function(e){
+		return e.comment == 'good';
+	});
+	console.log("#### Good result size: " + good_result.length);
+	for(i in good_result) {
+		console.log(good_result[i]);
+	}
 }
 
 //Check whether an original file is successfully minified
@@ -365,4 +480,6 @@ function reportLowPrecisionFiles(result_stat, fname) {
 
 //test_main();
 //test_main_1();
-test_main_2();
+//test_main_2();
+test_main_mutation_unguided();
+//console.log(compute_seed(INIT_OPTION));

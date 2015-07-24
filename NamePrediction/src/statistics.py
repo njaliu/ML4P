@@ -57,6 +57,6 @@ set_O11 = extractLowPrecisionSet(O11)
 set_O12 = extractLowPrecisionSet(O12)
 set_O13 = extractLowPrecisionSet(O13)
 
-ouput = computeDifference(set_O13, set_baseline)
+ouput = computeDifference(set_O2, set_baseline)
 
 print ouput
