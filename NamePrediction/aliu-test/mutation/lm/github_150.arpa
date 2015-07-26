@@ -1,0 +1,2305 @@
+\data\
+ngram 1=204
+ngram 2=649
+ngram 3=1440
+
+\1-grams:
+-0.5332646	<unk>
+-inf	<s>	-3.1390877
+-1.1439723	</s>
+-2.0650022	string	-0.4342327
+-1.1347488	punctuator	-0.98308957
+-1.9321276	var	-0.37078443
+-1.3715273	identifier	-0.6709008
+-2.2574139	numeric	-0.34060276
+-1.8305247	if	-0.605894
+-1.8783617	function	-0.5991056
+-2.0650022	return	-0.41165292
+-2.6114428	null	-0.3648777
+-2.3993104	regularexpression	-0.43182448
+-2.6114428	false	-0.26711327
+-2.150638	in	-0.4193337
+-2.3993104	true	-0.26711327
+-2.6114428	typeof	-0.28956944
+-2.0650022	for	-0.69148654
+-2.6114428	else	-0.24994868
+-2.2574139	delete	-0.35601655
+-2.3993104	continue	-0.3402454
+-2.3993104	throw	-0.43364808
+-2.2574139	new	-0.5153953
+-2.6114428	try	-0.43621406
+-2.942436	catch	-0.34167665
+-2.150638	break	-0.4870993
+-2.3993104	instanceof	-0.3782524
+-2.942436	do	-0.34167665
+-2.2574139	while	-0.58234215
+-1.7482429	this	-0.5874107
+-2.3993104	switch	-0.40177402
+-2.6114428	case	-0.33986866
+-2.2574139	default	-0.3782524
+-2.942436	finally	-0.51753926
+-2.942436	class	-0.27479523
+-2.6114428	extends	-0.34167665
+-3.2295978	super	-0.12001088
+-3.2295978	`the	-0.12001088
+-2.150638	\`	-0.31761315
+-1.8783617	$	-0.91226727
+-1.6482543	{	-0.21658054
+-1.5202585	}	-0.34449014
+-3.2295978	prop	-0.12001088
+-2.6114428	supplied	-0.38938856
+-2.942436	to	-0.21685226
+-1.9321276	<	-0.1913094
+-3.2295978	select	-0.12001088
+-1.7122941	>	-0.35386118
+-3.2295978	must	-0.12001088
+-3.2295978	be	-0.12001088
+-2.942436	an	-0.12001088
+-3.2295978	array	-0.12001088
+-1.8305247	`	-0.51691246
+-3.2295978	`\`multiple\`	-0.12001088
+-2.942436	is	-0.12001088
+-3.2295978	true.`	-0.12001088
+-2.6114428	a	-0.12001088
+-3.2295978	scalar	-0.12001088
+-3.2295978	`value	-0.12001088
+-3.2295978	\`multiple\`	-0.12001088
+-3.2295978	false.`	-0.12001088
+-3.2295978	check	-0.12001088
+-3.2295978	the	-0.12001088
+-2.942436	render	-0.12001088
+-3.2295978	method	-0.12001088
+-2.3993104	of	-0.21685226
+-2.942436	.`	-0.51753926
+-2.942436	react.render	-0.12001088
+-3.2295978	call	-0.12001088
+-3.2295978	using	-0.12001088
+-3.2295978	it	-0.12001088
+-2.942436	was	-0.12001088
+-3.2295978	passed	-0.12001088
+-3.2295978	child	-0.12001088
+-3.2295978	from	-0.12001088
+-3.2295978	`required	-0.12001088
+-3.2295978	not	-0.12001088
+-3.2295978	specified	-0.12001088
+-3.2295978	`\`	-0.12001088
+-3.2295978	\`.`	-0.12001088
+-3.2295978	`invalid	-0.12001088
+-3.2295978	type	-0.12001088
+-1.8783617	,	-0.24994868
+-3.2295978	expected	-0.12001088
+-2.942436	array.`	-0.51753926
+-2.6114428	[	-0.12001088
+-2.6114428	]	-0.12001088
+-3.2295978	single	-0.12001088
+-3.2295978	reactelement.`	-0.12001088
+-2.942436	instance	-0.51753926
+-3.2295978	argument	-0.12001088
+-3.2295978	oneof	-0.12001088
+-2.942436	value	-0.12001088
+-3.2295978	`supplied	-0.12001088
+-3.2295978	one	-0.12001088
+-3.2295978	object.`	-0.12001088
+-3.2295978	.	-0.12001088
+-3.2295978	oneoftype	-0.12001088
+-3.2295978	reactnode.`	-0.12001088
+-3.2295978	\`object\`.`	-0.12001088
+-3.2295978	const	-0.12001088
+-2.942436	export	-0.30220786
+-2.942436	import	-0.43333942
+-2.6114428	void	-0.38211873
+-2.942436	yield	-0.51753926
+-2.942436	hellomessage	-0.12001088
+-1.9321276	=	-0.32502693
+-3.2295978	react.createclass	-0.12001088
+-1.7482429	(	-0.1956793
+-1.6790948	:	-0.2870741
+-1.7874382	)	-0.48599666
+-3.2295978	div	-0.12001088
+-3.2295978	hello	-0.12001088
+-3.2295978	this.props.name	-0.12001088
+-3.2295978	/div	-0.12001088
+-2.3993104	;	-0.5143273
+-3.2295978	name=	-0.12001088
+-1.9321276	''	-0.17549078
+-3.2295978	john	-0.12001088
+-2.150638	/	-0.69041854
+-3.2295978	mountnode	-0.12001088
+-3.2295978	with	-0.12001088
+-2.6114428	markdowneditor	-0.12001088
+-3.2295978	getinitialstate	-0.12001088
+-3.2295978	'type	-0.12001088
+-3.2295978	some	-0.12001088
+-3.2295978	*markdown*	-0.12001088
+-3.2295978	here	-0.12001088
+-3.2295978	!	-0.12001088
+-2.942436	'	-0.12001088
+-3.2295978	handlechange	-0.12001088
+-3.2295978	this.setstate	-0.12001088
+-3.2295978	react.finddomnode	-0.12001088
+-3.2295978	this.refs.textarea	-0.12001088
+-3.2295978	.value	-0.12001088
+-2.942436	classname=	-0.51753926
+-3.2295978	h3	-0.12001088
+-2.942436	input	-0.12001088
+-3.2295978	/h3	-0.12001088
+-2.942436	textarea	-0.12001088
+-2.942436	onchange=	-0.51753926
+-3.2295978	this.handlechange	-0.12001088
+-3.2295978	ref=	-0.12001088
+-3.2295978	defaultvalue=	-0.12001088
+-2.942436	this.state.value	-0.12001088
+-3.2295978	output	-0.12001088
+-3.2295978	content	-0.12001088
+-3.2295978	dangerouslysetinnerhtml=	-0.12001088
+-3.2295978	__html	-0.12001088
+-3.2295978	marked	-0.12001088
+-3.2295978	sanitize	-0.12001088
+-3.2295978	debugger	-0.12001088
+-2.942436	timer	-0.12001088
+-3.2295978	secondselapsed	-0.12001088
+-3.2295978	0	-0.12001088
+-3.2295978	tick	-0.12001088
+-2.942436	this.state.secondselapsed	-0.12001088
+-2.3993104	+	-0.27479523
+-3.2295978	1	-0.12001088
+-3.2295978	componentdidmount	-0.12001088
+-2.942436	this.interval	-0.12001088
+-3.2295978	setinterval	-0.12001088
+-3.2295978	this.tick	-0.12001088
+-3.2295978	1000	-0.12001088
+-3.2295978	componentwillunmount	-0.12001088
+-3.2295978	clearinterval	-0.12001088
+-3.2295978	seconds	-0.12001088
+-3.2295978	elapsed	-0.12001088
+-2.942436	todolist	-0.12001088
+-2.942436	createitem	-0.12001088
+-2.6114428	itemtext	-0.34167665
+-2.942436	index	-0.12001088
+-3.2295978	li	-0.12001088
+-3.2295978	key=	-0.12001088
+-3.2295978	/li	-0.12001088
+-3.2295978	ul	-0.12001088
+-3.2295978	this.props.items.map	-0.12001088
+-3.2295978	/ul	-0.12001088
+-2.942436	todoapp	-0.12001088
+-3.2295978	items	-0.12001088
+-2.942436	text	-0.51753926
+-3.2295978	onchange	-0.12001088
+-3.2295978	e	-0.12001088
+-3.2295978	e.target.value	-0.12001088
+-3.2295978	handlesubmit	-0.12001088
+-3.2295978	e.preventdefault	-0.12001088
+-2.942436	nextitems	-0.12001088
+-3.2295978	this.state.items.concat	-0.12001088
+-2.942436	this.state.text	-0.12001088
+-2.942436	nexttext	-0.12001088
+-3.2295978	todo	-0.12001088
+-3.2295978	items=	-0.12001088
+-3.2295978	this.state.items	-0.12001088
+-3.2295978	form	-0.12001088
+-3.2295978	onsubmit=	-0.12001088
+-3.2295978	this.handlesubmit	-0.12001088
+-3.2295978	this.onchange	-0.12001088
+-3.2295978	value=	-0.12001088
+-3.2295978	button	-0.12001088
+-3.2295978	'add	-0.12001088
+-3.2295978	#	-0.12001088
+-3.2295978	this.state.items.length	-0.12001088
+-3.2295978	/button	-0.12001088
+-3.2295978	/form	-0.12001088
+
+\2-grams:
+-3.287912	<s> </s>
+-0.64701265	string </s>
+-1.246045	punctuator </s>
+-0.9230932	var </s>
+-0.62160724	identifier </s>
+-0.8284534	numeric </s>
+-0.5955138	if </s>
+-0.74143285	function </s>
+-1.1882643	return </s>
+-0.5799103	null </s>
+-0.646857	regularexpression </s>
+-0.7132332	false </s>
+-0.89686966	in </s>
+-0.7132332	true </s>
+-1.1737182	typeof </s>
+-0.7712477	for </s>
+-1.2803046	else </s>
+-1.2332124	delete </s>
+-1.1364789	continue </s>
+-1.3319187	throw </s>
+-0.7697531	new </s>
+-0.5159752	try </s>
+-0.94628525	catch </s>
+-0.9347078	break </s>
+-0.6901199	instanceof </s>
+-1.137121	do </s>
+-0.6621032	while </s>
+-0.73816264	this </s>
+-1.1149243	switch </s>
+-1.2443867	case </s>
+-1.2202203	default </s>
+-1.0066196	class </s>
+-0.940658	{ </s>
+-1.064007	} </s>
+-0.468793	> </s>
+-1.4080576	` </s>
+-1.1903324	, </s>
+-0.7565326	const </s>
+-0.62942314	export </s>
+-0.6470352	import </s>
+-0.8058274	void </s>
+-1.2087193	( </s>
+-1.3905146	) </s>
+-0.8698823	div </s>
+-0.14508834	; </s>
+-0.7277406	'' </s>
+-0.52886415	! </s>
+-0.7565326	textarea </s>
+-1.0575533	<s> string	-3.4928412
+-1.4573741	punctuator string	-4.6840773
+-1.5931401	identifier string	-2.2439113
+-1.3942666	return string	-2.6267607
+-0.92364997	throw string	-1.4899637
+-0.7410028	case string	-2.8929768
+-1.4240505	import string	-1.2081956
+-0.22249438	<s> punctuator	-3.2411475
+-0.57243127	string punctuator	-4.1998525
+-1.0874305	punctuator punctuator	-4.3999314
+-0.44451147	identifier punctuator	-4.3812275
+-0.7194023	numeric punctuator	-3.8102672
+-0.29741552	if punctuator	-3.2991583
+-0.91032445	function punctuator	-4.192723
+-1.1842817	return punctuator	-2.3644142
+-0.48455957	null punctuator	-2.5847683
+-0.37292147	regularexpression punctuator	-2.3513858
+-0.62527186	false punctuator	-2.3932333
+-1.3451889	in punctuator	-1.2081956
+-0.62527186	true punctuator	-2.671777
+-0.6742484	typeof punctuator	-1.3375744
+-0.18262446	for punctuator	-2.745019
+-0.9551964	else punctuator	-2.33673
+-1.2281979	delete punctuator	-0.41085935
+-0.30435503	continue punctuator	-1.4506743
+-0.84447265	throw punctuator	-0.58255285
+-0.85877633	new punctuator	-0.5506685
+-0.4178421	try punctuator	-1.7903712
+-0.3031377	catch punctuator	-2.2953434
+-0.6799321	break punctuator	-1.9897938
+-1.2155945	instanceof punctuator	-0.18925694
+-0.57596326	do punctuator	-1.5981439
+-0.25287506	while punctuator	-2.2154026
+-0.31203625	this punctuator	-2.919867
+-0.23336439	switch punctuator	-1.9144943
+-1.2390485	case punctuator	-0.18925694
+-0.42284462	default punctuator	-1.1489167
+-0.14353795	finally punctuator	-1.2515535
+-0.94360113	extends punctuator	-0.44362777
+-0.527152	super punctuator	-0.72517633
+-0.18764244	` punctuator	-0.59360063
+-0.527152	true.` punctuator	-0.18925694
+-0.527152	false.` punctuator	-0.18925694
+-0.14353795	.` punctuator	-0.20449094
+-0.527152	\`.` punctuator	-0.6641275
+-0.14353795	array.` punctuator	-0.53918886
+-0.527152	reactelement.` punctuator	-0.18925694
+-0.527152	object.` punctuator	-0.18925694
+-0.527152	reactnode.` punctuator	-0.18925694
+-0.527152	\`object\`.` punctuator	-0.18925694
+-1.1484069	export punctuator	-0.51064175
+-0.645942	import punctuator	-1.5581951
+-1.2809395	void punctuator	-0.72517633
+-0.14353795	yield punctuator	-0.7694756
+-0.527152	with punctuator	-0.18925694
+-0.527152	debugger punctuator	-0.21389462
+-1.9815347	<s> var	-2.1447415
+-1.8427925	string var	-0.22027883
+-1.430434	punctuator var	-4.3464193
+-1.5820924	identifier var	-1.2081956
+-1.1981798	numeric var	-0.933936
+-1.3440285	null var	-0.18925694
+-1.47955	false var	-0.18925694
+-1.7293795	else var	-0.7610376
+-1.3944625	export var	-1.7863435
+-0.6547493	<s> identifier	-3.5415478
+-1.5900638	string identifier	-0.96515757
+-1.1154917	punctuator identifier	-4.838205
+-0.39050454	var identifier	-3.8049254
+-1.2260838	identifier identifier	-2.0109298
+-1.5307214	numeric identifier	-1.0241126
+-0.38796258	function identifier	-3.6238246
+-0.863879	return identifier	-3.6295938
+-1.3027068	false identifier	-0.18925694
+-0.54377055	in identifier	-2.668986
+-1.3027068	true identifier	-0.18925694
+-0.6128958	typeof identifier	-2.9826136
+-0.9480229	else identifier	-2.4349797
+-0.6653954	delete identifier	-2.436816
+-1.2243222	continue identifier	-1.2381588
+-0.786024	throw identifier	-2.4728448
+-0.4845869	new identifier	-3.412505
+-0.87858224	break identifier	-1.8067644
+-0.4379345	instanceof identifier	-2.4728448
+-1.2247875	do identifier	-0.6641275
+-1.6677821	this identifier	-0.22027883
+-0.7994405	case identifier	-1.9651575
+-1.3190123	default identifier	-0.22027883
+-0.43095165	class identifier	-0.9657702
+-0.31556073	extends identifier	-1.2661875
+-1.4500917	{ identifier	-1.7522637
+-0.815406	const identifier	-2.1339495
+-0.66834605	import identifier	-1.6950539
+-0.8409381	void identifier	-0.96515757
+-1.4775475	<s> numeric	-3.17177
+-1.602002	punctuator numeric	-4.2469897
+-1.2220025	return numeric	-2.1296365
+-0.74438655	case numeric	-2.779738
+-0.7857913	void numeric	-2.3609207
+-2.258042	<s> if	-2.4686077
+-1.8097917	string if	-0.22027883
+-1.4494687	punctuator if	-4.1545954
+-1.6631479	identifier if	-1.2002039
+-1.0928627	numeric if	-1.6641276
+-1.9683635	return if	-0.22027883
+-1.0127118	else if	-3.0519621
+-0.621924	do if	-1.8768975
+-1.8441339	this if	-0.18925694
+-0.59748447	array if	-0.18925694
+-0.59748447	`value if	-0.18925694
+-1.9269271	<s> function	-2.6235664
+-1.4514316	punctuator function	-4.2561655
+-2.218791	identifier function	-0.18925694
+-1.7931731	numeric function	-0.18925694
+-1.4667305	return function	-2.3513591
+-1.4046435	regularexpression function	-0.18925694
+-0.745668	default function	-1.1412488
+-0.687108	export function	-1.8692107
+-1.4803379	= function	-0.18925694
+-0.46137708	: function	-1.2081956
+-1.96526	<s> return	-1.8588028
+-1.5353938	punctuator return	-3.2390594
+-2.2961786	identifier return	-0.7610376
+-1.20793	numeric return	-0.20969005
+-1.5019453	true return	-0.18925694
+-1.128012	else return	-0.9634352
+-1.8953841	this return	-0.18925694
+-2.6412542	<s> null	-2.3884034
+-1.6426201	punctuator null	-3.5858588
+-1.420776	return null	-2.4123156
+-3.120046	<s> regularexpression	-1.9133259
+-1.7188076	punctuator regularexpression	-3.166919
+-1.5148834	return regularexpression	-1.5814108
+-1.4917775	typeof regularexpression	-0.22027883
+-2.8792667	<s> false	-2.1519728
+-1.6807098	punctuator false	-3.2361302
+-1.420776	return false	-2.2985592
+-3.8115973	<s> in	-0.9960839
+-1.1157335	string in	-1.7739196
+-2.4688218	punctuator in	-0.6650907
+-1.4142756	identifier in	-2.264147
+-1.8765808	numeric in	-0.22027883
+-0.60764825	specified in	-0.18925694
+-2.599844	<s> true	-2.4294236
+-1.5725921	punctuator true	-3.6430037
+-1.5148834	return true	-2.2135677
+-1.8498309	: true	-0.18925694
+-3.3127787	<s> typeof	-1.3465415
+-1.6807098	punctuator typeof	-2.6909335
+-1.5234547	return typeof	-1.8329196
+-3.1993477	<s> for	-1.8329196
+-1.8785087	string for	-0.22027883
+-1.5078003	punctuator for	-3.2454798
+-2.2961786	identifier for	-0.22027883
+-1.8541797	numeric for	-0.84021884
+-1.5019453	false for	-0.20969005
+-1.7717448	else for	-1.3408211
+-2.912565	<s> else	-1.5453904
+-1.6426201	punctuator else	-2.684339
+-1.9516823	numeric else	-0.20969005
+-4.004147	<s> delete	-0.8199926
+-1.602002	punctuator delete	-2.171815
+-2.1443238	return delete	-0.18925694
+-1.8186941	else delete	-0.7610376
+-1.6154217	void delete	-0.18925694
+-4.3586617	<s> continue	-0.7610376
+-1.8738407	punctuator continue	-1.996566
+-2.3904116	identifier continue	-0.22027883
+-1.8442203	else continue	-0.18925694
+-3.4734435	<s> throw	-1.0900962
+-1.6395754	punctuator throw	-2.5981207
+-2.182077	return throw	-0.18925694
+-1.8442203	else throw	-0.9243775
+-2.8543298	<s> new	-2.1760108
+-1.5401942	punctuator new	-3.1310878
+-1.4073191	return new	-2.1125762
+-1.7133007	in new	-0.22027883
+-0.6319335	throw new	-2.6832895
+-3.7364962	<s> try	-1.0752652
+-1.6076033	punctuator try	-2.6165566
+-1.871341	else try	-0.18925694
+-3.891597	<s> catch	-1.176011
+-2.2654555	punctuator catch	-2.5672176
+-3.5631514	<s> break	-0.98073465
+-1.8975322	string break	-0.20969005
+-1.7115854	punctuator break	-2.5191922
+-2.325375	identifier break	-0.20969005
+-1.8765808	numeric break	-0.22027883
+-1.7945853	else break	-0.7694756
+-3.9635305	<s> instanceof	-1.1034602
+-2.0201437	punctuator instanceof	-1.4485078
+-1.4217519	identifier instanceof	-2.1589775
+-1.1064912	this instanceof	-1.8102556
+-4.3796506	<s> do	-0.38275367
+-1.7721369	punctuator do	-1.9385741
+-3.4582765	<s> while	-1.5805815
+-1.2214285	string while	-0.53918886
+-1.5401942	punctuator while	-2.9215062
+-1.9002005	numeric while	-0.9071656
+-1.8186941	else while	-0.6650907
+-2.3879526	<s> this	-2.3974845
+-1.3428925	punctuator this	-3.527265
+-2.15313	identifier this	-0.20969005
+-1.7396901	numeric this	-0.84021884
+-1.3573097	return this	-2.7332635
+-1.4379522	false this	-0.18925694
+-0.6880467	in this	-1.61837
+-1.4050956	typeof this	-1.4237953
+-1.6553366	else this	-1.6418512
+-0.4998659	delete this	-1.4327766
+-0.915432	new this	-1.1412488
+-1.4241965	instanceof this	-0.53918886
+-0.87287927	void this	-0.22027883
+-4.0599713	<s> switch	-1.0163101
+-1.938278	string switch	-0.18925694
+-1.7645991	punctuator switch	-2.3587327
+-2.3904116	identifier switch	-0.18925694
+-3.3325498	<s> case	-1.228399
+-1.7686644	punctuator case	-2.7953236
+-0.7307841	break case	-0.8199926
+-3.9590867	<s> default	-0.8024302
+-1.8112653	punctuator default	-1.9758815
+-1.5255585	true default	-0.18925694
+-1.023928	break default	-0.22027883
+-1.428894	export default	-0.46193495
+-4.6976137	<s> finally	-0.53918886
+-2.2654555	punctuator finally	-2.1227653
+-5.4630113	<s> class	-0.18925694
+-2.1343718	punctuator class	-0.94597256
+-3.145076	punctuator extends	-0.84021884
+-2.4269888	identifier extends	-1.2081956
+-1.2099978	class extends	-0.22027883
+-3.2815595	punctuator super	-1.1034602
+-3.2815595	punctuator `the	-0.22027883
+-0.60764825	`the \`	-0.22027883
+-1.9782172	} \`	-0.72963667
+-0.6263768	to \`	-0.7610376
+-1.3513399	of \`	-0.18925694
+-0.8993434	type \`	-0.18925694
+-0.8993434	value \`	-0.18925694
+-0.39321056	\` $	-1.3630975
+-1.7405139	< $	-0.18925694
+-1.6722233	` $	-0.53918886
+-0.619558	of $	-0.22027883
+-0.59949833	from $	-0.18925694
+-0.59949833	`required $	-0.18925694
+-0.59949833	`\` $	-1.0163101
+-0.88353086	`invalid $	-1.0163101
+-1.043265	[ $	-0.18925694
+-0.59949833	. $	-0.22027883
+-1.8619651	return {	-0.18925694
+-0.0553374	$ {	-1.7522637
+-1.6324823	{ {	-0.18925694
+-1.042465	> {	-0.18925694
+-1.4343221	, {	-0.18925694
+-0.9699568	( {	-0.41593695
+-1.625659	: {	-0.18925694
+-0.8722221	) {	-1.2381588
+-0.58755314	hello {	-0.18925694
+-0.15297335	onchange= {	-0.18925694
+-0.58755314	defaultvalue= {	-0.18925694
+-0.58755314	dangerouslysetinnerhtml= {	-0.18925694
+-0.58755314	key= {	-0.18925694
+-0.58755314	items= {	-0.18925694
+-0.58755314	onsubmit= {	-0.18925694
+-0.58755314	value= {	-0.18925694
+-3.6269674	<s> }	-0.73182327
+-2.015088	identifier }	-0.8482455
+-1.365086	true }	-0.18925694
+-1.6783987	} }	-0.18925694
+-0.96127325	) }	-0.22027883
+-0.5778439	this.props.name }	-0.18925694
+-1.3536648	'' }	-0.18925694
+-0.84279966	' }	-0.18925694
+-0.5778439	.value }	-0.18925694
+-0.5778439	this.handlechange }	-0.18925694
+-0.84279966	this.state.value }	-0.18925694
+-0.5778439	0 }	-0.18925694
+-0.84279966	this.state.secondselapsed }	-0.18925694
+-0.84279966	1 }	-0.18925694
+-0.32063115	itemtext }	-0.18925694
+-0.5778439	e.target.value }	-0.18925694
+-0.84279966	this.state.text }	-0.18925694
+-0.84279966	nexttext }	-0.18925694
+-0.5778439	this.state.items }	-0.18925694
+-0.5778439	this.handlesubmit }	-0.18925694
+-0.5778439	this.onchange }	-0.18925694
+-1.6902895	\` prop	-0.22027883
+-1.6716698	\` supplied	-0.9071656
+-0.6138627	prop supplied	-0.22027883
+-0.6138627	argument supplied	-0.22027883
+-0.22730324	supplied to	-0.4148963
+-0.61563313	`supplied to	-0.22027883
+-3.8022542	<s> <	-0.34239867
+-2.0194833	return <	-0.18925694
+-1.0485921	} <	-0.20140111
+-1.3248053	to <	-0.22027883
+-0.60152155	using <	-0.18925694
+-1.6280694	( <	-0.18925694
+-0.8874303	input <	-0.18925694
+-0.60152155	output <	-0.18925694
+-0.60152155	todo <	-0.18925694
+-1.9983938	< select	-0.22027883
+-1.2034485	} >	-0.18925694
+-0.5914985	select >	-0.22027883
+-1.0213938	div >	-0.18925694
+-0.5914985	/div >	-0.42205262
+-1.4307138	'' >	-0.18925694
+-0.09692133	/ >	-0.6641275
+-0.5914985	h3 >	-0.18925694
+-0.5914985	/h3 >	-0.53918886
+-0.5914985	/li >	-0.18925694
+-0.5914985	ul >	-0.18925694
+-0.5914985	/ul >	-0.18925694
+-0.5914985	button >	-0.18925694
+-0.5914985	/button >	-0.18925694
+-0.5914985	/form >	-0.18925694
+-1.9494057	> must	-0.22027883
+-0.61638474	must be	-0.18925694
+-0.9151136	be an	-0.18925694
+-1.3860915	expected an	-0.20449094
+-1.2160432	an array	-0.18925694
+-4.389474	<s> `	-0.6641275
+-2.6994855	punctuator `	-0.44553995
+-1.7269771	if `	-0.18925694
+-1.6407137	in `	-0.18925694
+-1.5649524	\` `	-0.22027883
+-1.8538839	} `	-0.22027883
+-1.3079754	to `	-0.6641275
+-0.59748447	scalar `	-0.18925694
+-0.8796661	type `	-0.53918886
+-1.2886434	expected `	-0.18925694
+-1.037693	] `	-0.18925694
+-3.2815595	punctuator `\`multiple\`	-0.18925694
+-0.61563313	`\`multiple\` is	-0.18925694
+-0.61563313	\`multiple\` is	-0.18925694
+-0.91661274	is true.`	-0.18925694
+-0.9115925	be a	-0.18925694
+-0.6138627	passed a	-0.18925694
+-1.375758	expected a	-0.18925694
+-1.2160432	a scalar	-0.18925694
+-3.2815595	punctuator `value	-0.18925694
+-1.817125	if \`multiple\`	-0.18925694
+-0.91661274	is false.`	-0.18925694
+-1.7588253	` check	-0.22027883
+-0.61638474	check the	-0.18925694
+-4.3796506	<s> render	-0.7610376
+-0.9151136	the render	-0.18925694
+-0.91661274	render method	-0.18925694
+-1.6568056	\` of	-0.5189626
+-0.61178136	method of	-0.18925694
+-0.15645587	instance of	-0.20969005
+-0.61178136	one of	-0.18925694
+-2.1060767	} .`	-0.53918886
+-1.9400548	> .`	-0.18925694
+-4.5101604	<s> react.render	-0.6641275
+-0.9151136	the react.render	-0.18925694
+-0.91661274	react.render call	-0.18925694
+-0.61638474	call using	-0.18925694
+-1.7588253	` it	-0.18925694
+-1.684668	\` was	-0.18925694
+-0.61563313	it was	-0.18925694
+-0.91661274	was passed	-0.18925694
+-1.2160432	a child	-0.18925694
+-0.61638474	child from	-0.18925694
+-3.2815595	punctuator `required	-0.18925694
+-0.91661274	was not	-0.18925694
+-0.61638474	not specified	-0.18925694
+-3.2815595	punctuator `\`	-1.0163101
+-2.1201568	} \`.`	-0.6641275
+-2.5648007	punctuator `invalid	-0.72517633
+-1.3914957	of type	-0.42205262
+-1.5769435	\` ,	-0.96515757
+-1.8760647	} ,	-1.0163101
+-1.7738389	> ,	-0.6641275
+-1.043265	] ,	-0.18925694
+-0.59949833	oneof ,	-0.18925694
+-0.59949833	oneoftype ,	-0.18925694
+-0.88353086	this.state.value ,	-0.18925694
+-0.59949833	this.tick ,	-0.18925694
+-1.0629561	itemtext ,	-0.18925694
+-0.88353086	nextitems ,	-0.18925694
+-0.7497137	, expected	-0.33178073
+-1.2130611	an array.`	-0.18925694
+-1.3879242	of array.`	-0.22027883
+-2.0745227	} [	-0.18925694
+-1.7531271	( [	-0.18925694
+-1.8749971	: [	-0.18925694
+-2.0745227	} ]	-0.18925694
+-1.0844084	[ ]	-0.18925694
+-0.9115925	this.state.text ]	-0.18925694
+-1.2160432	a single	-0.18925694
+-0.61638474	single reactelement.`	-0.18925694
+-1.2130611	an instance	-0.22027883
+-1.3860915	expected instance	-0.18925694
+-0.91661274	`invalid argument	-0.22027883
+-1.3914957	to oneof	-0.18925694
+-1.2487478	{ value	-0.22027883
+-1.3879242	of value	-0.18925694
+-3.2815595	punctuator `supplied	-0.22027883
+-1.3905408	expected one	-0.18925694
+-1.2160432	an object.`	-0.18925694
+-2.1201568	} .	-0.22027883
+-1.3914957	to oneoftype	-0.18925694
+-1.2160432	a reactnode.`	-0.18925694
+-1.3905408	expected \`object\`.`	-0.18925694
+-1.9544611	punctuator const	-1.843823
+-3.6675944	<s> export	-1.0832568
+-1.9522212	punctuator export	-1.5929804
+-3.0216584	<s> import	-1.6148665
+-2.2654555	punctuator import	-1.8473974
+-3.9680204	<s> void	-1.1034602
+-1.8203706	punctuator void	-1.9156035
+-1.5234547	return void	-0.9813607
+-5.4630113	<s> yield	-0.18925694
+-3.2363074	punctuator yield	-1.176011
+-1.9010715	var hellomessage	-0.18925694
+-1.9832758	< hellomessage	-0.18925694
+-0.8874303	hellomessage =	-0.18925694
+-1.0489093	markdowneditor =	-0.18925694
+-0.8874303	timer =	-0.18925694
+-0.8874303	this.interval =	-0.18925694
+-0.8874303	todolist =	-0.18925694
+-0.8874303	createitem =	-0.18925694
+-0.8874303	todoapp =	-0.18925694
+-0.8874303	nextitems =	-0.18925694
+-0.8874303	nexttext =	-0.18925694
+-0.3769062	= react.createclass	-0.7610376
+-1.0634334	function (	-0.7418526
+-1.9226321	return (	-0.53918886
+-0.8720381	react.render (	-0.6641275
+-0.59348476	react.createclass (	-0.7610376
+-0.59348476	this.setstate (	-0.6641275
+-0.59348476	react.finddomnode (	-0.18925694
+-0.59348476	marked (	-0.18925694
+-1.1558727	+ (	-0.18925694
+-0.59348476	setinterval (	-0.18925694
+-0.59348476	clearinterval (	-0.18925694
+-0.59348476	this.props.items.map (	-0.18925694
+-0.59348476	e.preventdefault (	-0.18925694
+-0.59348476	this.state.items.concat (	-0.18925694
+-0.86454195	render :	-0.7610376
+-0.86454195	value :	-0.18925694
+-0.5895214	getinitialstate :	-0.53918886
+-0.5895214	handlechange :	-0.18925694
+-0.5895214	__html :	-0.18925694
+-0.5895214	sanitize :	-0.18925694
+-0.5895214	secondselapsed :	-0.18925694
+-0.5895214	tick :	-0.18925694
+-0.5895214	componentdidmount :	-0.18925694
+-0.5895214	componentwillunmount :	-0.18925694
+-0.5895214	elapsed :	-0.18925694
+-0.5895214	items :	-0.18925694
+-0.15326248	text :	-0.18925694
+-0.5895214	onchange :	-0.18925694
+-0.5895214	handlesubmit :	-0.18925694
+-4.5075603	<s> )	-0.53918886
+-0.8178374	} )	-0.8199926
+-1.0321918	] )	-0.18925694
+-0.98617345	( )	-0.933936
+-0.59547997	mountnode )	-0.6641275
+-0.59547997	this.refs.textarea )	-0.18925694
+-0.8758354	1 )	-0.18925694
+-0.8758354	this.interval )	-0.18925694
+-0.59547997	1000 )	-0.18925694
+-0.8758354	createitem )	-0.18925694
+-0.8758354	index )	-0.18925694
+-0.59547997	e )	-0.22027883
+-1.2511727	< div	-0.36444652
+-1.9494057	> hello	-0.18925694
+-1.9993228	{ this.props.name	-0.18925694
+-1.2511727	< /div	-0.6641275
+-1.0658591	} ;	-0.6641275
+-1.0835521	> ;	-0.53918886
+-0.3831219	) ;	-1.3630975
+-1.5717666	'' ;	-0.18925694
+-0.91661274	hellomessage name=	-0.18925694
+-1.4900136	= ''	-0.18925694
+-1.7421114	: ''	-0.18925694
+-0.60152155	name= ''	-0.18925694
+-0.60152155	john ''	-0.18925694
+-1.0489093	markdowneditor ''	-0.18925694
+-0.15500146	classname= ''	-0.18925694
+-0.8874303	textarea ''	-0.18925694
+-0.60152155	ref= ''	-0.18925694
+-0.60152155	content ''	-0.18925694
+-1.6101676	'' john	-0.18925694
+-5.1108994	<s> /	-0.18925694
+-1.2439706	} /	-0.53918886
+-1.539653	'' /	-0.18925694
+-1.0662962	markdowneditor /	-0.18925694
+-0.8993434	timer /	-0.18925694
+-0.8993434	todoapp /	-0.18925694
+-1.6112664	, mountnode	-0.6641275
+-3.2815595	punctuator with	-0.18925694
+-1.88227	var markdowneditor	-0.18925694
+-1.9495221	< markdowneditor	-0.18925694
+-1.5887601	'' markdowneditor	-0.18925694
+-4.7063813	<s> getinitialstate	-0.53918886
+-1.9074061	: 'type	-0.18925694
+-0.61638474	'type some	-0.18925694
+-0.61638474	some *markdown*	-0.18925694
+-0.61638474	*markdown* here	-0.18925694
+-0.61638474	here !	-0.18925694
+-5.4630113	<s> '	-0.18925694
+-0.61563313	# '	-0.18925694
+-5.5167794	<s> handlechange	-0.18925694
+-4.515835	<s> this.setstate	-0.6641275
+-1.9074061	: react.finddomnode	-0.18925694
+-1.7832618	( this.refs.textarea	-0.18925694
+-1.7584958	) .value	-0.18925694
+-5.4630113	<s> classname=	-0.18925694
+-1.0896609	div classname=	-0.18925694
+-1.9983938	< h3	-0.53918886
+-1.9832758	< input	-0.18925694
+-1.9400548	> input	-0.18925694
+-1.1461505	< /h3	-0.53918886
+-1.9832758	< textarea	-0.18925694
+-1.6036899	'' textarea	-0.18925694
+-5.4630113	<s> onchange=	-0.18925694
+-0.9151136	input onchange=	-0.18925694
+-1.9993228	{ this.handlechange	-0.18925694
+-5.5167794	<s> ref=	-0.18925694
+-5.5167794	<s> defaultvalue=	-0.18925694
+-1.9850154	{ this.state.value	-0.18925694
+-1.774079	( this.state.value	-0.18925694
+-1.9494057	> output	-0.18925694
+-1.6101676	'' content	-0.18925694
+-5.5167794	<s> dangerouslysetinnerhtml=	-0.18925694
+-5.5167794	<s> __html	-0.18925694
+-1.9074061	: marked	-0.18925694
+-1.9993228	{ sanitize	-0.18925694
+-3.2815595	punctuator debugger	-0.7610376
+-1.9010715	var timer	-0.18925694
+-1.9832758	< timer	-0.18925694
+-1.2513387	{ secondselapsed	-0.22027883
+-1.9074061	: 0	-0.18925694
+-5.5167794	<s> tick	-0.18925694
+-1.9850154	{ this.state.secondselapsed	-0.18925694
+-1.8975121	: this.state.secondselapsed	-0.18925694
+-0.907471	' +	-0.18925694
+-0.907471	this.state.secondselapsed +	-0.18925694
+-0.907471	index +	-0.18925694
+-0.61178136	this.state.items.length +	-0.18925694
+-0.45785022	+ 1	-0.18925694
+-5.5167794	<s> componentdidmount	-0.18925694
+-5.4630113	<s> this.interval	-0.18925694
+-1.774079	( this.interval	-0.18925694
+-1.5669397	= setinterval	-0.18925694
+-1.7832618	( this.tick	-0.18925694
+-1.6112664	, 1000	-0.18925694
+-5.5167794	<s> componentwillunmount	-0.18925694
+-5.5167794	<s> clearinterval	-0.18925694
+-1.9494057	> seconds	-0.18925694
+-0.61638474	seconds elapsed	-0.18925694
+-1.9010715	var todolist	-0.18925694
+-1.9832758	< todolist	-0.18925694
+-1.9010715	var createitem	-0.18925694
+-1.774079	( createitem	-0.18925694
+-1.9529779	{ itemtext	-0.18925694
+-1.7531271	( itemtext	-0.18925694
+-1.2099978	+ itemtext	-0.18925694
+-1.9850154	{ index	-0.18925694
+-1.605789	, index	-0.18925694
+-1.9983938	< li	-0.18925694
+-0.61638474	li key=	-0.18925694
+-1.9983938	< /li	-0.18925694
+-1.9983938	< ul	-0.18925694
+-1.9993228	{ this.props.items.map	-0.18925694
+-1.9983938	< /ul	-0.18925694
+-1.9010715	var todoapp	-0.18925694
+-1.9832758	< todoapp	-0.18925694
+-1.2513387	{ items	-0.22027883
+-1.9850154	{ text	-0.18925694
+-0.85418266	, text	-0.22027883
+-5.5167794	<s> onchange	-0.18925694
+-1.7832618	( e	-0.22027883
+-1.9074061	: e.target.value	-0.18925694
+-5.5167794	<s> handlesubmit	-0.18925694
+-5.5167794	<s> e.preventdefault	-0.18925694
+-1.9010715	var nextitems	-0.18925694
+-1.8975121	: nextitems	-0.18925694
+-1.5669397	= this.state.items.concat	-0.18925694
+-1.9850154	{ this.state.text	-0.18925694
+-1.0896609	[ this.state.text	-0.18925694
+-1.9010715	var nexttext	-0.18925694
+-1.8975121	: nexttext	-0.18925694
+-1.9494057	> todo	-0.18925694
+-0.91661274	todolist items=	-0.18925694
+-1.9993228	{ this.state.items	-0.18925694
+-1.9983938	< form	-0.18925694
+-0.61638474	form onsubmit=	-0.18925694
+-1.9993228	{ this.handlesubmit	-0.18925694
+-1.9993228	{ this.onchange	-0.18925694
+-2.1201568	} value=	-0.18925694
+-1.9983938	< button	-0.18925694
+-1.9993228	{ 'add	-0.18925694
+-0.61638474	'add #	-0.18925694
+-1.7832618	( this.state.items.length	-0.18925694
+-1.9983938	< /button	-0.18925694
+-1.9983938	< /form	-0.18925694
+
+\3-grams:
+-0.81038785	<s> string </s>
+-1.6448064	punctuator string </s>
+-2.0807896	identifier string </s>
+-1.7600795	return string </s>
+-1.7049373	throw string </s>
+-1.7083008	case string </s>
+-2.3664317	<s> punctuator </s>
+-1.7573736	string punctuator </s>
+-1.6431886	punctuator punctuator </s>
+-1.6718149	identifier punctuator </s>
+-1.8751237	numeric punctuator </s>
+-1.7616972	if punctuator </s>
+-1.7366238	function punctuator </s>
+-1.8102322	return punctuator </s>
+-1.6487298	null punctuator </s>
+-1.7823946	regularexpression punctuator </s>
+-1.7088432	false punctuator </s>
+-1.6514889	true punctuator </s>
+-1.9946399	typeof punctuator </s>
+-1.6283865	for punctuator </s>
+-1.6378006	else punctuator </s>
+-1.13968	delete punctuator </s>
+-1.7287066	continue punctuator </s>
+-1.168242	throw punctuator </s>
+-1.7553976	try punctuator </s>
+-1.7163372	catch punctuator </s>
+-1.6101227	break punctuator </s>
+-1.7249633	do punctuator </s>
+-1.7079984	while punctuator </s>
+-1.734813	this punctuator </s>
+-1.9483942	switch punctuator </s>
+-2.2098293	default punctuator </s>
+-1.8093377	import punctuator </s>
+-0.47627813	<s> var </s>
+-1.5256896	punctuator var </s>
+-1.3864657	numeric var </s>
+-1.5682678	<s> identifier </s>
+-1.7022884	punctuator identifier </s>
+-1.7547599	var identifier </s>
+-2.0586624	identifier identifier </s>
+-1.3498242	numeric identifier </s>
+-1.8561178	function identifier </s>
+-1.7398956	return identifier </s>
+-1.663733	in identifier </s>
+-1.7496495	typeof identifier </s>
+-1.8578657	else identifier </s>
+-1.6526283	delete identifier </s>
+-1.6886573	throw identifier </s>
+-1.7775782	new identifier </s>
+-2.1324759	break identifier </s>
+-1.6132497	instanceof identifier </s>
+-1.4600217	case identifier </s>
+-1.37762	class identifier </s>
+-2.0207655	import identifier </s>
+-1.6080881	punctuator numeric </s>
+-1.7064916	return numeric </s>
+-1.6686364	case numeric </s>
+-1.7943473	void numeric </s>
+-1.1815779	<s> if </s>
+-1.6787475	punctuator if </s>
+-1.5125177	identifier if </s>
+-1.6721115	else if </s>
+-2.1892114	do if </s>
+-1.8741238	<s> function </s>
+-1.7384386	punctuator function </s>
+-1.6019166	return function </s>
+-2.251424	export function </s>
+-2.9030282	<s> return </s>
+-1.7249038	punctuator return </s>
+-1.9384267	else return </s>
+-1.7078197	punctuator null </s>
+-1.8324411	return null </s>
+-1.7131755	punctuator regularexpression </s>
+-1.7963269	return regularexpression </s>
+-1.6245723	punctuator false </s>
+-1.6751419	return false </s>
+-1.581144	string in </s>
+-1.9863864	identifier in </s>
+-1.678036	punctuator true </s>
+-1.664449	return true </s>
+-1.7755493	punctuator typeof </s>
+-1.6960847	punctuator for </s>
+-0.6531901	false for </s>
+-1.6777349	punctuator else </s>
+-1.7416539	punctuator delete </s>
+-2.0455527	punctuator continue </s>
+-1.7827	punctuator throw </s>
+-1.7430823	punctuator new </s>
+-1.5943933	return new </s>
+-1.6360793	throw new </s>
+-1.3443325	<s> try </s>
+-2.1025798	punctuator try </s>
+-1.7519745	punctuator catch </s>
+-1.5209107	punctuator break </s>
+-1.3468571	else break </s>
+-1.7981741	punctuator instanceof </s>
+-1.5071846	identifier instanceof </s>
+-1.6101556	punctuator do </s>
+-1.6352861	punctuator while </s>
+-1.0108191	else while </s>
+-1.7362944	punctuator this </s>
+-0.6373202	identifier this </s>
+-1.6855541	return this </s>
+-0.32658276	false this </s>
+-1.8135568	delete this </s>
+-1.4139634	punctuator switch </s>
+-1.6216563	punctuator case </s>
+-1.5877256	punctuator default </s>
+-1.5871742	punctuator class </s>
+-0.36918002	{ { </s>
+-0.29822776	( { </s>
+-0.022808641	) { </s>
+-0.67198837	<s> } </s>
+-0.38822016	} } </s>
+-0.38822016	this.handlechange } </s>
+-0.47171664	} > </s>
+-0.47171664	div > </s>
+-0.17922887	/div > </s>
+-0.24184474	'' > </s>
+-0.33228487	/ > </s>
+-0.091924496	/h3 > </s>
+-0.24184474	/button > </s>
+-0.24184474	/form > </s>
+-0.48501933	punctuator ` </s>
+-0.0410065	} , </s>
+-1.6959543	punctuator const </s>
+-0.0781867	<s> export </s>
+-1.9854721	punctuator export </s>
+-0.011771185	<s> import </s>
+-1.7946887	punctuator import </s>
+-1.5567508	punctuator void </s>
+-1.545092	return void </s>
+-0.13731638	return ( </s>
+-1.3821323	} ) </s>
+-0.88958406	< div </s>
+-0.027586639	} ; </s>
+-0.037185837	> ; </s>
+-0.0053789103	) ; </s>
+-0.08814023	'' ; </s>
+-0.3239463	textarea '' </s>
+-0.3239463	content '' </s>
+-0.26391247	here ! </s>
+-0.33111572	< textarea </s>
+-0.7411459	<s> punctuator string
+-0.33662784	string punctuator string
+-0.96343625	punctuator punctuator string
+-0.88513315	identifier punctuator string
+-1.0670793	numeric punctuator string
+-2.4709778	if punctuator string
+-1.5143667	return punctuator string
+-1.4657772	null punctuator string
+-0.7620467	regularexpression punctuator string
+-0.78913456	false punctuator string
+-1.0107355	true punctuator string
+-3.1217296	for punctuator string
+-1.4858378	throw punctuator string
+-3.3428984	while punctuator string
+-2.0494685	this punctuator string
+-2.3356767	default punctuator string
+-0.95823675	.` punctuator string
+-0.2522233	export punctuator string
+-2.4849818	import punctuator string
+-4.334921	<s> identifier string
+-3.604894	punctuator identifier string
+-0.5919229	identifier identifier string
+-1.5740511	<s> return string
+-1.205825	punctuator return string
+-1.3560665	else return string
+-1.4381028	punctuator throw string
+-1.4968675	else throw string
+-0.21848467	<s> case string
+-0.2893897	punctuator case string
+-0.07530909	break case string
+-1.2647227	punctuator import string
+-0.07348499	<s> string punctuator
+-0.010169004	punctuator string punctuator
+-0.0048886677	identifier string punctuator
+-0.009497582	return string punctuator
+-0.015982643	throw string punctuator
+-0.00887298	case string punctuator
+-0.020153226	import string punctuator
+-0.52031064	<s> punctuator punctuator
+-0.46419123	string punctuator punctuator
+-0.42210224	punctuator punctuator punctuator
+-0.62399614	identifier punctuator punctuator
+-0.50173724	numeric punctuator punctuator
+-0.68208927	if punctuator punctuator
+-0.3754071	function punctuator punctuator
+-0.670212	return punctuator punctuator
+-0.19831894	null punctuator punctuator
+-0.56834614	regularexpression punctuator punctuator
+-0.36787817	false punctuator punctuator
+-0.17363834	true punctuator punctuator
+-1.2590196	for punctuator punctuator
+-2.2984123	else punctuator punctuator
+-0.8373984	delete punctuator punctuator
+-0.32311642	continue punctuator punctuator
+-0.86876184	new punctuator punctuator
+-2.7424412	try punctuator punctuator
+-3.0153415	catch punctuator punctuator
+-0.42858618	break punctuator punctuator
+-0.4407853	while punctuator punctuator
+-1.0955918	this punctuator punctuator
+-1.7274315	default punctuator punctuator
+-2.1206088	finally punctuator punctuator
+-0.25834757	extends punctuator punctuator
+-1.0568633	super punctuator punctuator
+-0.8944828	` punctuator punctuator
+-0.39134276	true.` punctuator punctuator
+-0.39134276	false.` punctuator punctuator
+-0.6021064	.` punctuator punctuator
+-0.096360795	\`.` punctuator punctuator
+-0.13389993	array.` punctuator punctuator
+-0.39134276	reactelement.` punctuator punctuator
+-0.39134276	object.` punctuator punctuator
+-0.39134276	reactnode.` punctuator punctuator
+-0.39134276	\`object\`.` punctuator punctuator
+-1.2806444	export punctuator punctuator
+-2.1271598	import punctuator punctuator
+-0.50986004	yield punctuator punctuator
+-0.6796524	debugger punctuator punctuator
+-0.012688773	<s> identifier punctuator
+-0.031245915	string identifier punctuator
+-0.009331218	punctuator identifier punctuator
+-0.01055153	var identifier punctuator
+-0.13630213	identifier identifier punctuator
+-0.03748139	numeric identifier punctuator
+-0.00613335	function identifier punctuator
+-0.008836337	return identifier punctuator
+-0.23237099	false identifier punctuator
+-0.009905946	in identifier punctuator
+-0.23237099	true identifier punctuator
+-0.00805206	typeof identifier punctuator
+-0.006716872	else identifier punctuator
+-0.010426176	delete identifier punctuator
+-0.01638436	continue identifier punctuator
+-0.009586888	throw identifier punctuator
+-0.0074029374	new identifier punctuator
+-0.005964017	break identifier punctuator
+-0.011314539	instanceof identifier punctuator
+-0.06491535	do identifier punctuator
+-0.21168776	this identifier punctuator
+-0.017287537	case identifier punctuator
+-0.21168776	default identifier punctuator
+-0.49803764	class identifier punctuator
+-0.015342001	extends identifier punctuator
+-0.002048807	const identifier punctuator
+-0.031245915	void identifier punctuator
+-0.00034913493	<s> numeric punctuator
+-0.011034457	punctuator numeric punctuator
+-0.01398815	return numeric punctuator
+-0.009902822	case numeric punctuator
+-0.008302097	void numeric punctuator
+-0.029956592	<s> if punctuator
+-0.15401576	string if punctuator
+-0.0092041	punctuator if punctuator
+-0.02044612	identifier if punctuator
+-0.0046916627	numeric if punctuator
+-0.15401576	return if punctuator
+-0.009435014	else if punctuator
+-0.0042251963	do if punctuator
+-0.16792385	this if punctuator
+-0.052093472	<s> function punctuator
+-0.07977105	punctuator function punctuator
+-0.046706397	return function punctuator
+-0.24376781	<s> return punctuator
+-0.7532162	punctuator return punctuator
+-0.7939808	else return punctuator
+-0.0011955048	<s> null punctuator
+-0.008659294	punctuator null punctuator
+-0.007133734	return null punctuator
+-0.0030663796	<s> regularexpression punctuator
+-0.008639383	punctuator regularexpression punctuator
+-0.011075641	return regularexpression punctuator
+-0.18510038	typeof regularexpression punctuator
+-0.00234163	<s> false punctuator
+-0.010778198	punctuator false punctuator
+-0.0110689225	return false punctuator
+-1.6806217	identifier in punctuator
+-0.0012345464	<s> true punctuator
+-0.009284302	punctuator true punctuator
+-0.01169281	return true punctuator
+-1.571389	<s> typeof punctuator
+-1.7060134	punctuator typeof punctuator
+-0.0021959355	<s> for punctuator
+-0.10057252	string for punctuator
+-0.008876839	punctuator for punctuator
+-0.10057252	identifier for punctuator
+-0.022091342	numeric for punctuator
+-0.17364459	false for punctuator
+-0.006855571	else for punctuator
+-0.32056266	<s> else punctuator
+-0.27778557	punctuator else punctuator
+-1.9098418	punctuator delete punctuator
+-0.039692797	<s> continue punctuator
+-0.030642787	punctuator continue punctuator
+-0.15700577	identifier continue punctuator
+-0.17124109	else continue punctuator
+-1.1063066	<s> throw punctuator
+-2.164866	punctuator throw punctuator
+-2.4252434	punctuator new punctuator
+-3.2256765	throw new punctuator
+-0.032257352	<s> try punctuator
+-0.0037744276	punctuator try punctuator
+-0.22159098	else try punctuator
+-0.014798551	<s> catch punctuator
+-0.0082232375	punctuator catch punctuator
+-0.05892612	<s> break punctuator
+-0.40433273	string break punctuator
+-0.052351747	punctuator break punctuator
+-0.2635699	else break punctuator
+-1.965949	punctuator instanceof punctuator
+-0.27034378	<s> do punctuator
+-0.2304615	punctuator do punctuator
+-0.0050644954	<s> while punctuator
+-0.059249606	string while punctuator
+-0.010295133	punctuator while punctuator
+-0.024410032	numeric while punctuator
+-0.06849062	else while punctuator
+-0.0012990349	<s> this punctuator
+-0.0094984025	punctuator this punctuator
+-0.2471719	identifier this punctuator
+-0.033409283	numeric this punctuator
+-0.00944414	return this punctuator
+-0.005392801	in this punctuator
+-0.00847076	typeof this punctuator
+-0.0051072906	else this punctuator
+-0.012126429	delete this punctuator
+-0.016383471	new this punctuator
+-0.06960449	instanceof this punctuator
+-0.16028377	void this punctuator
+-0.017745873	<s> switch punctuator
+-0.13599846	string switch punctuator
+-0.017744604	punctuator switch punctuator
+-0.13599846	identifier switch punctuator
+-3.6383758	punctuator case punctuator
+-0.596102	<s> default punctuator
+-0.014026167	punctuator default punctuator
+-0.22364315	true default punctuator
+-0.20393088	break default punctuator
+-0.03683593	<s> finally punctuator
+-0.00092231215	punctuator finally punctuator
+-0.0594938	punctuator extends punctuator
+-0.024748942	punctuator super punctuator
+-0.03434096	<s> ` punctuator
+-0.11176636	if ` punctuator
+-0.11176636	in ` punctuator
+-0.10306674	\` ` punctuator
+-0.10306674	} ` punctuator
+-0.03434096	to ` punctuator
+-0.11176636	scalar ` punctuator
+-0.046419103	type ` punctuator
+-0.11176636	expected ` punctuator
+-0.11176636	] ` punctuator
+-0.2633101	is true.` punctuator
+-0.2633101	is false.` punctuator
+-0.03683593	} .` punctuator
+-0.087260075	> .` punctuator
+-0.07177385	} \`.` punctuator
+-0.087260075	an array.` punctuator
+-0.08064808	of array.` punctuator
+-0.2633101	single reactelement.` punctuator
+-0.2633101	an object.` punctuator
+-0.2633101	a reactnode.` punctuator
+-0.2633101	expected \`object\`.` punctuator
+-1.1667547	punctuator export punctuator
+-2.0243762	<s> import punctuator
+-0.20578432	punctuator import punctuator
+-1.5769848	punctuator void punctuator
+-0.087260075	<s> yield punctuator
+-0.008227511	punctuator yield punctuator
+-0.2633101	punctuator with punctuator
+-0.056438733	punctuator debugger punctuator
+-5.682062	punctuator string var
+-1.7747287	<s> punctuator var
+-2.5345607	string punctuator var
+-1.4361947	punctuator punctuator var
+-2.5483656	identifier punctuator var
+-2.2038527	numeric punctuator var
+-1.4303768	return punctuator var
+-1.7193322	null punctuator var
+-1.4273086	regularexpression punctuator var
+-1.4802487	false punctuator var
+-2.090306	true punctuator var
+-0.38346574	for punctuator var
+-1.1693112	else punctuator var
+-1.0628368	continue punctuator var
+-0.71482986	try punctuator var
+-1.8894205	break punctuator var
+-2.5377877	do punctuator var
+-1.701191	this punctuator var
+-2.3210218	default punctuator var
+-2.294708	finally punctuator var
+-0.74037665	debugger punctuator var
+-4.918604	punctuator identifier var
+-4.6020026	var identifier var
+-3.7406423	typeof identifier var
+-4.2336655	punctuator numeric var
+-2.9751751	return numeric var
+-4.2987714	punctuator null var
+-3.1229396	return false var
+-3.1137404	punctuator else var
+-0.54377055	punctuator export var
+-4.782275	punctuator string identifier
+-0.48847327	<s> punctuator identifier
+-0.98471314	string punctuator identifier
+-0.49203265	punctuator punctuator identifier
+-0.31839466	identifier punctuator identifier
+-0.99833035	numeric punctuator identifier
+-0.1478325	if punctuator identifier
+-0.25157222	function punctuator identifier
+-0.23727208	return punctuator identifier
+-0.703256	null punctuator identifier
+-0.40945745	regularexpression punctuator identifier
+-0.5999397	false punctuator identifier
+-0.025566788	in punctuator identifier
+-0.83180934	true punctuator identifier
+-0.025706286	typeof punctuator identifier
+-0.29624447	for punctuator identifier
+-0.2189969	else punctuator identifier
+-0.3211565	delete punctuator identifier
+-0.9201394	continue punctuator identifier
+-0.201404	throw punctuator identifier
+-0.29906902	new punctuator identifier
+-0.2363475	try punctuator identifier
+-0.012800945	catch punctuator identifier
+-0.9490542	break punctuator identifier
+-0.6455194	instanceof punctuator identifier
+-0.06921725	do punctuator identifier
+-0.36435702	while punctuator identifier
+-0.094451346	this punctuator identifier
+-0.16001256	switch punctuator identifier
+-0.39489564	case punctuator identifier
+-0.626077	default punctuator identifier
+-0.13920549	finally punctuator identifier
+-1.0631268	extends punctuator identifier
+-0.12273722	super punctuator identifier
+-0.75399935	` punctuator identifier
+-0.8659028	.` punctuator identifier
+-1.071317	export punctuator identifier
+-0.021955233	import punctuator identifier
+-0.12273722	void punctuator identifier
+-0.28187627	yield punctuator identifier
+-0.18065816	<s> var identifier
+-0.19188654	string var identifier
+-0.013151189	punctuator var identifier
+-0.016248388	identifier var identifier
+-0.04394015	numeric var identifier
+-0.2101293	null var identifier
+-0.2101293	false var identifier
+-0.047121275	else var identifier
+-0.004233326	export var identifier
+-3.0680308	<s> identifier identifier
+-3.5600674	punctuator identifier identifier
+-4.7307134	var identifier identifier
+-2.7851052	identifier identifier identifier
+-0.010413131	import identifier identifier
+-4.118276	punctuator numeric identifier
+-1.0044028	<s> function identifier
+-0.8253031	punctuator function identifier
+-0.20904225	identifier function identifier
+-0.20904225	numeric function identifier
+-1.1210148	return function identifier
+-0.20904225	regularexpression function identifier
+-0.018938256	default function identifier
+-0.004863798	export function identifier
+-0.54099816	<s> return identifier
+-0.24480473	punctuator return identifier
+-0.07040081	identifier return identifier
+-0.45638472	numeric return identifier
+-0.354849	true return identifier
+-0.2815833	else return identifier
+-0.354849	this return identifier
+-4.035857	punctuator false identifier
+-0.04364194	<s> in identifier
+-0.018413002	string in identifier
+-0.09956088	punctuator in identifier
+-0.038378138	identifier in identifier
+-0.24412939	numeric in identifier
+-4.3458962	punctuator true identifier
+-0.022890959	<s> typeof identifier
+-0.021097302	punctuator typeof identifier
+-0.004851809	return typeof identifier
+-0.99623793	<s> else identifier
+-1.0910625	punctuator else identifier
+-0.475258	numeric else identifier
+-0.072618276	<s> delete identifier
+-0.049160454	punctuator delete identifier
+-0.063438766	else delete identifier
+-1.2566386	punctuator continue identifier
+-0.48153538	<s> throw identifier
+-0.53705966	punctuator throw identifier
+-0.6456244	else throw identifier
+-0.0019513646	<s> new identifier
+-0.010284026	punctuator new identifier
+-0.018447222	return new identifier
+-0.22538784	in new identifier
+-0.010757553	throw new identifier
+-1.3523465	<s> break identifier
+-1.1069165	punctuator break identifier
+-0.4979634	else break identifier
+-0.022301361	<s> instanceof identifier
+-0.017688898	punctuator instanceof identifier
+-0.017630044	identifier instanceof identifier
+-0.0042912024	this instanceof identifier
+-1.954845	punctuator do identifier
+-4.2779436	punctuator this identifier
+-1.093732	<s> case identifier
+-1.2170664	punctuator case identifier
+-0.8263221	export default identifier
+-0.22693929	<s> class identifier
+-0.055090424	punctuator class identifier
+-0.014114244	identifier extends identifier
+-0.16177672	class extends identifier
+-0.0074742474	$ { identifier
+-0.013123334	punctuator const identifier
+-2.0372336	<s> import identifier
+-0.5188788	punctuator import identifier
+-2.0112412	punctuator void identifier
+-0.9097555	return void identifier
+-1.0142987	<s> punctuator numeric
+-1.6524913	string punctuator numeric
+-1.3360491	punctuator punctuator numeric
+-1.2086829	identifier punctuator numeric
+-0.34390557	numeric punctuator numeric
+-2.7082105	if punctuator numeric
+-1.5439988	return punctuator numeric
+-2.3432195	null punctuator numeric
+-3.005572	regularexpression punctuator numeric
+-2.472848	false punctuator numeric
+-2.7233753	true punctuator numeric
+-0.8317908	while punctuator numeric
+-2.293035	this punctuator numeric
+-2.407227	default punctuator numeric
+-1.8876874	<s> return numeric
+-1.639475	punctuator return numeric
+-0.8103533	numeric return numeric
+-1.3354977	else return numeric
+-0.54302603	<s> case numeric
+-0.3968108	punctuator case numeric
+-1.2034953	break case numeric
+-0.029605588	<s> void numeric
+-0.03228872	punctuator void numeric
+-0.10773447	return void numeric
+-5.677188	punctuator string if
+-1.7295214	<s> punctuator if
+-3.0355816	string punctuator if
+-1.6503283	punctuator punctuator if
+-2.5459313	identifier punctuator if
+-2.220599	numeric punctuator if
+-1.5679716	return punctuator if
+-1.7967123	null punctuator if
+-2.8815157	regularexpression punctuator if
+-1.5419838	false punctuator if
+-1.9094802	true punctuator if
+-1.140753	else punctuator if
+-0.69163114	continue punctuator if
+-1.2766714	try punctuator if
+-1.3260415	break punctuator if
+-0.99295235	do punctuator if
+-1.6930916	this punctuator if
+-1.2855595	default punctuator if
+-0.7847959	finally punctuator if
+-1.0345308	debugger punctuator if
+-4.673275	punctuator identifier if
+-3.9508605	var identifier if
+-3.5044055	<s> numeric if
+-3.7755542	punctuator numeric if
+-2.2349982	return numeric if
+-4.425292	punctuator return if
+-0.39938504	<s> else if
+-0.47194383	punctuator else if
+-0.75038505	numeric else if
+-0.5882801	<s> do if
+-0.4294988	punctuator do if
+-4.605045	punctuator this if
+-0.2868098	an array if
+-0.2868098	punctuator `value if
+-1.7627703	<s> punctuator function
+-1.5651268	string punctuator function
+-1.9503169	punctuator punctuator function
+-1.6061025	identifier punctuator function
+-2.4122012	numeric punctuator function
+-4.5094833	if punctuator function
+-1.7506151	return punctuator function
+-1.963028	null punctuator function
+-1.2402922	regularexpression punctuator function
+-2.2846513	false punctuator function
+-2.8367069	true punctuator function
+-1.285433	new punctuator function
+-2.2952406	catch punctuator function
+-0.70007354	instanceof punctuator function
+-1.8561772	this punctuator function
+-2.3031933	finally punctuator function
+-1.4192474	export punctuator function
+-2.4832218	import punctuator function
+-1.505227	yield punctuator function
+-6.3054714	punctuator identifier function
+-5.5766807	punctuator numeric function
+-1.8998493	<s> return function
+-1.6480494	punctuator return function
+-3.8932655	punctuator regularexpression function
+-0.1695539	<s> default function
+-0.23344122	export default function
+-0.92610633	<s> export function
+-0.22465272	punctuator export function
+-0.42638618	createitem = function
+-0.05229361	render : function
+-0.091018	getinitialstate : function
+-0.23898552	handlechange : function
+-0.23898552	tick : function
+-0.23898552	componentdidmount : function
+-0.23898552	componentwillunmount : function
+-0.23898552	onchange : function
+-0.23898552	handlesubmit : function
+-1.9884969	<s> punctuator return
+-2.690545	string punctuator return
+-1.6266937	punctuator punctuator return
+-2.54516	identifier punctuator return
+-2.342064	numeric punctuator return
+-2.9431682	return punctuator return
+-1.7058583	null punctuator return
+-2.8910058	regularexpression punctuator return
+-1.9713824	false punctuator return
+-2.0192757	true punctuator return
+-0.87548244	else punctuator return
+-2.609603	continue punctuator return
+-0.99070245	try punctuator return
+-2.0941138	break punctuator return
+-1.7604362	this punctuator return
+-0.29593012	default punctuator return
+-5.3153276	punctuator identifier return
+-5.280093	punctuator numeric return
+-2.74818	return numeric return
+-3.042804	return true return
+-2.2823398	<s> else return
+-1.8602382	punctuator else return
+-4.6134033	punctuator this return
+-2.5910418	<s> punctuator null
+-2.0291398	string punctuator null
+-3.1737816	punctuator punctuator null
+-2.373076	identifier punctuator null
+-3.0933151	numeric punctuator null
+-3.299732	if punctuator null
+-3.7742715	return punctuator null
+-2.0219114	null punctuator null
+-1.9461086	regularexpression punctuator null
+-2.7605827	false punctuator null
+-3.2865365	true punctuator null
+-3.332718	this punctuator null
+-2.9278655	switch punctuator null
+-2.33214	<s> return null
+-1.7682307	punctuator return null
+-0.9217671	else return null
+-2.9453468	<s> punctuator regularexpression
+-3.1572633	string punctuator regularexpression
+-3.4915166	punctuator punctuator regularexpression
+-2.5610847	identifier punctuator regularexpression
+-4.4794917	numeric punctuator regularexpression
+-2.3735428	if punctuator regularexpression
+-2.0964043	return punctuator regularexpression
+-3.878763	null punctuator regularexpression
+-1.4987624	regularexpression punctuator regularexpression
+-2.0760312	typeof punctuator regularexpression
+-3.180075	while punctuator regularexpression
+-3.110216	<s> return regularexpression
+-2.5146544	punctuator return regularexpression
+-3.384417	punctuator typeof regularexpression
+-2.7062793	<s> punctuator false
+-3.2012901	string punctuator false
+-2.868718	punctuator punctuator false
+-2.384923	identifier punctuator false
+-3.6663942	numeric punctuator false
+-3.558073	if punctuator false
+-3.7961507	return punctuator false
+-2.8819864	null punctuator false
+-1.8047872	false punctuator false
+-2.172697	true punctuator false
+-4.1682663	this punctuator false
+-2.2004852	default punctuator false
+-1.8980341	<s> return false
+-1.6359985	punctuator return false
+-1.8477104	else return false
+-3.1063273	<s> string in
+-3.346929	punctuator string in
+-2.5612168	return string in
+-6.0051484	identifier punctuator in
+-4.6803937	numeric punctuator in
+-3.1242514	<s> identifier in
+-3.360048	punctuator identifier in
+-2.2069693	var identifier in
+-3.5394895	return identifier in
+-5.3307877	punctuator numeric in
+-0.28999874	not specified in
+-2.4734175	<s> punctuator true
+-2.61418	string punctuator true
+-2.3719137	punctuator punctuator true
+-2.2349303	identifier punctuator true
+-3.46282	numeric punctuator true
+-4.36527	if punctuator true
+-2.7639658	return punctuator true
+-2.5100203	null punctuator true
+-1.9990132	false punctuator true
+-2.1718862	true punctuator true
+-1.306224	new punctuator true
+-1.697023	while punctuator true
+-2.9527202	this punctuator true
+-2.9103777	switch punctuator true
+-1.4506503	export punctuator true
+-1.9769113	<s> return true
+-1.7199374	punctuator return true
+-0.44083646	sanitize : true
+-3.0635035	<s> punctuator typeof
+-2.9214377	string punctuator typeof
+-3.184418	punctuator punctuator typeof
+-3.4023705	identifier punctuator typeof
+-4.2362823	numeric punctuator typeof
+-1.5557212	if punctuator typeof
+-2.3907619	return punctuator typeof
+-2.8489609	null punctuator typeof
+-3.3662267	false punctuator typeof
+-3.9317052	true punctuator typeof
+-3.5211935	this punctuator typeof
+-1.7975161	switch punctuator typeof
+-3.1148677	<s> return typeof
+-2.644198	punctuator return typeof
+-5.686991	punctuator string for
+-2.8671384	<s> punctuator for
+-3.9962752	string punctuator for
+-2.7038145	punctuator punctuator for
+-2.9340947	identifier punctuator for
+-3.2466471	numeric punctuator for
+-2.7593	return punctuator for
+-2.6242292	null punctuator for
+-3.625159	regularexpression punctuator for
+-2.3765767	false punctuator for
+-2.8394487	true punctuator for
+-1.9696591	else punctuator for
+-1.8621999	continue punctuator for
+-2.1223586	try punctuator for
+-2.6286523	break punctuator for
+-2.5613034	do punctuator for
+-3.4350758	this punctuator for
+-1.1545503	extends punctuator for
+-6.0040975	punctuator identifier for
+-4.5840325	punctuator numeric for
+-3.3982894	punctuator false for
+-2.4891698	punctuator else for
+-2.5789652	<s> punctuator else
+-3.9439187	string punctuator else
+-2.2254705	punctuator punctuator else
+-3.5414526	identifier punctuator else
+-2.9135718	numeric punctuator else
+-2.3693247	return punctuator else
+-2.689736	null punctuator else
+-3.4896884	regularexpression punctuator else
+-2.7605827	false punctuator else
+-2.9371064	true punctuator else
+-1.3802155	continue punctuator else
+-1.2327647	break punctuator else
+-3.6026123	this punctuator else
+-4.9533815	punctuator numeric else
+-3.7921832	<s> punctuator delete
+-5.065528	string punctuator delete
+-3.419019	punctuator punctuator delete
+-3.8453927	identifier punctuator delete
+-4.4090724	numeric punctuator delete
+-4.374221	if punctuator delete
+-3.750047	return punctuator delete
+-2.9524677	null punctuator delete
+-3.0298393	false punctuator delete
+-3.605682	true punctuator delete
+-2.2398317	else punctuator delete
+-2.2164674	try punctuator delete
+-3.7020571	this punctuator delete
+-1.7104387	finally punctuator delete
+-4.743351	punctuator return delete
+-3.1178057	punctuator else delete
+-2.9224331	punctuator void delete
+-4.0841446	<s> punctuator continue
+-4.552315	string punctuator continue
+-3.7283502	punctuator punctuator continue
+-4.2597375	identifier punctuator continue
+-3.9003077	numeric punctuator continue
+-3.9307802	null punctuator continue
+-3.7372994	false punctuator continue
+-3.230461	true punctuator continue
+-6.010419	punctuator identifier continue
+-4.035805	punctuator else continue
+-3.100809	<s> punctuator throw
+-3.753154	string punctuator throw
+-2.8639357	punctuator punctuator throw
+-3.4663086	identifier punctuator throw
+-3.637011	numeric punctuator throw
+-2.677677	return punctuator throw
+-2.8802059	null punctuator throw
+-3.1174524	false punctuator throw
+-3.215686	true punctuator throw
+-1.622383	else punctuator throw
+-2.8347516	try punctuator throw
+-4.152607	this punctuator throw
+-1.1605142	default punctuator throw
+-4.7517138	punctuator return throw
+-2.4667852	punctuator else throw
+-2.6389208	<s> punctuator new
+-3.93402	string punctuator new
+-3.2911074	punctuator punctuator new
+-2.3662283	identifier punctuator new
+-4.2648087	numeric punctuator new
+-3.449431	if punctuator new
+-2.5656683	return punctuator new
+-3.8027472	null punctuator new
+-2.805928	regularexpression punctuator new
+-3.759814	false punctuator new
+-3.8729072	true punctuator new
+-1.2176595	throw punctuator new
+-2.469379	try punctuator new
+-3.1428037	while punctuator new
+-4.1109114	this punctuator new
+-2.3781207	default punctuator new
+-1.9331563	<s> return new
+-1.895599	punctuator return new
+-1.8437548	else return new
+-2.3913522	string in new
+-0.25619447	<s> throw new
+-0.18769194	punctuator throw new
+-0.29741275	return throw new
+-0.16466722	else throw new
+-3.7047925	<s> punctuator try
+-4.5766397	string punctuator try
+-3.206293	punctuator punctuator try
+-3.968114	identifier punctuator try
+-4.231876	numeric punctuator try
+-3.0347965	return punctuator try
+-2.9951856	null punctuator try
+-3.680568	regularexpression punctuator try
+-2.517035	false punctuator try
+-2.7030513	true punctuator try
+-2.4225633	else punctuator try
+-3.053291	try punctuator try
+-3.3837001	this punctuator try
+-2.0901284	finally punctuator try
+-4.044342	punctuator else try
+-3.7298222	<s> punctuator catch
+-3.125527	punctuator punctuator catch
+-4.7093325	identifier punctuator catch
+-4.5831723	numeric punctuator catch
+-5.2975664	punctuator string break
+-3.332113	<s> punctuator break
+-3.5044293	string punctuator break
+-3.2232382	punctuator punctuator break
+-3.596473	identifier punctuator break
+-3.0116558	numeric punctuator break
+-3.4255164	null punctuator break
+-2.7639792	false punctuator break
+-2.615032	true punctuator break
+-2.3888516	else punctuator break
+-4.373018	this punctuator break
+-1.4882647	default punctuator break
+-5.5972714	punctuator identifier break
+-5.3307877	punctuator numeric break
+-2.6278236	punctuator else break
+-4.3561625	<s> punctuator instanceof
+-4.843245	string punctuator instanceof
+-4.4838147	punctuator punctuator instanceof
+-4.5029426	identifier punctuator instanceof
+-3.937925	numeric punctuator instanceof
+-4.515988	this punctuator instanceof
+-4.302816	<s> identifier instanceof
+-3.3971572	punctuator identifier instanceof
+-2.8028932	return identifier instanceof
+-4.1423845	new identifier instanceof
+-2.9038398	<s> this instanceof
+-2.5060797	punctuator this instanceof
+-3.37791	return this instanceof
+-3.9187825	<s> punctuator do
+-5.7309027	string punctuator do
+-4.209926	punctuator punctuator do
+-4.044492	identifier punctuator do
+-3.1414342	numeric punctuator do
+-3.305968	return punctuator do
+-3.8980546	null punctuator do
+-3.468758	else punctuator do
+-3.0308182	break punctuator do
+-4.1998563	this punctuator do
+-5.6915913	punctuator string while
+-3.1967256	return string while
+-3.2797673	<s> punctuator while
+-4.270348	string punctuator while
+-3.1984463	punctuator punctuator while
+-3.3351038	identifier punctuator while
+-2.7502043	numeric punctuator while
+-2.8742146	return punctuator while
+-3.0890727	null punctuator while
+-3.1398327	regularexpression punctuator while
+-2.7544968	false punctuator while
+-3.2068179	true punctuator while
+-2.1295607	else punctuator while
+-2.3737075	continue punctuator while
+-2.21206	try punctuator while
+-2.00196	break punctuator while
+-3.2791097	this punctuator while
+-2.1631653	default punctuator while
+-4.510009	punctuator numeric while
+-2.9522767	punctuator else while
+-2.113914	<s> punctuator this
+-2.8444636	string punctuator this
+-2.221257	punctuator punctuator this
+-1.9935815	identifier punctuator this
+-2.7704933	numeric punctuator this
+-1.6160451	if punctuator this
+-1.7642576	return punctuator this
+-1.8795677	null punctuator this
+-3.521541	regularexpression punctuator this
+-1.9076768	false punctuator this
+-2.3304856	true punctuator this
+-3.4684086	for punctuator this
+-1.4499539	else punctuator this
+-1.8464197	continue punctuator this
+-1.2623793	new punctuator this
+-1.7269735	try punctuator this
+-2.5075383	do punctuator this
+-1.896898	while punctuator this
+-2.1515863	this punctuator this
+-0.569545	switch punctuator this
+-1.7918059	default punctuator this
+-1.5361588	finally punctuator this
+-1.0921507	void punctuator this
+-0.41724762	with punctuator this
+-5.5915704	punctuator identifier this
+-4.580068	punctuator numeric this
+-1.4472582	<s> return this
+-1.3075739	punctuator return this
+-1.8282832	else return this
+-3.1133878	return false this
+-1.3541404	<s> in this
+-2.2915697	string in this
+-1.0231472	punctuator in this
+-1.2876794	identifier in this
+-2.0117686	punctuator typeof this
+-2.1795795	punctuator else this
+-1.079863	<s> delete this
+-1.1294032	punctuator delete this
+-0.25350067	return delete this
+-0.25350067	void delete this
+-2.8545444	punctuator new this
+-1.8793552	return new this
+-2.2255142	identifier instanceof this
+-2.5971184	punctuator void this
+-1.5822155	return void this
+-5.9872513	punctuator string switch
+-3.8044147	<s> punctuator switch
+-3.9367678	string punctuator switch
+-3.4381843	punctuator punctuator switch
+-4.528735	identifier punctuator switch
+-5.356489	numeric punctuator switch
+-3.3048463	return punctuator switch
+-3.381443	false punctuator switch
+-4.1620913	true punctuator switch
+-2.9543417	else punctuator switch
+-3.11737	try punctuator switch
+-5.003611	var identifier switch
+-3.0212936	<s> punctuator case
+-2.693582	string punctuator case
+-3.1097136	punctuator punctuator case
+-3.9442878	identifier punctuator case
+-2.5796742	numeric punctuator case
+-2.6072948	return punctuator case
+-3.8968444	null punctuator case
+-3.1312392	false punctuator case
+-3.963024	true punctuator case
+-0.5151967	break punctuator case
+-0.6336951	string break case
+-2.37997	punctuator break case
+-0.42032138	identifier break case
+-0.29263875	numeric break case
+-4.183763	<s> punctuator default
+-3.8602085	string punctuator default
+-4.712149	punctuator punctuator default
+-4.545752	identifier punctuator default
+-5.38411	numeric punctuator default
+-3.16395	return punctuator default
+-3.7178664	false punctuator default
+-3.2998457	true punctuator default
+-1.4048357	break punctuator default
+-3.0477147	return true default
+-1.6293136	<s> break default
+-0.7541357	identifier break default
+-1.5375869	punctuator export default
+-4.757035	<s> punctuator finally
+-3.871408	punctuator punctuator finally
+-5.969576	identifier punctuator finally
+-5.3226576	numeric punctuator finally
+-4.9748087	<s> punctuator class
+-4.666302	punctuator punctuator class
+-5.938529	identifier punctuator class
+-5.2964454	numeric punctuator class
+-4.0606623	false punctuator class
+-5.2601075	identifier punctuator extends
+-0.22375865	class identifier extends
+-1.396476	punctuator class extends
+-4.899602	punctuator punctuator super
+-6.0611224	identifier punctuator `the
+-0.26245302	punctuator `the \`
+-0.15609077	identifier } \`
+-0.54537016	supplied to \`
+-0.26746723	`supplied to \`
+-0.8379623	instance of \`
+-0.86639905	of type \`
+-0.36172488	of value \`
+-0.19291595	`the \` $
+-0.4732604	} \` $
+-0.04733342	to \` $
+-0.21128258	of \` $
+-0.21128258	type \` $
+-0.21128258	value \` $
+-0.43771273	using < $
+-0.65572125	punctuator ` $
+-0.29367056	method of $
+-0.29367056	one of $
+-0.2874457	child from $
+-0.2874457	punctuator `required $
+-0.03249561	punctuator `\` $
+-0.116906844	punctuator `invalid $
+-0.385331	} [ $
+-0.26022127	} . $
+-2.6342778	<s> return {
+-0.0022577306	\` $ {
+-0.034974948	< $ {
+-0.015278182	` $ {
+-0.032471284	of $ {
+-0.034974948	from $ {
+-0.034974948	`required $ {
+-0.005033252	`\` $ {
+-0.005033252	`invalid $ {
+-0.034974948	[ $ {
+-0.032471284	. $ {
+-0.4337803	dangerouslysetinnerhtml= { {
+-0.7535061	} > {
+-0.3852172	ul > {
+-0.3852172	button > {
+-0.42362225	this.state.value , {
+-0.0730339	react.createclass ( {
+-0.093386956	this.setstate ( {
+-0.43349892	elapsed : {
+-0.05947171	( ) {
+-0.35650748	index ) {
+-0.31998786	e ) {
+-0.28364414	> hello {
+-0.092595644	<s> onchange= {
+-0.092595644	input onchange= {
+-0.28364414	<s> defaultvalue= {
+-0.28364414	<s> dangerouslysetinnerhtml= {
+-0.28364414	li key= {
+-0.28364414	todolist items= {
+-0.28364414	form onsubmit= {
+-0.28364414	} value= {
+-0.0076760496	{ identifier }
+-0.41891143	: true }
+-1.683832	<s> } }
+-0.37268704	1 ) }
+-0.37268704	createitem ) }
+-0.28050134	{ this.props.name }
+-0.41806504	: '' }
+-0.35054377	<s> ' }
+-0.28050134	) .value }
+-0.28050134	{ this.handlechange }
+-0.35054377	{ this.state.value }
+-0.28050134	: 0 }
+-0.35054377	{ this.state.secondselapsed }
+-0.5694338	+ 1 }
+-0.1789129	{ itemtext }
+-0.1789129	+ itemtext }
+-0.28050134	: e.target.value }
+-0.35054377	{ this.state.text }
+-0.35054377	: nexttext }
+-0.28050134	{ this.state.items }
+-0.28050134	{ this.handlesubmit }
+-0.28050134	{ this.onchange }
+-1.5761724	} \` prop
+-0.74665564	} \` supplied
+-0.2641344	\` prop supplied
+-0.2641344	`invalid argument supplied
+-0.022486864	\` supplied to
+-0.12227082	prop supplied to
+-0.12227082	argument supplied to
+-0.2646102	punctuator `supplied to
+-2.6452408	<s> return <
+-0.34517866	) } <
+-0.38608438	this.props.name } <
+-0.38608438	this.state.secondselapsed } <
+-0.62995017	itemtext } <
+-1.0431513	supplied to <
+-0.28808257	call using <
+-0.10325559	react.render ( <
+-0.3594655	> input <
+-0.28808257	> output <
+-0.28808257	> todo <
+-0.39375713	to < select
+-1.7935305	identifier } >
+-0.66332996	itemtext } >
+-0.40480685	this.handlesubmit } >
+-0.2580009	< select >
+-0.32997257	< div >
+-0.07633972	< /div >
+-0.4233937	markdowneditor '' >
+-0.060164105	<s> / >
+-0.02585437	} / >
+-0.060164105	'' / >
+-0.060164105	markdowneditor / >
+-0.060164105	timer / >
+-0.060164105	todoapp / >
+-0.1050908	< h3 >
+-0.1050908	< /h3 >
+-0.28490764	< /li >
+-0.28490764	< ul >
+-0.28490764	< /ul >
+-0.28490764	< button >
+-0.28490764	< /button >
+-0.28490764	< /form >
+-0.39298174	select > must
+-0.26481178	> must be
+-0.5930215	must be an
+-0.47825342	, expected an
+-0.4060852	be an array
+-5.0085373	identifier punctuator `
+-0.43727013	array if `
+-0.43411416	specified in `
+-1.5558351	} \` `
+-1.7393719	identifier } `
+-0.51746523	supplied to `
+-0.2868098	a scalar `
+-0.23417203	of type `
+-1.2270263	, expected `
+-0.38453448	} ] `
+-1.7496945	` punctuator `\`multiple\`
+-0.29246822	punctuator `\`multiple\` is
+-0.29246822	if \`multiple\` is
+-0.36491194	`\`multiple\` is true.`
+-0.59193367	must be a
+-0.29192337	was passed a
+-1.0035992	, expected a
+-0.4060852	be a scalar
+-1.7496945	` punctuator `value
+-0.43998063	`value if \`multiple\`
+-0.36491194	\`multiple\` is false.`
+-1.0664525	punctuator ` check
+-0.26481178	` check the
+-0.5930215	check the render
+-0.36491194	the render method
+-0.91293603	} \` of
+-0.2912809	render method of
+-0.08733027	an instance of
+-0.09455222	expected instance of
+-0.2912809	expected one of
+-1.3502266	identifier } .`
+-0.9024943	} > .`
+-0.5930215	check the react.render
+-0.36491194	the react.render call
+-0.2926991	react.render call using
+-1.3812149	punctuator ` it
+-1.8555923	} \` was
+-0.29246822	` it was
+-0.36491194	it was passed
+-0.4060852	passed a child
+-0.2926991	a child from
+-6.4003754	identifier punctuator `required
+-0.36491194	\` was not
+-0.2926991	was not specified
+-0.39062765	` punctuator `\`
+-1.1869678	identifier } \`.`
+-5.0997086	<s> punctuator `invalid
+-5.0072017	identifier punctuator `invalid
+-0.19455059	\` of type
+-0.6803913	} \` ,
+-0.409202	<s> } ,
+-0.40307927	/ > ,
+-0.385331	[ ] ,
+-0.2874457	to oneof ,
+-0.2874457	to oneoftype ,
+-0.358715	( this.state.value ,
+-0.2874457	( this.tick ,
+-0.38807663	( itemtext ,
+-0.358715	: nextitems ,
+-0.04051614	\` , expected
+-0.32944992	oneof , expected
+-0.32944992	oneoftype , expected
+-0.89775884	expected an array.`
+-0.53689075	instance of array.`
+-2.0755343	identifier } [
+-0.4381133	this.state.items.concat ( [
+-0.73225397	items : [
+-2.0755343	identifier } ]
+-0.39094803	: [ ]
+-0.3639961	[ this.state.text ]
+-0.6656511	expected a single
+-0.2926991	a single reactelement.`
+-0.6249816	expected an instance
+-1.263825	, expected instance
+-1.0216062	punctuator `invalid argument
+-1.3212075	supplied to oneof
+-0.8118545	return { value
+-1.2154412	( { value
+-1.0807167	\` of value
+-1.3988528	` punctuator `supplied
+-1.265384	, expected one
+-0.8986577	expected an object.`
+-1.7616199	identifier } .
+-1.3212075	supplied to oneoftype
+-0.6656511	expected a reactnode.`
+-1.265384	, expected \`object\`.`
+-4.003652	<s> punctuator const
+-4.8402767	string punctuator const
+-3.9171083	punctuator punctuator const
+-5.3132358	identifier punctuator const
+-4.912898	numeric punctuator const
+-3.9905725	false punctuator const
+-3.7760944	else punctuator const
+-4.200364	<s> punctuator export
+-4.3389225	string punctuator export
+-3.8251102	punctuator punctuator export
+-4.8403015	identifier punctuator export
+-4.5686502	numeric punctuator export
+-2.3685164	regularexpression punctuator export
+-3.9895868	false punctuator export
+-5.0222836	<s> punctuator import
+-3.3185709	string punctuator import
+-4.5521526	identifier punctuator import
+-3.9103894	regularexpression punctuator import
+-4.0788765	<s> punctuator void
+-5.7579303	string punctuator void
+-3.835591	punctuator punctuator void
+-3.6767936	identifier punctuator void
+-3.8079534	numeric punctuator void
+-3.7008471	if punctuator void
+-2.5142944	null punctuator void
+-3.4766343	while punctuator void
+-4.429625	this punctuator void
+-3.1148677	<s> return void
+-2.9639442	punctuator return void
+-4.8880677	identifier punctuator yield
+-3.3406353	<s> var hellomessage
+-1.0221322	( < hellomessage
+-0.3594655	var hellomessage =
+-0.38612902	var markdowneditor =
+-0.3594655	var timer =
+-0.3594655	<s> this.interval =
+-0.3594655	var todolist =
+-0.3594655	var createitem =
+-0.3594655	var todoapp =
+-0.3594655	var nextitems =
+-0.3594655	var nexttext =
+-0.20427144	hellomessage = react.createclass
+-0.20427144	markdowneditor = react.createclass
+-0.20427144	timer = react.createclass
+-0.20427144	todolist = react.createclass
+-0.20427144	todoapp = react.createclass
+-0.38814187	= function (
+-0.025288478	: function (
+-2.6389425	<s> return (
+-0.0902358	<s> react.render (
+-0.060061507	= react.createclass (
+-0.07647087	<s> this.setstate (
+-0.28554076	: react.finddomnode (
+-0.28554076	: marked (
+-0.39966732	' + (
+-0.28554076	= setinterval (
+-0.28554076	<s> clearinterval (
+-0.28554076	{ this.props.items.map (
+-0.28554076	<s> e.preventdefault (
+-0.28554076	= this.state.items.concat (
+-0.07041929	<s> render :
+-0.31868154	{ value :
+-0.10490402	<s> getinitialstate :
+-0.28427544	<s> handlechange :
+-0.28427544	<s> __html :
+-0.28427544	{ sanitize :
+-0.2574476	{ secondselapsed :
+-0.28427544	<s> tick :
+-0.28427544	<s> componentdidmount :
+-0.28427544	<s> componentwillunmount :
+-0.28427544	seconds elapsed :
+-0.2574476	{ items :
+-0.09275836	{ text :
+-0.08568732	, text :
+-0.28427544	<s> onchange :
+-0.28427544	<s> handlesubmit :
+-0.6477719	<s> } )
+-0.34522697	true } )
+-0.34522697	.value } )
+-0.34522697	1 } )
+-0.34522697	e.target.value } )
+-0.34522697	nexttext } )
+-0.38373938	this.state.text ] )
+-0.11866257	function ( )
+-0.3767421	e.preventdefault ( )
+-0.07660209	, mountnode )
+-0.28617483	( this.refs.textarea )
+-0.58053803	+ 1 )
+-0.35721782	( this.interval )
+-0.28617483	, 1000 )
+-0.35721782	( createitem )
+-0.35721782	, index )
+-0.2591097	( e )
+-0.6300949	<s> < div
+-0.81242675	return < div
+-0.9030434	div > hello
+-0.44403803	hello { this.props.name
+-1.1049253	<s> < /div
+-0.71129805	} < /div
+-1.4847264	<s> } ;
+-0.38847244	'' } ;
+-0.38847244	' } ;
+-0.38847244	0 } ;
+-0.9225328	/div > ;
+-0.39083576	/li > ;
+-0.39083576	/ul > ;
+-0.080583975	<s> ) ;
+-0.057514668	} ) ;
+-0.20696197	] ) ;
+-1.1228552	( ) ;
+-0.058993425	mountnode ) ;
+-0.20696197	this.interval ) ;
+-0.20696197	1000 ) ;
+-0.43112123	= '' ;
+-0.36491194	< hellomessage name=
+-0.4269331	nexttext = ''
+-0.88786864	text : ''
+-0.28808257	hellomessage name= ''
+-0.28808257	'' john ''
+-0.38612902	'' markdowneditor ''
+-0.09373592	<s> classname= ''
+-0.09373592	div classname= ''
+-0.3594655	'' textarea ''
+-0.28808257	<s> ref= ''
+-0.28808257	'' content ''
+-0.4328441	name= '' john
+-0.40880337	this.state.value } /
+-0.40880337	this.state.text } /
+-0.40880337	this.state.items } /
+-0.4295647	john '' /
+-0.3885318	< markdowneditor /
+-0.36172488	< timer /
+-0.36172488	< todoapp /
+-0.10314473	> , mountnode
+-6.4003754	identifier punctuator with
+-3.3368633	<s> var markdowneditor
+-1.0196567	( < markdowneditor
+-0.71378636	classname= '' markdowneditor
+-0.7337104	value : 'type
+-0.2926991	: 'type some
+-0.2926991	'type some *markdown*
+-0.2926991	some *markdown* here
+-0.2926991	*markdown* here !
+-0.29246822	'add # '
+-0.7337104	value : react.finddomnode
+-0.43902588	react.finddomnode ( this.refs.textarea
+-0.4382804	this.refs.textarea ) .value
+-0.97553325	< div classname=
+-0.83335066	<s> < h3
+-1.5486202	<s> < input
+-0.9024943	h3 > input
+-0.398554	input < /h3
+-0.398554	output < /h3
+-0.398554	todo < /h3
+-1.5486202	<s> < textarea
+-0.4325636	ref= '' textarea
+-0.36463934	< input onchange=
+-0.73731697	onchange= { this.handlechange
+-0.4437762	defaultvalue= { this.state.value
+-0.43875426	marked ( this.state.value
+-0.9030434	h3 > output
+-0.7155918	classname= '' content
+-0.44219854	__html : marked
+-0.44403803	, { sanitize
+-5.288023	punctuator punctuator debugger
+-3.3406353	<s> var timer
+-1.0221322	( < timer
+-0.8124659	return { secondselapsed
+-1.2163603	( { secondselapsed
+-0.7337104	secondselapsed : 0
+-0.4437762	: { this.state.secondselapsed
+-0.7332767	secondselapsed : this.state.secondselapsed
+-0.3632377	# ' +
+-0.3632377	: this.state.secondselapsed +
+-0.3632377	{ index +
+-0.2912809	( this.state.items.length +
+-0.23761529	this.state.secondselapsed + 1
+-0.23761529	this.state.items.length + 1
+-0.43875426	clearinterval ( this.interval
+-0.43089426	this.interval = setinterval
+-0.43902588	setinterval ( this.tick
+-0.43289125	this.tick , 1000
+-0.9030434	div > seconds
+-0.2926991	> seconds elapsed
+-3.3406353	<s> var todolist
+-1.5486202	<s> < todolist
+-3.3406353	<s> var createitem
+-0.43875426	this.props.items.map ( createitem
+-0.9032502	> { itemtext
+-1.5727024	function ( itemtext
+-0.40547574	index + itemtext
+-0.4437762	key= { index
+-0.43265492	itemtext , index
+-0.9057446	return < li
+-0.2926991	< li key=
+-1.1137316	} < /li
+-0.9057446	return < ul
+-0.9057931	> { this.props.items.map
+-1.1137316	} < /ul
+-3.3406353	<s> var todoapp
+-1.0221322	( < todoapp
+-0.8124659	return { items
+-1.2163603	( { items
+-1.3643026	( { text
+-0.35288927	] , text
+-0.35288927	nextitems , text
+-1.2515932	function ( e
+-0.90048766	text : e.target.value
+-3.3406353	<s> var nextitems
+-0.7332767	items : nextitems
+-0.43089426	nextitems = this.state.items.concat
+-0.4437762	value= { this.state.text
+-0.3916325	( [ this.state.text
+-3.3406353	<s> var nexttext
+-0.8998511	text : nexttext
+-0.9030434	h3 > todo
+-0.36491194	< todolist items=
+-0.44403803	items= { this.state.items
+-1.5511099	<s> < form
+-0.2926991	< form onsubmit=
+-0.44403803	onsubmit= { this.handlesubmit
+-0.73731697	onchange= { this.onchange
+-0.44594166	this.onchange } value=
+-1.5511099	<s> < button
+-0.9057931	> { 'add
+-0.2926991	{ 'add #
+-0.43902588	+ ( this.state.items.length
+-1.1137316	} < /button
+-1.5511099	<s> < /form
+
+\end\

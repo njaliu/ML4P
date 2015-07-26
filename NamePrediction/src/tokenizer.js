@@ -13,10 +13,31 @@ function code2tokens(code) {
 			result = result.concat(token.type + ' ');
 		else
 			result = result.concat(token.value + ' ');
+
+		if( i % 50 == 0)
+			result = result.concat('\n' + ' ');
 	}
 
 	return result;
 }
+
+var c2tk = function(code) {
+	var ign = ['Identifier', 'Punctuator', 'String', 'RegularExpression', 'Numeric'];
+	var result = "";
+	var tks = Esprima.tokenize(code);
+	for(i in tks) {
+		var token = tks[i];
+		if( _.contains(ign, token.type) )
+			result = result.concat(token.type + ' ');
+		else
+			result = result.concat(token.value + ' ');
+
+		if( i % 50 == 0)
+			result = result.concat('\n' + ' ');
+	}
+
+	return result;
+};
 
 function test_main() {
 	var dir_base = '/home/aliu/Research/ML4P/NamePrediction/aliu-test/mutation/';
@@ -33,18 +54,21 @@ function test_main() {
 }
 
 function test_main_1() {
-	var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/jquery_test/original_source/';
-	var lm_input = '/home/aliu/Research/ML4P/NamePrediction/aliu-test/mutation/lm/jquery.token.input';
+	//var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/jquery_test/original_source/';
+	var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/original_source/';
+	//var lm_input = '/home/aliu/Research/ML4P/NamePrediction/aliu-test/mutation/lm/jquery.token.input';
+	var lm_github_150 = '/home/aliu/Research/ML4P/NamePrediction/aliu-test/mutation/lm/github_150.token.input';
 	var files = fs.readdirSync(dir_base);
 	var count = 0;
 	console.log("#### Total files: " + files.length);
 
 	for(i in files) {
 		var file = dir_base + files[i];
+		console.log("#### Extracting: " + file);
 		var code = fs.readFileSync(file, 'utf-8');
 		try{
 			var result = code2tokens(code);
-			fs.appendFileSync(lm_input, result + '\n');
+			fs.appendFileSync(lm_github_150, result + '\n');
 			count++;
 		} catch(e) {
 			console.log(e);
@@ -55,5 +79,6 @@ function test_main_1() {
 	console.log("#### TOKEN EXTRACTION SUCCESS!");
 }
 
-test_main();
+module.exports = c2tk;
+//test_main();
 //test_main_1();
