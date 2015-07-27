@@ -490,7 +490,7 @@ function test_main_2() {
 }
 
 function test_main_mutation_unguided() {
-	var orgin = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/original_source/messageFormatInterpolationParts.js';
+	var origin = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/original_source/messageFormatInterpolationParts.js';
 	var minified = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/minified/baseline_default/messageFormatInterpolationParts.min.js';
 	var source_map = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/source_maps/baseline_default/messageFormatInterpolationParts.map';
 	var predicted = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/predicted/baseline_default/messageFormatInterpolationParts.rename.js';
@@ -500,7 +500,7 @@ function test_main_mutation_unguided() {
 	var rawSourceMap = JSON.parse(fs.readFileSync(source_map,'utf-8'));
 	rawSourceMap["sourceRoot"] = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/source_maps/baseline_default/';
 
-	var result = mutation_unguided(orgin, minified, rawSourceMap, predicted, mutator, N);
+	var result = mutation_unguided(origin, minified, rawSourceMap, predicted, mutator, N);
 	console.log("#### Result size: " + result.length);
 	var good_result = result.filter(function(e){
 		return e.comment == 'good';
@@ -512,7 +512,7 @@ function test_main_mutation_unguided() {
 }
 
 function test_main_mutation_guided() {
-	var orgin = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/original_source/messageFormatInterpolationParts.js';
+	var origin = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/original_source/messageFormatInterpolationParts.js';
 	var minified = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/minified/baseline_default/messageFormatInterpolationParts.min.js';
 	var source_map = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/source_maps/baseline_default/messageFormatInterpolationParts.map';
 	var predicted = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/predicted/baseline_default/messageFormatInterpolationParts.rename.js';
@@ -522,7 +522,7 @@ function test_main_mutation_guided() {
 	var rawSourceMap = JSON.parse(fs.readFileSync(source_map,'utf-8'));
 	rawSourceMap["sourceRoot"] = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/source_maps/baseline_default/';
 
-	var result = mutation_guided(orgin, minified, rawSourceMap, predicted, mutator, N);
+	var result = mutation_guided(origin, minified, rawSourceMap, predicted, mutator, N);
 	console.log("#### Result size: " + result.length);
 	var good_result = result.filter(function(e){
 		return e.comment == 'good';
@@ -531,6 +531,57 @@ function test_main_mutation_guided() {
 	for(i in good_result) {
 		console.log(good_result[i]);
 	}
+}
+
+function test_main_mutation_high_precision() {
+	var output = [];
+	var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/';
+	var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_baseline';
+	var high_precision_records = fs.readFileSync(high_precision_file_report, 'utf-8').split('\n');
+	var len = high_precision_records.length - 1;
+	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/high_precision_results';
+
+	var origin_dir = dir_base + 'original_source/';
+	var minified_dir = dir_base + 'minified/baseline_default/';
+	var source_map_dir = dir_base + 'source_maps/baseline_default/';
+	var predicted_dir = dir_base + 'predicted/baseline_default/';
+	var mutator = '/home/aliu/Research/More/Download/closure-compiler-master/build/compiler.jar';
+	var N = 10;
+
+	for(var i = 0; i < len; i++) {
+		var record_str = high_precision_records[i];
+		var record_json = process_precision_record(record_str);
+		var precision = record_json.precision;
+		var prefix = record_json.prefix;
+
+		var origin = origin_dir + prefix + '.js';
+		var minified = minified_dir + prefix + '.min.js';
+		var source_map = source_map_dir + prefix + '.map';
+		var predicted = predicted_dir + prefix + '.rename.js';
+
+		var rawSourceMap = JSON.parse(fs.readFileSync(source_map,'utf-8'));
+		rawSourceMap["sourceRoot"] = source_map_dir;
+
+		var result = mutation_guided(origin, minified, rawSourceMap, predicted, mutator, N);
+		console.log("#### Result size: " + result.length);
+		var report_obj = result[0];
+		if(report_obj.comment == 'good') {
+			var good = {  file: origin,
+				  		  total: report_obj.total,
+				  		  baseline: report_obj.baseline,
+				  		  mutant: report_obj.mutant,
+				  		  improve: ((report_obj.baseline - report_obj.mutant) / report_obj.baseline).toFixed(2),
+				  		  config: report_obj.config };
+			output.push(good);
+			fs.appendFileSync(high_precision_results, JSON.stringify(good) + '\n');
+		}
+	}
+
+	for(i in output) {
+		console.log(output[i]);
+	}
+	console.log("#### Good result size(high precision): " + output.length);
+	console.log("#### Test(high precision) finish!");
 }
 
 //Check whether an original file is successfully minified
@@ -570,6 +621,18 @@ function getGroupFile(file, tag) {
 		return;
 }
 
+function process_precision_record(record) {
+	var items = record.split(' ');
+	if(items.length != 2) {
+		console.log("#### Error record size: " + items.length);
+		return;
+	}
+	var precision_val = Number(items[0]);
+	var len = items[1].split('/').length;
+	var prefix_val = path.basename(items[1].split('/')[len-1], '.rename.js');
+	return {precision: precision_val, prefix: prefix_val};	
+}
+
 //Display the calculation result for each file
 //result_json: list object of {"filename": name, "result": {"correct": count, "total": total}}
 function displayResult(result_json) {
@@ -602,6 +665,7 @@ function reportHighPrecisionFiles(result_stat, fname) {
 
 //test_main();
 //test_main_1();
-test_main_2();
+//test_main_2();
 //test_main_mutation_unguided();
 //test_main_mutation_guided();
+test_main_mutation_high_precision();

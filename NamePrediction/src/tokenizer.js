@@ -24,17 +24,23 @@ function code2tokens(code) {
 var c2tk = function(code) {
 	var ign = ['Identifier', 'Punctuator', 'String', 'RegularExpression', 'Numeric'];
 	var result = "";
-	var tks = Esprima.tokenize(code);
-	for(i in tks) {
-		var token = tks[i];
-		if( _.contains(ign, token.type) )
-			result = result.concat(token.type + ' ');
-		else
-			result = result.concat(token.value + ' ');
+	try {
+		var tks = Esprima.tokenize(code);
+		for(i in tks) {
+			var token = tks[i];
+			if( _.contains(ign, token.type) )
+				result = result.concat(token.type + ' ');
+			else
+				result = result.concat(token.value + ' ');
 
-		if( i % 50 == 0)
-			result = result.concat('\n' + ' ');
+			if( i % 50 == 0)
+				result = result.concat('\n' + ' ');
+		}	
+	} catch(ex){
+		console.log("*******EEEEEEEE********: Error caught!" );
+		console.log(ex);
 	}
+	
 
 	return result;
 };
