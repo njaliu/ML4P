@@ -68,10 +68,17 @@ function partialObufscate(markerMap, obfuscator, seed) {
 var disassembler = function(code, seed) {
 	var ast = UglifyJS.parse(code);
 	var candidates = _.pluck(funExtractor(ast), 'json');
-	PICKED = sampling(candidates).slice();
-	var ast_new = funMarker(ast, PICKED);
-	partialObufscate(markerMap, CC, seed);
-	var result = {code: ast_new.print_to_string({beautify: true}), marker: markerMap};
+	if( candidates.length > 0) {
+		PICKED = sampling(candidates).slice();
+		var ast_new = funMarker(ast, PICKED);
+		partialObufscate(markerMap, CC, seed);
+		var result = {code: ast_new.print_to_string({beautify: true}), marker: markerMap, po: true};
+		//console.log("zzzzzzzzzzzzzzz1");	
+	}
+	else {
+		var result = {code: ast.print_to_string({beautify: true}), marker: markerMap, po: false};
+	}
+
 	return result;
 }
 

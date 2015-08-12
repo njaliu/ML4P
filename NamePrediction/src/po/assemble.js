@@ -21,8 +21,14 @@ var assembler = function(code, seed) {
 	var input = disassembler(code, seed);
 	var code = input.code;
 	var marker = input.marker;
+	var flag = input.po;
 	var smInfo = {};
 
+	if( !flag ) {
+		console.log("zzzzzzzzzzzzzzz2");	
+		var output = {code: code, sm: smInfo, po: false};
+		return output;
+	}
 	for( key in marker ) {
 		if( marker.hasOwnProperty(key) ) {
 			var replace_str = '\"' + key + '\"';
@@ -36,7 +42,7 @@ var assembler = function(code, seed) {
 			code = code.replace(replace_str, content);
 		}
 	}
-	var output = {code: code, sm: smInfo};
+	var output = {code: code, sm: smInfo, po: true};
 	
 	return output;
 }

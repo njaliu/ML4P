@@ -532,10 +532,12 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 		var po_output = assembler(origin_code, seed);
 		fs.writeFileSync(after_po_mutant, po_output.code);
 		var smInfo = po_output.sm;
+		var flag = po_output.po;
+		//console.log("zzzzzzzzzzzzzzz flag " + flag);	
 
 		var cmd_minify = 'java -jar ' + mutator + ' --js ' + after_po_mutant + ' --js_output_file ' 
 					+ minified_mutant + ' --create_source_map ' + map_mutant
-					+ ' --formatting PRETTY_PRINT' + ' --mutation_seed ' + 0;	
+					+ ' --formatting PRETTY_PRINT' + ' --mutation_seed ' + (flag ? 0 : seed);	
 		exec(cmd_minify);
 
 		//var tks = C2TK(fs.readFileSync(minified_mutant, 'utf-8'));
@@ -896,12 +898,12 @@ function test_main_mutation_high_precision() {
 	var source_map_dir = dir_base + 'source_maps/baseline_default/';
 	var predicted_dir = dir_base + 'predicted/baseline_default_jsnice/';
 	var mutator = '/home/aliu/Research/More/Download/closure-compiler-master/build/compiler.jar';
-	var N = 10;
+	var N = 20;
 
 	//This variable is for experimenting specific files.
-	var first_total = 25;
+	var first_total = 51;
 	len = first_total;
-	for(var i = 20; i < len; i++) {
+	for(var i = 50; i < len; i++) {
 		var record_str = high_precision_records[i];
 		var record_json = process_precision_record(record_str);
 		var precision = record_json.precision;
