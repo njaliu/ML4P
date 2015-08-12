@@ -1,0 +1,5 @@
+function 
+ cloneCopyEvent _1 _2 var _3 _4 _5 _6 _7 _8 _9 _10 if _2 nodeType !== Numeric return if dataPriv hasData _1 _6 = dataPriv 
+ access _1 _7 = dataPriv set _2 _6 _10 = _6 events if _10 delete _7 handle _7 events = for _5 in _10 for _3 = 
+ Numeric _4 = _10 _5 length _3 < _4 _3 ++ jQuery event add _2 _5 _10 _5 _3 if dataUser hasData _1 
+ _8 = dataUser access _1 _9 = jQuery extend _8 dataUser set _2 _9 

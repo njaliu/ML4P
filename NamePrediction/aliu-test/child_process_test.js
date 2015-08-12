@@ -1,6 +1,7 @@
 var exec = require('child_process').execSync;
 var spawn = require('child_process').spawn;
 var who = spawn('echo', ['haha']);
+var _ = require('underscore');
 
 var fs = require('fs');
 
@@ -19,3 +20,4 @@ var cmd_python = './python /home/aliu/Research/ML4P/NamePrediction/src/lm/test_l
 
 var obj = {yes: 1, no: 0};
 console.log(JSON.stringify(obj) + 'haha');
+console.log(_.random(0, 1));

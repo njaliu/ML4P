@@ -19,7 +19,7 @@ def MinifyJSFilesInDirToTarget(d, sourceMap, target):
         fbase_name = os.path.splitext(fbase)[0]
         #os.system("uglifyjs -c -m --source-map='%s' -o='%s' '%s'" % (sourceMap + fbase_name + '.map', target + fbase_name + '.min.js', fname))
         #os.system("java -jar /home/aliu/Research/closure-compiler/build/compiler.jar --create_source_map='%s' --js_output_file='%s' '%s'" % (sourceMap + fbase_name + '.map', target + fbase_name + '.min.js', fname))
-        os.system("java -jar /home/aliu/Research/More/Download/closure-compiler-master/build/compiler.jar --create_source_map='%s' --js_output_file='%s' '%s'" % (sourceMap + fbase_name + '.map', target + fbase_name + '.min.js', fname))
+        os.system("java -jar /home/aliu/Research/More/Download/closure-compiler-master/build/compiler.jar --create_source_map='%s' --js_output_file='%s' '%s' --mutation_seed=8191" % (sourceMap + fbase_name + '.map', target + fbase_name + '.min.js', fname))
 
 if __name__ == '__main__':
   if (len(sys.argv) <= 1):

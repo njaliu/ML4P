@@ -2,7 +2,16 @@ import kenlm
 
 dir_base = '/home/aliu/Research/ML4P/NamePrediction/aliu-test/mutation/lm/'
 test_dir = '/home/aliu/'
-lm_file = 'github_150.klm'
+# 3-gram LM
+#lm_file = 'github_150.klm'
+# 5-gram LM
+#lm_file = 'github_150.5gram.klm'
+# 6-gram LM
+#lm_file = 'github_150.6gram.klm'
+# 5-gram LM, no Punctuator
+#lm_file = 'github_150.noPun.5gram.klm'
+# 5-gram LM, no Punctuator, rename vars
+lm_file = 'github_150.noPun.id.5gram.klm'
 perplexity_file = 'github_150.perplexity'
 
 model = kenlm.LanguageModel(dir_base + lm_file)
