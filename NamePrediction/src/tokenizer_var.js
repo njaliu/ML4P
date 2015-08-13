@@ -182,4 +182,4 @@ module.exports = tokenizer;
 //test_main_single_file();
 //test_main_simple();
 
-console.log(rewrite(fs.readFileSync('/home/aliu/tmp.js', 'utf-8')));
+//console.log(rewrite(fs.readFileSync('/home/aliu/tmp.js', 'utf-8')));

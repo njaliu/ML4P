@@ -891,7 +891,7 @@ function test_main_mutation_high_precision() {
 	var high_precision_records = fs.readFileSync(high_precision_file_report, 'utf-8').split('\n');
 	var len = high_precision_records.length - 1;
 	//Output file
-	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/20150811_mcmc_n10_5gram_var_highest_po';
+	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/20150812_mcmc_n10_5gram_var_highest_po';
 
 	var origin_dir = dir_base + 'original_source/';
 	var minified_dir = dir_base + 'minified/baseline_default/';
