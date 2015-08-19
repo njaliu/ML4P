@@ -1,4 +1,7 @@
 #!/usr/bin/python
+
+# Extract values to Matlab for corrcoef() calculation.
+
 import re
 
 f = open('/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/guidance/20150805_mcmc_n10_5gram_var_highest_485_lm','r')

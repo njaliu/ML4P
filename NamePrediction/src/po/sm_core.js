@@ -4,13 +4,15 @@ var assembler = require('./assemble.js');
 var UglifyJS = require('uglify-js');
 var exec = require('child_process').execSync;
 
-var dir_base = '/home/aliu/experiments/';
+//var dir_base = '/home/aliu/experiments/';
+var dir_base = '/home/aliu/experiments/temp/';
 var CC = '/home/aliu/Research/More/Download/closure-compiler-master/build/compiler.jar';
 
 function checkOriginal(line, smInfo) {
 	var keys = Object.keys(smInfo);
 	for(i in keys) {
 		var start = Number(keys[i].split('#')[0]), end = Number(keys[i].split('#')[1]);
+		console.log(start + ' # ' + end);
 		if( line >= start && line <= end )
 			return {start: start, map_file: smInfo[keys[i]]};
 	}
@@ -24,7 +26,7 @@ function find_source_mapping(smc, smInfo, pos) {
 		line: line,
 		column: column
 	});
-	console.log(origin_obj);
+	console.log('123321\n' + JSON.stringify(origin_obj));
 	var origin_line = origin_obj.line;
 	var origin_column = origin_obj.column;
 	var result = checkOriginal(origin_line, smInfo);
@@ -40,7 +42,7 @@ function find_source_mapping(smc, smInfo, pos) {
 			line: origin_line - result.start + 1,
 			column: origin_column
 		});
-		console.log(origin_obj_new);
+		console.log('12344321\n' + JSON.stringify(origin_obj_new));
 		return origin_obj_new.name;
 	}
 }
@@ -106,28 +108,33 @@ function displaySMINFO(smInfo) {
 //----------------------------------------------------------------------
 
 function test_main() {
-	var test_file = '/home/aliu/experiments/manipulation.js';
+	var base_name = 'accounts_server';
+	var base_name = 'manipulation';
+	var test_file = dir_base + base_name + '.js';
 	var test_code = fs.readFileSync(test_file, 'utf-8');
-	var output = assembler(test_code, 207);
-	fs.writeFileSync(dir_base + 'manipulation.after.js', output.code);
+	var output = assembler(test_code, 256);
+	var test_after_file = dir_base + base_name + '.after.js';
+	var test_after_min_file = dir_base + base_name + '.after.min.js';
+	var test_map = dir_base + base_name + '.map';
+	fs.writeFileSync(test_after_file, output.code);
 	var smInfo = output.sm;
 	displaySMINFO(smInfo);
 
 	console.log("Start final obfuscation ...");
-	var cmd_minify = 'java -jar ' + CC + ' --js ' + '/home/aliu/experiments/manipulation.after.js' + ' --js_output_file ' 
-					+ '/home/aliu/experiments/manipulation.after.min.js' + ' --create_source_map ' + '/home/aliu/experiments/manipulation.map'
+	var cmd_minify = 'java -jar ' + CC + ' --js ' + test_after_file + ' --js_output_file ' 
+					+ test_after_min_file + ' --create_source_map ' + test_map
 					+ ' --formatting PRETTY_PRINT' + ' --mutation_seed ' + 0;
 	exec(cmd_minify);
 	console.log("Finish final obfuscation ...");
 
-	var rawSourceMap = JSON.parse(fs.readFileSync('/home/aliu/experiments/manipulation.map','utf-8'));
+	var rawSourceMap = JSON.parse(fs.readFileSync(test_map,'utf-8'));
 	rawSourceMap["sourceRoot"] = dir_base;
-	var after_code = fs.readFileSync('/home/aliu/experiments/manipulation.after.min.js', 'utf-8');
+	var after_code = fs.readFileSync(test_after_min_file, 'utf-8');
 	var mapTab = extract_mapping_po(after_code, smInfo, rawSourceMap);
 
 	console.log("Done!\n" + mapTab);
 }
 
-//test_main();
+test_main();
 
 module.exports = extract_mapping_po;

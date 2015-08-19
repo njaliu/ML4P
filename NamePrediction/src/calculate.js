@@ -530,6 +530,9 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 	for(var i = 0; i < N; i++) {
 		var seed = compute_seed(options);
 		var po_output = assembler(origin_code, seed);
+
+		debugger;
+		
 		fs.writeFileSync(after_po_mutant, po_output.code);
 		var smInfo = po_output.sm;
 		var flag = po_output.po;
@@ -898,7 +901,7 @@ function test_main_mutation_high_precision() {
 	var source_map_dir = dir_base + 'source_maps/baseline_default/';
 	var predicted_dir = dir_base + 'predicted/baseline_default_jsnice/';
 	var mutator = '/home/aliu/Research/More/Download/closure-compiler-master/build/compiler.jar';
-	var N = 20;
+	var N = 10;
 
 	//This variable is for experimenting specific files.
 	var first_total = 51;
