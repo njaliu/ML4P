@@ -13,7 +13,7 @@ function checkOriginal(line, smInfo) {
 	for(i in keys) {
 		var start = Number(keys[i].split('#')[0]), end = Number(keys[i].split('#')[1]);
 		console.log(start + ' # ' + end);
-		if( line >= start && line <= end )
+		if( line >= start && line <= end && start != -1)
 			return {start: start, map_file: smInfo[keys[i]]};
 	}
 	return null;
@@ -109,7 +109,7 @@ function displaySMINFO(smInfo) {
 
 function test_main() {
 	var base_name = 'accounts_server';
-	var base_name = 'manipulation';
+	//var base_name = 'manipulation';
 	var test_file = dir_base + base_name + '.js';
 	var test_code = fs.readFileSync(test_file, 'utf-8');
 	var output = assembler(test_code, 256);
@@ -135,6 +135,6 @@ function test_main() {
 	console.log("Done!\n" + mapTab);
 }
 
-test_main();
+//test_main();
 
 module.exports = extract_mapping_po;

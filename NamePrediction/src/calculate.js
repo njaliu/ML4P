@@ -17,6 +17,8 @@ var obfuscation_options =  [[0, 8.54],  [1,  9.45],  [2,  7.01],
                 		    [9, 8.23],  [10, 8.54],  [11, 7.01], [12, 7.01]];
 var PROB = new JWL(obfuscation_options);
 var INIT_OPTION = [0,0,0,0,0,0,0,0,0,0,0,0,1];
+var PO_INDEX = [0,1,2,3,4,5,6,7,8,9];
+
 /*
 	origin - JSON: variable table of the original file
 	minified - JSON: variable mapping table in the minified file
@@ -526,7 +528,7 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 	//console.log("init zzzz: " + INIT_OPTION);
 	var current_options = options;
 	var current_perplexity = 0;
-	var current_best = "";
+	//var current_best = "";
 	for(var i = 0; i < N; i++) {
 		var seed = compute_seed(options);
 		var po_output = assembler(origin_code, seed);
@@ -557,7 +559,7 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 			options = mutate4options(current_options);	
 			//options = mutate4options_code_reused(current_options);
 			current_perplexity = perplexity;
-			current_best = po_output.code;
+			//current_best = po_output.code;
 			console.log("#### Round: " + i + ", PASS. PERP: " + current_perplexity);
 		}
 		else {
@@ -569,7 +571,7 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 				options = mutate4options(current_options);
 				//options = mutate4options_code_reused(current_options);
 				current_perplexity = perplexity;
-				current_best = po_output.code;
+				//current_best = po_output.code;
 				console.log("#### Round: " + i + ", PASS. PERP: " + current_perplexity);
 			}
 			else {
@@ -580,8 +582,8 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 	}		
 
 	//choose the obfuscation with highest perplexity, instead of the last one.
-	fs.writeFileSync(after_po_mutant, current_best);
-	exec(cmd_minify);
+	//fs.writeFileSync(after_po_mutant, current_best);
+	//exec(cmd_minify);
 
 	var cmd_predict = 'unuglifyjs --nice2predict_server localhost:5745 ' 
 						+ minified_mutant +  ' > ' + predicted_mutant;
@@ -608,6 +610,11 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 
 	console.log("#### DONE!");
 	return output;
+}
+
+function sampling_po_index() {
+	var n = _.random(0, PO_INDEX.length);
+	return _.sample(PO_INDEX, n);
 }
 
 function compute_seed(options) {
@@ -894,7 +901,7 @@ function test_main_mutation_high_precision() {
 	var high_precision_records = fs.readFileSync(high_precision_file_report, 'utf-8').split('\n');
 	var len = high_precision_records.length - 1;
 	//Output file
-	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/20150812_mcmc_n10_5gram_var_highest_po';
+	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/20150819_mcmc_n10_5gram_var_highest_po';
 
 	var origin_dir = dir_base + 'original_source/';
 	var minified_dir = dir_base + 'minified/baseline_default/';
@@ -904,9 +911,9 @@ function test_main_mutation_high_precision() {
 	var N = 10;
 
 	//This variable is for experimenting specific files.
-	var first_total = 51;
-	len = first_total;
-	for(var i = 50; i < len; i++) {
+	//var first_total = 51;
+	//len = first_total;
+	for(var i = 0; i < len; i++) {
 		var record_str = high_precision_records[i];
 		var record_json = process_precision_record(record_str);
 		var precision = record_json.precision;
