@@ -17,16 +17,17 @@ function locate(host, guest) {
 	return -1;
 }
 
-var assembler = function(code, seed) {
-	var input = disassembler(code, seed);
-	var code = input.code;
-	var marker = input.marker;
-	var flag = input.po;
+var assembler = function(code, seed, reproduce, picked_best) {
+	var input = disassembler(code, seed, reproduce, picked_best);
+	var best = input.pick;
+	var code = input.disassembled.code;
+	var marker = input.disassembled.marker;
+	var flag = input.disassembled.po;
 	var smInfo = {};
 
 	if( !flag ) {
 		console.log("zzzzzzzzzzzzzzz2");	
-		var output = {code: code, sm: smInfo, po: false};
+		var output = {code: code, sm: smInfo, po: false, pick: best.slice()};
 		return output;
 	}
 	for( key in marker ) {
@@ -42,7 +43,7 @@ var assembler = function(code, seed) {
 			code = code.replace(replace_str, content);
 		}
 	}
-	var output = {code: code, sm: smInfo, po: true};
+	var output = {code: code, sm: smInfo, po: true, pick: best.slice()};
 	
 	return output;
 }

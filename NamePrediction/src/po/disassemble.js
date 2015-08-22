@@ -65,11 +65,12 @@ function partialObufscate(markerMap, obfuscator, seed) {
 	}
 }
 
-var disassembler = function(code, seed) {
+//reproduce: a flag to inform generating new one, or retrieving the current best disassembling
+var disassembler = function(code, seed, reproduce, picked_best) {
 	var ast = UglifyJS.parse(code);
 	var candidates = _.pluck(funExtractor(ast), 'json');
 	if( candidates.length > 0) {
-		PICKED = sampling(candidates).slice();
+		PICKED = reproduce ? picked_best.slice() : sampling(candidates).slice();
 		var ast_new = funMarker(ast, PICKED);
 		partialObufscate(markerMap, CC, seed);
 		var result = {code: ast_new.print_to_string({beautify: true}), marker: markerMap, po: true};
@@ -79,7 +80,7 @@ var disassembler = function(code, seed) {
 		var result = {code: ast.print_to_string({beautify: true}), marker: markerMap, po: false};
 	}
 
-	return result;
+	return {disassembled: result, pick: PICKED};
 }
 
 

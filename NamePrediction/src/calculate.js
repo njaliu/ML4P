@@ -528,10 +528,12 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 	//console.log("init zzzz: " + INIT_OPTION);
 	var current_options = options;
 	var current_perplexity = 0;
-	//var current_best = "";
+	var current_pick_best;
+	var current_best_seed = 0;
 	for(var i = 0; i < N; i++) {
 		var seed = compute_seed(options);
-		var po_output = assembler(origin_code, seed);
+		var po_output = assembler(origin_code, seed, false, null);
+		var pick = po_output.pick.slice();
 
 		debugger;
 		
@@ -542,7 +544,7 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 
 		var cmd_minify = 'java -jar ' + mutator + ' --js ' + after_po_mutant + ' --js_output_file ' 
 					+ minified_mutant + ' --create_source_map ' + map_mutant
-					+ ' --formatting PRETTY_PRINT' + ' --mutation_seed ' + (flag ? 0 : seed);	
+					+ ' --formatting PRETTY_PRINT' + ' --mutation_seed ' + (flag ? 287 : seed);	
 		exec(cmd_minify);
 
 		//var tks = C2TK(fs.readFileSync(minified_mutant, 'utf-8'));
@@ -559,7 +561,8 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 			options = mutate4options(current_options);	
 			//options = mutate4options_code_reused(current_options);
 			current_perplexity = perplexity;
-			//current_best = po_output.code;
+			current_pick_best = pick.slice();
+			current_best_seed = seed;
 			console.log("#### Round: " + i + ", PASS. PERP: " + current_perplexity);
 		}
 		else {
@@ -571,7 +574,8 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 				options = mutate4options(current_options);
 				//options = mutate4options_code_reused(current_options);
 				current_perplexity = perplexity;
-				//current_best = po_output.code;
+				current_pick_best = pick.slice();
+				current_best_seed = seed;
 				console.log("#### Round: " + i + ", PASS. PERP: " + current_perplexity);
 			}
 			else {
@@ -582,8 +586,18 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 	}		
 
 	//choose the obfuscation with highest perplexity, instead of the last one.
-	//fs.writeFileSync(after_po_mutant, current_best);
-	//exec(cmd_minify);
+	console.log("Start reproducing the best partial-obfuscation...");
+	po_output = assembler(origin_code, seed, true, current_pick_best);
+	pick = po_output.pick.slice();
+	fs.writeFileSync(after_po_mutant, po_output.code);
+	smInfo = po_output.sm;
+	flag = po_output.po;
+	cmd_minify = 'java -jar ' + mutator + ' --js ' + after_po_mutant + ' --js_output_file ' 
+					+ minified_mutant + ' --create_source_map ' + map_mutant
+					+ ' --formatting PRETTY_PRINT' + ' --mutation_seed ' + (flag ? 287 : current_best_seed);
+	exec(cmd_minify);
+	console.log("Finish reproducing the best partial-obfuscation...");
+	//finish reproducing the best partial-obfuscation
 
 	var cmd_predict = 'unuglifyjs --nice2predict_server localhost:5745 ' 
 						+ minified_mutant +  ' > ' + predicted_mutant;
@@ -901,7 +915,7 @@ function test_main_mutation_high_precision() {
 	var high_precision_records = fs.readFileSync(high_precision_file_report, 'utf-8').split('\n');
 	var len = high_precision_records.length - 1;
 	//Output file
-	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/20150819_mcmc_n10_5gram_var_highest_po';
+	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/20150821_mcmc_n10_5gram_var_highest_po';
 
 	var origin_dir = dir_base + 'original_source/';
 	var minified_dir = dir_base + 'minified/baseline_default/';
@@ -911,15 +925,17 @@ function test_main_mutation_high_precision() {
 	var N = 10;
 
 	//This variable is for experimenting specific files.
-	//var first_total = 51;
-	//len = first_total;
-	for(var i = 0; i < len; i++) {
+	var first_total = 51;
+	len = first_total;
+	for(var i = 50; i < len; i++) {
 		var record_str = high_precision_records[i];
 		var record_json = process_precision_record(record_str);
 		var precision = record_json.precision;
 		var prefix = record_json.prefix;
 
 		var origin = origin_dir + prefix + '.js';
+		if(!fs.existsSync(origin))
+			continue;
 		var minified = minified_dir + prefix + '.min.js';
 		var source_map = source_map_dir + prefix + '.map';
 		var predicted = predicted_dir + prefix + '.rename.js';
