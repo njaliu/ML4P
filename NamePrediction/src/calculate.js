@@ -798,10 +798,10 @@ function test_main_2() {
 	var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/';
 	
 	
-	var origin_file_dir = dir_base + 'original_source/';
-	var minified_file_dir = dir_base + 'minified/allin/';
-	var map_file_dir =  dir_base + 'source_maps/allin/';
-	var predicted_file_dir = dir_base + 'predicted/allin_jsnice/';
+	var origin_file_dir = dir_base + 'original_source_github_trending/';
+	var minified_file_dir = dir_base + 'minified/baseline_default_github_trending/';
+	var map_file_dir =  dir_base + 'source_maps/baseline_default_github_trending/';
+	var predicted_file_dir = dir_base + 'predicted/baseline_default_github_trending/';
 	
 
 	//Dir path 'cc' for Closure-Compiler, 'uglifyjs' for UglifyJS
@@ -915,7 +915,7 @@ function test_main_mutation_high_precision() {
 	var high_precision_records = fs.readFileSync(high_precision_file_report, 'utf-8').split('\n');
 	var len = high_precision_records.length - 1;
 	//Output file
-	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/20150821_mcmc_n10_5gram_var_highest_po';
+	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/20150822_mcmc_n10_5gram_var_highest_po';
 
 	var origin_dir = dir_base + 'original_source/';
 	var minified_dir = dir_base + 'minified/baseline_default/';
@@ -925,20 +925,21 @@ function test_main_mutation_high_precision() {
 	var N = 10;
 
 	//This variable is for experimenting specific files.
-	var first_total = 51;
-	len = first_total;
-	for(var i = 50; i < len; i++) {
+	//var first_total = 51;
+	//len = first_total;
+	for(var i = 0; i < len; i++) {
 		var record_str = high_precision_records[i];
 		var record_json = process_precision_record(record_str);
 		var precision = record_json.precision;
 		var prefix = record_json.prefix;
 
 		var origin = origin_dir + prefix + '.js';
-		if(!fs.existsSync(origin))
-			continue;
 		var minified = minified_dir + prefix + '.min.js';
 		var source_map = source_map_dir + prefix + '.map';
 		var predicted = predicted_dir + prefix + '.rename.js';
+
+		if( !fs.existsSync(origin) || !fs.existsSync(minified) || !fs.existsSync(source_map) || !fs.existsSync(predicted) )
+			continue;
 
 		var rawSourceMap = JSON.parse(fs.readFileSync(source_map,'utf-8'));
 		rawSourceMap["sourceRoot"] = source_map_dir;
@@ -1078,17 +1079,17 @@ function reportLowPrecisionFiles(result_stat, fname) {
 }
 
 //Report files with precision higher than 70%, and variables more than 10
-var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_allin_jsnice';
+var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_github_trending_jsnice';
 function reportHighPrecisionFiles(result_stat, fname) {
 	var precision = (result_stat.correct / result_stat.total).toFixed(2);
-	if ( result_stat.total >= 10 && precision >= 0.7 )
+	if ( result_stat.total >= 10 && precision >= 0.5 )
 		fs.appendFileSync(high_precision_file_report, precision + ' ' + fname + '\n');
 }
 
 //test_main();
 //test_main_1();
-//test_main_2();
+test_main_2();
 //test_main_mutation_unguided();
 //test_main_mutation_guided();
-test_main_mutation_high_precision();
+//test_main_mutation_high_precision();
 //test_main_evaluate_lm();
