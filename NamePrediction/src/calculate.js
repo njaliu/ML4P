@@ -1044,7 +1044,7 @@ function test_main_mutation_high_precision() {
 	var high_precision_records = fs.readFileSync(high_precision_file_report, 'utf-8').split('\n');
 	var len = high_precision_records.length - 1;
 	//Output file
-	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/20150829_mcmc_n20_5gram_var_few_global_po_trained';
+	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/20150906_mcmc_n20_5gram_var_few_global_po_trained';
 
 	var origin_dir = dir_base + 'original_source/';
 	var minified_dir = dir_base + 'minified/baseline_default/';
@@ -1054,9 +1054,9 @@ function test_main_mutation_high_precision() {
 	var N = 20;
 
 	//This variable is for experimenting specific files.
-	//var first_total = 51;
-	//len = first_total;
-	for(var i = 0; i < len; i++) {
+	var first_total = 51;
+	len = first_total;
+	for(var i = 50; i < len; i++) {
 		var record_str = high_precision_records[i];
 		var record_json = process_precision_record(record_str);
 		var precision = record_json.precision;
