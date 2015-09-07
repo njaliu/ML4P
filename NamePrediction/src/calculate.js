@@ -18,6 +18,7 @@ var obfuscation_options =  [[0, 8.54],  [1,  9.45],  [2,  7.01],
 var PROB = new JWL(obfuscation_options);
 var INIT_OPTION = [0,0,0,0,0,0,0,0,0,0,0,0,1];
 var PO_INDEX = [0,1,2,3,4,5,6,7,8,9];
+var NO_INLINE_FUNC = [6, 7];
 
 /*
 	origin - JSON: variable table of the original file
@@ -396,6 +397,117 @@ function mutation_guided(origin, minified, source_map, predicted, mutator, N) {
 	return output;
 }
 
+//mutate compilation options using greedy for partial obfuscation
+function mutation_greedy_po(origin, minified, source_map, predicted, mutator, N) {
+	var output = [];
+
+	var origin_code = fs.readFileSync(origin, 'utf-8');
+	var origin_varTab = extract_variables(origin_code);
+
+	var minified_code = fs.readFileSync(minified, 'utf-8');
+	var map_varTab = extract_mapping(minified_code, source_map);
+
+	var predicted_code = fs.readFileSync(predicted, 'utf-8');
+	var predicted_varTab = extract_variables(predicted_code);
+
+	var result_stat = cal_precision_json(origin_varTab, map_varTab, predicted_varTab);
+	var baseline_correct = result_stat.correct;
+	console.log("#### Baseline correct: " + baseline_correct);
+
+	var after_po_mutant = '/home/aliu/experiments/mutant.after.js';
+	var minified_mutant = '/home/aliu/mutant.min.js';
+	var map_mutant = '/home/aliu/mutant.map';
+	var predicted_mutant = '/home/aliu/mutant.rename.js';
+	var tokens_mutant = '/home/aliu/mutant.tokens';
+	var perplexity_file = '/home/aliu/github_150.perplexity';
+	var options = INIT_OPTION.slice();
+	//console.log("init zzzz: " + INIT_OPTION);
+	var current_options = options;
+	var current_perplexity = 0;
+	var current_pick_best;
+	var current_best_seed = 0;
+	for(var i = 0; i < N; i++) {
+		var seed = compute_seed(options);
+		var po_output = assembler(origin_code, seed, false, null);
+		var pick = po_output.pick.slice();
+		
+		fs.writeFileSync(after_po_mutant, po_output.code);
+		var smInfo = po_output.sm;
+		var flag = po_output.po;
+		//console.log("zzzzzzzzzzzzzzz flag " + flag);	
+
+		var cmd_minify = 'java -jar ' + mutator + ' --js ' + after_po_mutant + ' --js_output_file ' 
+					+ minified_mutant + ' --create_source_map ' + map_mutant
+					+ ' --formatting PRETTY_PRINT' + ' --mutation_seed ' + (flag ? 287 : seed);	
+		exec(cmd_minify);
+
+		//var tks = C2TK(fs.readFileSync(minified_mutant, 'utf-8'));
+		var tks = TKN(fs.readFileSync(minified_mutant, 'utf-8'));
+		fs.writeFileSync(tokens_mutant, tks);
+		process.chdir('/home/aliu/Research/klm/bin/');
+		var cmd_perplexity = './python /home/aliu/Research/ML4P/NamePrediction/src/lm/calculate_perplexity.py';
+		exec(cmd_perplexity);
+		var perplexity = Number(fs.readFileSync(perplexity_file, 'utf-8'));
+		console.log("#### Perplexity: " + perplexity);
+
+		if(perplexity <= current_perplexity) {
+			current_options = options
+			//options = mutate4options(current_options);
+			options = mutate4options_no_inline_func(current_options);	
+			//options = mutate4options_code_reused(current_options);
+			current_perplexity = perplexity;
+			current_pick_best = pick.slice();
+			current_best_seed = seed;
+			console.log("#### Round: " + i + ", PASS. PERP: " + current_perplexity);
+		}
+		else {
+			//greedy: reject if the perplexity score decreases.
+			options = mutate4options_no_inline_func(current_options);
+			console.log("#### Round: " + i + ", FAIL. PERP: " + current_perplexity);
+		}
+	}		
+
+	//choose the obfuscation with highest perplexity, instead of the last one.
+	console.log("Start reproducing the best partial-obfuscation...");
+	po_output = assembler(origin_code, seed, true, current_pick_best);
+	pick = po_output.pick.slice();
+	fs.writeFileSync(after_po_mutant, po_output.code);
+	smInfo = po_output.sm;
+	flag = po_output.po;
+	cmd_minify = 'java -jar ' + mutator + ' --js ' + after_po_mutant + ' --js_output_file ' 
+					+ minified_mutant + ' --create_source_map ' + map_mutant
+					+ ' --formatting PRETTY_PRINT' + ' --mutation_seed ' + (flag ? 287 : current_best_seed);
+	exec(cmd_minify);
+	console.log("Finish reproducing the best partial-obfuscation...");
+	//finish reproducing the best partial-obfuscation
+
+	var cmd_predict = 'unuglifyjs --nice2predict_server localhost:5745 ' 
+						+ minified_mutant +  ' > ' + predicted_mutant;
+	process.chdir('/home/aliu/');
+	exec(cmd_predict);
+
+	var map_mutant_code = JSON.parse(fs.readFileSync(map_mutant,'utf-8'));
+	map_mutant_code["sourceRoot"] = '/home/aliu';
+
+	var minified_mutant_code = fs.readFileSync(minified_mutant, 'utf-8');
+	var map_mutant_varTab = extract_mapping_po(minified_mutant_code, smInfo, map_mutant_code);
+
+	var predicted_mutant_code = fs.readFileSync(predicted_mutant, 'utf-8');
+	var predicted_mutant_varTab = extract_variables(predicted_mutant_code);
+
+	var result_mutant_stat = cal_precision_json(origin_varTab, map_mutant_varTab, predicted_mutant_varTab);
+	var mutant_correct = result_mutant_stat.correct;
+	console.log("#### Mutant correct: " + mutant_correct);
+
+	var report_obj = {total: result_stat.total, baseline: baseline_correct, mutant: mutant_correct, comment: "bad", config: seed};
+	if(mutant_correct < baseline_correct && mutant_correct != 0)
+		report_obj.comment = "good";
+	output.push(report_obj);
+
+	console.log("#### DONE!");
+	return output;
+}
+
 //mutate compilation options - guided version (MCMC)
 function mutation_mcmc(origin, minified, source_map, predicted, mutator, N) {
 	var output = [];
@@ -558,7 +670,8 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 
 		if(perplexity <= current_perplexity) {
 			current_options = options
-			options = mutate4options(current_options);	
+			//options = mutate4options(current_options);
+			options = mutate4options_no_inline_func(current_options);	
 			//options = mutate4options_code_reused(current_options);
 			current_perplexity = perplexity;
 			current_pick_best = pick.slice();
@@ -571,7 +684,8 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 			if( low_prob <= 15 ){
 				current_options = options;
 				console.log("#### Accept low probability: " + low_prob);
-				options = mutate4options(current_options);
+				//options = mutate4options(current_options);
+				options = mutate4options_no_inline_func(current_options);
 				//options = mutate4options_code_reused(current_options);
 				current_perplexity = perplexity;
 				current_pick_best = pick.slice();
@@ -579,7 +693,8 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 				console.log("#### Round: " + i + ", PASS. PERP: " + current_perplexity);
 			}
 			else {
-				options = mutate4options(current_options);
+				//options = mutate4options(current_options);
+				options = mutate4options_no_inline_func(current_options);
 				console.log("#### Round: " + i + ", FAIL. PERP: " + current_perplexity);
 			}
 		}
@@ -644,9 +759,21 @@ function mutate4options(old) {
 	var limit = PROB.length;
 	var n = _.random(1, limit);
 	var flips = PROB.peek(n);
-	var newly = old;
+	var newly = old.slice();
 	for(i in old) {
 		if( _.contains(flips, i) )
+			newly[i] = 1 - old[i];
+	}
+	return newly;
+}
+
+function mutate4options_no_inline_func(old) {
+	var limit = PROB.length;
+	var n = _.random(1, limit);
+	var flips = PROB.peek(n);
+	var newly = old.slice();
+	for(i in old) {
+		if( _.contains(flips, i) && (!_.contains(NO_INLINE_FUNC, i)) )
 			newly[i] = 1 - old[i];
 	}
 	return newly;
@@ -910,19 +1037,21 @@ function test_main_mutation_high_precision() {
 	var output = [];
 	var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/';
 	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_baseline';
-	//report for all-in configuration
-	var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_baseline_jsnice';
+	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_github_trending_jsnice';
+	//report for trending repo in GitHub with few global variables
+	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/few_global_varibales_rename_benchmark';
+	var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/few_global_varibales_rename_trained_benchmark';
 	var high_precision_records = fs.readFileSync(high_precision_file_report, 'utf-8').split('\n');
 	var len = high_precision_records.length - 1;
 	//Output file
-	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/20150822_mcmc_n10_5gram_var_highest_po';
+	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/20150829_mcmc_n20_5gram_var_few_global_po_trained';
 
 	var origin_dir = dir_base + 'original_source/';
 	var minified_dir = dir_base + 'minified/baseline_default/';
 	var source_map_dir = dir_base + 'source_maps/baseline_default/';
 	var predicted_dir = dir_base + 'predicted/baseline_default_jsnice/';
 	var mutator = '/home/aliu/Research/More/Download/closure-compiler-master/build/compiler.jar';
-	var N = 10;
+	var N = 20;
 
 	//This variable is for experimenting specific files.
 	//var first_total = 51;
@@ -944,12 +1073,22 @@ function test_main_mutation_high_precision() {
 		var rawSourceMap = JSON.parse(fs.readFileSync(source_map,'utf-8'));
 		rawSourceMap["sourceRoot"] = source_map_dir;
 
-		//Next line is to use greedy mutation
-		//var result = mutation_guided(origin, minified, rawSourceMap, predicted, mutator, N);
-		//Next line is to use mcmc mutation
-		//var result = mutation_mcmc(origin, minified, rawSourceMap, predicted, mutator, N);
-		//Next line is to use mcmc mutation
-		var result = mutation_mcmc_po(origin, minified, rawSourceMap, predicted, mutator, N);
+		try {
+			//Next line is to use greedy mutation
+			//var result = mutation_guided(origin, minified, rawSourceMap, predicted, mutator, N);
+			//Next line is to use mcmc mutation
+			//var result = mutation_mcmc(origin, minified, rawSourceMap, predicted, mutator, N);
+			//Next line is to use greedy-po mutation
+			//var result = mutation_greedy_po(origin, minified, rawSourceMap, predicted, mutator, N);
+			//Next line is to use mcmc-po mutation
+			var result = mutation_mcmc_po(origin, minified, rawSourceMap, predicted, mutator, N);
+		} catch(ex) {
+			console.log("*******EEEEEEEE********: Error caught!" );
+			console.log(ex);
+			continue;
+		}
+		
+		
 		console.log("#### Result size: " + result.length);
 		var report_obj = result[0];
 		if(report_obj.comment == 'good' || true) {
@@ -1050,7 +1189,11 @@ function process_precision_record(record) {
 		console.log("#### Error record size: " + items.length);
 		return;
 	}
-	var precision_val = Number(items[0]);
+	try {
+		var precision_val = Number(items[0]);	
+	} catch(ex) {
+		var precision_val = 0;
+	}	
 	var len = items[1].split('/').length;
 	var prefix_val = path.basename(items[1].split('/')[len-1], '.rename.js');
 	return {precision: precision_val, prefix: prefix_val};	
@@ -1088,8 +1231,8 @@ function reportHighPrecisionFiles(result_stat, fname) {
 
 //test_main();
 //test_main_1();
-test_main_2();
+//test_main_2();
 //test_main_mutation_unguided();
 //test_main_mutation_guided();
-//test_main_mutation_high_precision();
+test_main_mutation_high_precision();
 //test_main_evaluate_lm();
