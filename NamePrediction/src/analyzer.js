@@ -34,7 +34,8 @@ var stats_analyzer = function() {
 	//var file = '20150822_mcmc_n10_5gram_var_highest_po';
 	//var file = '20150826_mcmc_n10_5gram_var_highest_po_trending';
 	//var file = '20150827_mcmc_n20_5gram_var_highest_po_trending';
-	var file = '20150827_greedy_n20_5gram_var_highest_po_trending';
+	//var file = '20150827_greedy_n20_5gram_var_highest_po_trending';
+	var file = '20150915_mcmc_n10_5gram_var_high_precision_po_trained'; 
 	//var target = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/po_20_percentage_better';
 
 	var results = fs.readFileSync(base_dir + file, 'utf-8').split('\n');
@@ -44,7 +45,7 @@ var stats_analyzer = function() {
 
 	for(var i = 0; i < len; i++) {
 		var result = results[i];
-		if(getStats(result).baseline > getStats(result).mutant + 3) {
+		if(getStats(result).baseline > getStats(result).mutant + 10) {
 			n++;
 			total += getStats(result).total;
 			baseline += getStats(result).baseline;

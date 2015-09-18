@@ -49,16 +49,23 @@ function cal_precision(origin, minified, predicted) {
 
 //Revised calculation to return results as a JSON object
 function cal_precision_json(origin, minified, predicted) {
-	var total = origin.length;
-	var count = 0;
+	//var total = origin.length;
+	var total = 0;
+	for(k in origin) {
+		if(origin[k].local)
+			total++;
+	}
 
+	var count = 0;
 
 	for(var i = 0; i < predicted.length; i++) {
 		var o_var = minified[i];
-		var p_var = predicted[i];
+		var p_json = predicted[i];
+		var p_var = p_json.variable;
+		var p_local = p_json.local;
 
 		console.log("## o_var: " + o_var + ", p_var: " + p_var);
-		if(o_var == p_var)
+		if(p_local && o_var == p_var)
 			count++;
 	}
 
@@ -74,6 +81,7 @@ function extract_variables(code) {
 
 	try {
 		var top_level = UglifyJS.parse(code);
+		top_level.figure_out_scope();
 
 		var walker = new UglifyJS.TreeWalker(function(node){
     		if (node instanceof UglifyJS.AST_VarDef) {
@@ -83,7 +91,11 @@ function extract_variables(code) {
        	    	 	line: node.start.line,
       	     	 	col: node.start.col
       	  		}));
-       	 		varTab.push(node.name.name);
+      	  		//Mark the variable as global or local for later comparison.
+      	  		if(node.name.thedef.global)
+       	 			varTab.push({variable: node.name.name, local: false});
+       	 		else
+       	 			varTab.push({variable: node.name.name, local: true});
    			}
     		else if (node instanceof UglifyJS.AST_SymbolFunarg) {
         		// string_template is a cute little function that UglifyJS uses for warnings
@@ -92,7 +104,8 @@ function extract_variables(code) {
             		line: node.start.line,
             		col: node.start.col
         		}));
-        		varTab.push(node.name);
+        		//varTab.push(node.name);
+        		varTab.push({variable: node.name, local: true});
     		}
 		});
 
@@ -1037,26 +1050,32 @@ function test_main_mutation_high_precision() {
 	var output = [];
 	var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/';
 	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_baseline';
+	var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_baseline_jsnice';
 	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_github_trending_jsnice';
 	//report for trending repo in GitHub with few global variables
 	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/few_global_varibales_rename_benchmark';
-	var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/few_global_varibales_rename_trained_benchmark';
+	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/few_global_varibales_rename_trained_benchmark';
+	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_baseline_jsnice';
 	var high_precision_records = fs.readFileSync(high_precision_file_report, 'utf-8').split('\n');
 	var len = high_precision_records.length - 1;
 	//Output file
-	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/20150906_mcmc_n20_5gram_var_few_global_po_trained';
+	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/20150915_mcmc_n10_5gram_var_high_precision_po_trained';
 
 	var origin_dir = dir_base + 'original_source/';
+	//var origin_dir = dir_base + 'original_source_github_trending/';
 	var minified_dir = dir_base + 'minified/baseline_default/';
+	//var minified_dir = dir_base + 'minified/baseline_default_github_trending/';
 	var source_map_dir = dir_base + 'source_maps/baseline_default/';
+	//var source_map_dir = dir_base + 'source_maps/baseline_default_github_trending/';
 	var predicted_dir = dir_base + 'predicted/baseline_default_jsnice/';
+	//var predicted_dir = dir_base + 'predicted/baseline_default_github_trending/';
 	var mutator = '/home/aliu/Research/More/Download/closure-compiler-master/build/compiler.jar';
-	var N = 20;
+	var N = 10;
 
 	//This variable is for experimenting specific files.
-	var first_total = 51;
-	len = first_total;
-	for(var i = 50; i < len; i++) {
+	//var first_total = 1;
+	//len = first_total;
+	for(var i = 0; i < len; i++) {
 		var record_str = high_precision_records[i];
 		var record_json = process_precision_record(record_str);
 		var precision = record_json.precision;
@@ -1069,7 +1088,7 @@ function test_main_mutation_high_precision() {
 
 		if( !fs.existsSync(origin) || !fs.existsSync(minified) || !fs.existsSync(source_map) || !fs.existsSync(predicted) )
 			continue;
-
+		
 		var rawSourceMap = JSON.parse(fs.readFileSync(source_map,'utf-8'));
 		rawSourceMap["sourceRoot"] = source_map_dir;
 
