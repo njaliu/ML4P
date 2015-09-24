@@ -9,6 +9,7 @@ var C2TK = require('./tokenizer.js');
 var TKN = require('./tokenizer_var.js');
 var assembler = require('./po/assemble.js');
 var extract_mapping_po = require('./po/sm_core.js');
+var extract_variables_no_small_fn = require('./po/eval_util.js');
 
 //Individual probability for each option, calculated by single-obfuscation.
 var obfuscation_options =  [[0, 8.54],  [1,  9.45],  [2,  7.01],
@@ -52,7 +53,8 @@ function cal_precision_json(origin, minified, predicted) {
 	//var total = origin.length;
 	var total = 0;
 	for(k in origin) {
-		if(origin[k].local)
+		//We only consider local variables in non-small functions
+		if(origin[k].local && !origin[k].small)
 			total++;
 	}
 
@@ -63,9 +65,11 @@ function cal_precision_json(origin, minified, predicted) {
 		var p_json = predicted[i];
 		var p_var = p_json.variable;
 		var p_local = p_json.local;
+		var p_small = p_json.small;
 
 		console.log("## o_var: " + o_var + ", p_var: " + p_var);
-		if(p_local && o_var == p_var)
+		//We only compare local variables in non-small functions
+		if(p_local && !p_small && o_var == p_var)
 			count++;
 	}
 
@@ -415,13 +419,15 @@ function mutation_greedy_po(origin, minified, source_map, predicted, mutator, N)
 	var output = [];
 
 	var origin_code = fs.readFileSync(origin, 'utf-8');
-	var origin_varTab = extract_variables(origin_code);
+	//var origin_varTab = extract_variables(origin_code);
+	var origin_varTab = extract_variables_no_small_fn(origin_code);
 
 	var minified_code = fs.readFileSync(minified, 'utf-8');
 	var map_varTab = extract_mapping(minified_code, source_map);
 
 	var predicted_code = fs.readFileSync(predicted, 'utf-8');
-	var predicted_varTab = extract_variables(predicted_code);
+	//var predicted_varTab = extract_variables(predicted_code);
+	var predicted_varTab = extract_variables_no_small_fn(predicted_code);
 
 	var result_stat = cal_precision_json(origin_varTab, map_varTab, predicted_varTab);
 	var baseline_correct = result_stat.correct;
@@ -506,7 +512,8 @@ function mutation_greedy_po(origin, minified, source_map, predicted, mutator, N)
 	var map_mutant_varTab = extract_mapping_po(minified_mutant_code, smInfo, map_mutant_code);
 
 	var predicted_mutant_code = fs.readFileSync(predicted_mutant, 'utf-8');
-	var predicted_mutant_varTab = extract_variables(predicted_mutant_code);
+	//var predicted_mutant_varTab = extract_variables(predicted_mutant_code);
+	var predicted_mutant_varTab = extract_variables_no_small_fn(predicted_mutant_code);
 
 	var result_mutant_stat = cal_precision_json(origin_varTab, map_mutant_varTab, predicted_mutant_varTab);
 	var mutant_correct = result_mutant_stat.correct;
@@ -631,13 +638,15 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 	var output = [];
 
 	var origin_code = fs.readFileSync(origin, 'utf-8');
-	var origin_varTab = extract_variables(origin_code);
+	//var origin_varTab = extract_variables(origin_code);
+	var origin_varTab = extract_variables_no_small_fn(origin_code);
 
 	var minified_code = fs.readFileSync(minified, 'utf-8');
 	var map_varTab = extract_mapping(minified_code, source_map);
 
 	var predicted_code = fs.readFileSync(predicted, 'utf-8');
-	var predicted_varTab = extract_variables(predicted_code);
+	//var predicted_varTab = extract_variables(predicted_code);
+	var predicted_varTab = extract_variables_no_small_fn(predicted_code);
 
 	var result_stat = cal_precision_json(origin_varTab, map_varTab, predicted_varTab);
 	var baseline_correct = result_stat.correct;
@@ -739,7 +748,8 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 	var map_mutant_varTab = extract_mapping_po(minified_mutant_code, smInfo, map_mutant_code);
 
 	var predicted_mutant_code = fs.readFileSync(predicted_mutant, 'utf-8');
-	var predicted_mutant_varTab = extract_variables(predicted_mutant_code);
+	//var predicted_mutant_varTab = extract_variables(predicted_mutant_code);
+	var predicted_mutant_varTab = extract_variables_no_small_fn(predicted_mutant_code);
 
 	var result_mutant_stat = cal_precision_json(origin_varTab, map_mutant_varTab, predicted_mutant_varTab);
 	var mutant_correct = result_mutant_stat.correct;
@@ -830,6 +840,17 @@ function obfuscateWithOptions(options, origin, minified_mutant, map_mutant, muta
 					+ minified_mutant + ' --create_source_map ' + map_mutant
 					+ ' --mutation_seed ' + seed;
 	exec(cmd_minify);
+}
+
+function gen_log_date() {
+	var d = new Date();
+	var date = d.getDate();
+	var month = d.getMonth();
+	var year = d.getFullYear();
+	date = (date < 10 ? '0' + date.toString() : date.toString());
+	month = ((month+1) < 10 ? '0' + (month+1).toString() : (month+1).toString());
+
+	return year.toString() + month + date;
 }
 
 //---------------------------------------------------------------------------------------------------
@@ -1059,7 +1080,7 @@ function test_main_mutation_high_precision() {
 	var high_precision_records = fs.readFileSync(high_precision_file_report, 'utf-8').split('\n');
 	var len = high_precision_records.length - 1;
 	//Output file
-	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/20150915_mcmc_n10_5gram_var_high_precision_po_trained';
+	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/' + gen_log_date() + '_mcmc_n10_5gram_var_high_precision_po_trained';
 
 	var origin_dir = dir_base + 'original_source/';
 	//var origin_dir = dir_base + 'original_source_github_trending/';
@@ -1073,7 +1094,7 @@ function test_main_mutation_high_precision() {
 	var N = 10;
 
 	//This variable is for experimenting specific files.
-	//var first_total = 1;
+	//var first_total = 51;
 	//len = first_total;
 	for(var i = 0; i < len; i++) {
 		var record_str = high_precision_records[i];
