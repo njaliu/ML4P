@@ -959,10 +959,15 @@ function test_main_2() {
 	var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/';
 	
 	
-	var origin_file_dir = dir_base + 'original_source_github_trending/';
-	var minified_file_dir = dir_base + 'minified/baseline_default_github_trending/';
-	var map_file_dir =  dir_base + 'source_maps/baseline_default_github_trending/';
-	var predicted_file_dir = dir_base + 'predicted/baseline_default_github_trending/';
+	//var origin_file_dir = dir_base + 'original_source_github_trending/';
+	//var minified_file_dir = dir_base + 'minified/baseline_default_github_trending/';
+	//var map_file_dir =  dir_base + 'source_maps/baseline_default_github_trending/';
+	//var predicted_file_dir = dir_base + 'predicted/baseline_default_github_trending/';
+
+	var origin_file_dir = dir_base + 'original_source_github_trending_20151009/';
+	var minified_file_dir = dir_base + 'minified/baseline_default_github_trending_20151009/';
+	var map_file_dir =  dir_base + 'source_maps/baseline_default_github_trending_20151009/';
+	var predicted_file_dir = dir_base + 'predicted/baseline_default_github_trending_20151009/';
 	
 
 	//Dir path 'cc' for Closure-Compiler, 'uglifyjs' for UglifyJS
@@ -1071,8 +1076,8 @@ function test_main_mutation_high_precision() {
 	var output = [];
 	var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/';
 	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_baseline';
-	var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_baseline_jsnice';
-	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_github_trending_jsnice';
+	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_baseline_jsnice';
+	var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_github_trending_jsnice';
 	//report for trending repo in GitHub with few global variables
 	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/few_global_varibales_rename_benchmark';
 	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/few_global_varibales_rename_trained_benchmark';
@@ -1080,16 +1085,20 @@ function test_main_mutation_high_precision() {
 	var high_precision_records = fs.readFileSync(high_precision_file_report, 'utf-8').split('\n');
 	var len = high_precision_records.length - 1;
 	//Output file
-	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/' + gen_log_date() + '_mcmc_n10_5gram_var_high_precision_po_trained';
+	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/' + gen_log_date() + '_mcmc_n10_5gram_var_high_precision_po_trending';
 
-	var origin_dir = dir_base + 'original_source/';
+	//var origin_dir = dir_base + 'original_source/';
 	//var origin_dir = dir_base + 'original_source_github_trending/';
-	var minified_dir = dir_base + 'minified/baseline_default/';
+	var origin_dir = dir_base + 'original_source_github_trending_20151009/';
+	//var minified_dir = dir_base + 'minified/baseline_default/';
 	//var minified_dir = dir_base + 'minified/baseline_default_github_trending/';
-	var source_map_dir = dir_base + 'source_maps/baseline_default/';
+	var minified_dir = dir_base + 'minified/baseline_default_github_trending_20151009/';
+	//var source_map_dir = dir_base + 'source_maps/baseline_default/';
 	//var source_map_dir = dir_base + 'source_maps/baseline_default_github_trending/';
-	var predicted_dir = dir_base + 'predicted/baseline_default_jsnice/';
+	var source_map_dir = dir_base + 'source_maps/baseline_default_github_trending_20151009/';
+	//var predicted_dir = dir_base + 'predicted/baseline_default_jsnice/';
 	//var predicted_dir = dir_base + 'predicted/baseline_default_github_trending/';
+	var predicted_dir = dir_base + 'predicted/baseline_default_github_trending_20151009/';
 	var mutator = '/home/aliu/Research/More/Download/closure-compiler-master/build/compiler.jar';
 	var N = 10;
 
@@ -1262,17 +1271,17 @@ function reportLowPrecisionFiles(result_stat, fname) {
 }
 
 //Report files with precision higher than 70%, and variables more than 10
-var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_github_trending_jsnice';
+var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_github_trending_jsnice_20151009';
 function reportHighPrecisionFiles(result_stat, fname) {
 	var precision = (result_stat.correct / result_stat.total).toFixed(2);
-	if ( result_stat.total >= 10 && precision >= 0.5 )
+	if ( result_stat.total >= 5 && precision >= 0.5 )
 		fs.appendFileSync(high_precision_file_report, precision + ' ' + fname + '\n');
 }
 
 //test_main();
 //test_main_1();
-//test_main_2();
+test_main_2();
 //test_main_mutation_unguided();
 //test_main_mutation_guided();
-test_main_mutation_high_precision();
+//test_main_mutation_high_precision();
 //test_main_evaluate_lm();
