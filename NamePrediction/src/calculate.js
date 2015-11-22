@@ -19,7 +19,8 @@ var obfuscation_options =  [[0, 8.54],  [1,  9.45],  [2,  7.01],
 var PROB = new JWL(obfuscation_options);
 var INIT_OPTION = [0,0,0,0,0,0,0,0,0,0,0,0,1];
 var PO_INDEX = [0,1,2,3,4,5,6,7,8,9];
-var NO_INLINE_FUNC = [6, 7];
+var NO_INLINE_FUNC = [4, 7, 10, 11];
+var MCMC_ACCEPT_PROB = 15;
 
 /*
 	origin - JSON: variable table of the original file
@@ -703,7 +704,7 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 		else {
 			//mcmc: accept at a low probability, here 0.15
 			var low_prob = _.random(1, 100);
-			if( low_prob <= 15 ){
+			if( low_prob <= MCMC_ACCEPT_PROB ){
 				current_options = options;
 				console.log("#### Accept low probability: " + low_prob);
 				//options = mutate4options(current_options);
@@ -724,7 +725,7 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 
 	//choose the obfuscation with highest perplexity, instead of the last one.
 	console.log("Start reproducing the best partial-obfuscation...");
-	po_output = assembler(origin_code, seed, true, current_pick_best);
+	po_output = assembler(origin_code, current_best_seed, true, current_pick_best);
 	pick = po_output.pick.slice();
 	fs.writeFileSync(after_po_mutant, po_output.code);
 	smInfo = po_output.sm;
@@ -755,7 +756,7 @@ function mutation_mcmc_po(origin, minified, source_map, predicted, mutator, N) {
 	var mutant_correct = result_mutant_stat.correct;
 	console.log("#### Mutant correct: " + mutant_correct);
 
-	var report_obj = {total: result_stat.total, baseline: baseline_correct, mutant: mutant_correct, comment: "bad", config: seed};
+	var report_obj = {total: result_stat.total, baseline: baseline_correct, mutant: mutant_correct, comment: "bad", config: current_best_seed};
 	if(mutant_correct < baseline_correct && mutant_correct != 0)
 		report_obj.comment = "good";
 	output.push(report_obj);
@@ -791,13 +792,14 @@ function mutate4options(old) {
 }
 
 function mutate4options_no_inline_func(old) {
+	var last = old.length - 1;
 	var limit = PROB.length;
 	var n = _.random(1, limit);
 	var flips = PROB.peek(n);
 	var newly = old.slice();
 	for(i in old) {
 		if( _.contains(flips, i) && (!_.contains(NO_INLINE_FUNC, i)) )
-			newly[i] = 1 - old[i];
+			newly[last-i] = 1 - old[last-i]; //ordering of configuration is reversed
 	}
 	return newly;
 }
@@ -825,7 +827,7 @@ function recordIRresult(origin, round, options, perplexity) {
 }
 
 function recordIRresult_lm(origin, round, options, perplexity, correct) {
-	var log = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/guidance/20150805_mcmc_n10_5gram_var_highest_485_lm';
+	var log = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/guidance/' + gen_log_date() + '_mcmc_n10_4gram_var_highest_485_lm';
 	var record = '    options: ' + options + 
 					', perplexity: ' + perplexity +
 					', correct: ' + correct + '\n';
@@ -1077,35 +1079,37 @@ function test_main_mutation_high_precision() {
 	var dir_base = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/';
 	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_baseline';
 	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_baseline_jsnice';
-	var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_github_trending_jsnice';
+	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_github_trending_jsnice';
 	//report for trending repo in GitHub with few global variables
 	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/few_global_varibales_rename_benchmark';
 	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/few_global_varibales_rename_trained_benchmark';
 	//var high_precision_file_report = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/high_precision_baseline_jsnice';
+	var high_precision_file_report = '/home/aliu/Desktop/human-attack-exp/file-list';//for human attack analysis
+
 	var high_precision_records = fs.readFileSync(high_precision_file_report, 'utf-8').split('\n');
 	var len = high_precision_records.length - 1;
 	//Output file
-	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/' + gen_log_date() + '_mcmc_n10_5gram_var_high_precision_po_trending';
-
-	//var origin_dir = dir_base + 'original_source/';
-	//var origin_dir = dir_base + 'original_source_github_trending/';
-	var origin_dir = dir_base + 'original_source_github_trending_20151009/';
-	//var minified_dir = dir_base + 'minified/baseline_default/';
-	//var minified_dir = dir_base + 'minified/baseline_default_github_trending/';
-	var minified_dir = dir_base + 'minified/baseline_default_github_trending_20151009/';
-	//var source_map_dir = dir_base + 'source_maps/baseline_default/';
-	//var source_map_dir = dir_base + 'source_maps/baseline_default_github_trending/';
-	var source_map_dir = dir_base + 'source_maps/baseline_default_github_trending_20151009/';
-	//var predicted_dir = dir_base + 'predicted/baseline_default_jsnice/';
-	//var predicted_dir = dir_base + 'predicted/baseline_default_github_trending/';
-	var predicted_dir = dir_base + 'predicted/baseline_default_github_trending_20151009/';
-	var mutator = '/home/aliu/Research/More/Download/closure-compiler-master/build/compiler.jar';
 	var N = 10;
+	var high_precision_results = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/logs/' + gen_log_date() + '_mcmc_n' + N + '_5gram_var_high_precision_po_training';
+
+	var origin_dir = dir_base + 'original_source/';
+	//var origin_dir = dir_base + 'original_source_github_trending/';
+	//var origin_dir = dir_base + 'original_source_github_trending_20151009/';
+	var minified_dir = dir_base + 'minified/baseline_default/';
+	//var minified_dir = dir_base + 'minified/baseline_default_github_trending/';
+	//var minified_dir = dir_base + 'minified/baseline_default_github_trending_20151009/';
+	var source_map_dir = dir_base + 'source_maps/baseline_default/';
+	//var source_map_dir = dir_base + 'source_maps/baseline_default_github_trending/';
+	//var source_map_dir = dir_base + 'source_maps/baseline_default_github_trending_20151009/';
+	var predicted_dir = dir_base + 'predicted/baseline_default_jsnice/';
+	//var predicted_dir = dir_base + 'predicted/baseline_default_github_trending/';
+	//var predicted_dir = dir_base + 'predicted/baseline_default_github_trending_20151009/';
+	var mutator = '/home/aliu/Research/More/Download/closure-compiler-master/build/compiler.jar';
 
 	//This variable is for experimenting specific files.
-	//var first_total = 51;
-	//len = first_total;
-	for(var i = 0; i < len; i++) {
+	var first_total = 5;
+	len = first_total;
+	for(var i = 4; i < len; i++) {
 		var record_str = high_precision_records[i];
 		var record_json = process_precision_record(record_str);
 		var precision = record_json.precision;
@@ -1173,7 +1177,7 @@ function test_main_evaluate_lm() {
 	var N = 10;
 
 	//This variable is for experimenting the first 100 files.
-	var first_total = 250;
+	var first_total = 30;
 	//len = first_total;
 	for(var i = 0; i < len; i++) {
 		var record_str = high_precision_records[i];
@@ -1189,7 +1193,8 @@ function test_main_evaluate_lm() {
 		var rawSourceMap = JSON.parse(fs.readFileSync(source_map,'utf-8'));
 		rawSourceMap["sourceRoot"] = source_map_dir;
 
-		evaluate_lm(origin, minified, rawSourceMap, predicted, mutator, N);
+		if(fs.existsSync(origin))
+			evaluate_lm(origin, minified, rawSourceMap, predicted, mutator, N);
 	}
 
 	console.log("#### Evaluate LM finish!");
@@ -1280,8 +1285,8 @@ function reportHighPrecisionFiles(result_stat, fname) {
 
 //test_main();
 //test_main_1();
-test_main_2();
+//test_main_2();
 //test_main_mutation_unguided();
 //test_main_mutation_guided();
-//test_main_mutation_high_precision();
+test_main_mutation_high_precision();
 //test_main_evaluate_lm();

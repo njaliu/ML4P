@@ -11,7 +11,7 @@ test_dir = '/home/aliu/Research/More/TestBench/Deobfuscation/Bench4prob/results/
 # 5-gram LM, no Punctuator
 #lm_file = 'github_150.noPun.5gram.klm'
 # 5-gram LM, no Punctuator, rename vars
-lm_file = 'github_150.noPun.id.5gram.klm'
+lm_file = 'github_150.noPun.id.4gram.klm'
 perplexity_file = 'github_150.perplexity'
 
 model = kenlm.LanguageModel(dir_base + lm_file)
